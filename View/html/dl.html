@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>用户登陆</title>
+</head>
+<body onload="indexdl_onload()">
+<div class="ZC">
+    <form id="zcForm" action="/dl" method="post">
+        <p>登陆页面</p>
+        用户名：<input type="text" id="username" name="username"><br/>
+        密码：<input type="password" id="password" name="password"><br/>
+        <input type="submit" value="登陆" onclick="DL()">
+    </form>
+    <p id="warning"><%= errMsg%></p>
+</div>
+<script>
+    function DL(){
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
+        if(username.value=="" || password.value==""){
+            document.getElementById('warning').innerHTML = "请填入完整的登陆信息" ;
+            if(event && event.preventDefault()){
+                event.preventDefault();
+            }else{
+                window.event.returnValue = false;
+            }
+        }
+    }
+</script>
+</body>
+</html>

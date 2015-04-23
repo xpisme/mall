@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../stylesheets/index.css" rel="stylesheet">
+    <script src="../javascripts/index.js"></script>
+</head>
+<body>
+<div id="box">
+    <div class="head">
+        <div class="head-inner">
+            <div class="h-r-left">
+                校卖部
+            </div>
+            <div class="h-right">
+                <p id="personName" class="h-r-userName"><%= personName%></p>
+                <p><input type="button" value="发布商品" class="h-r-input" onclick="getOrder()"/>
+                    <input type="button" value="我的关注" class="h-r-input"/>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="nav-inner">
+            <ul class="nav-inner-ul">
+                <li onclick="rt_index()">首页</li>
+                <li onclick="book_search('书籍')">图书</li>
+                <li onclick="book_search('女装')">女装</li>
+                <li onclick="book_search('男装')">男装</li>
+                <li onclick="book_search('鞋')">男/女鞋</li>
+                <li onclick="book_search('配饰礼物')">配饰/礼物</li>
+                <li onclick="book_search('学习用品')">学习用品</li>
+                <li onclick="book_search('生活用品')">生活用品</li>
+                <li onclick="book_search('运动娱乐')">运动/娱乐</li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-inner">
+            <div class="c-goods">
+                <div class="c-goods-img">
+                    <img src="/images/show1.png">
+                </div>
+                <div class="c-part1-right">
+                    <img src="../images/paart1-1.jpg">
+                    <img src="../images/paart1-7.jpg" class="fr">
+                    <img src="../images/paart1-2.jpg">
+                    <img src="../images/paart1-6.jpg" class="fr">
+                    <img src="../images/paart1-5.jpg">
+                    <img src="../images/paart1-4.jpg" class="fr">
+                </div>
+
+                <div class="c-part1-main">
+                    <% goods.forEach(function(goods){%>
+                    <form>
+                        <p class="c-goods-username">&nbsp;<%= goods.personName%>&nbsp;<span class="c-goods-username-span">发布</span></p>
+                        <p class="c-goods-price">￥<%= goods.price%><span class="c-goods-price-span">元</span></p>
+                        <p class="c-goods-goodsName"><%= goods.goodsName%></p>
+                        <div class="c-goods-describe">
+                            <%= goods.describe%>
+                        </div>
+                        <p class="c-goods-contact">
+                            联系：&nbsp;
+                            <span><%= goods.tel %></span>&nbsp;
+                            <span><%= goods.email%></span>
+                        </p>
+                        <input type="button" value="关注一下" class="c-goods-focus fl" onclick="careOrder()">
+                    </form>
+                    <%})%>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //分类查询
+    function book_search(x){
+        window.location = '/book_search' + x;
+    }
+    //返回首页
+    function rt_index(){
+        var personName = document.getElementById('personName').innerText;
+        window.location = "/rt_index" + personName;
+    }
+</script>
+</body>
+</html>
