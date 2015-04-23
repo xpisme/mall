@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>校卖部</title>
+    <link href="../css/index.css" rel="stylesheet">
+</head>
+<body onload="idx_ajx()">
+<div id="box">
+    <div class="head">
+        <div class="head-inner">
+            <div class="h-r-left">
+                校卖部
+            </div>
+            <div class="h-right">
+                <p id="personName" class="h-r-userName"><%= personName %></p>
+                <p><input type="button" value="发布商品" class="h-r-input" onclick="getOrder()"/>
+                    <input type="button" value="我的关注" class="h-r-input"/>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="nav-inner">
+            <ul class="nav-inner-ul">
+                <li onclick="rt_index()">首页</li>
+                <li onclick="book_search('书籍')">图书</li>
+                <li onclick="book_search('女装')">女装</li>
+                <li onclick="book_search('男装')">男装</li>
+                <li onclick="book_search('鞋')">男/女鞋</li>
+                <li onclick="book_search('配饰礼物')">配饰/礼物</li>
+                <li onclick="book_search('学习用品')">学习用品</li>
+                <li onclick="book_search('生活用品')">生活用品</li>
+                <li onclick="book_search('运动娱乐')">运动/娱乐</li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-inner">
+            <div class="content-part2">
+                <div class="c-part2-inner">
+                    <div class="c-part2-new">
+                        <ul class="c-part2-new-ul">
+                            <% rows.forEach(function(row){%>
+                            <li onclick="order_show('<%= row.id%>')">
+                                <img src="/public/images/show1.png" class="c-part2-new-ul-img">
+                                <div class="c-part2-new-ul-img-price fr">￥<%= row.price%></div>
+                                <div class="c-part2-detail">
+                                    <p class="c-part2-detail-goodsName"><%= row.goodsName%></p>
+                                    <p class="c-part2-detail-describe">
+                                        <%= row.describe%>
+                                    </p>
+                                    <p class="c-part2-detail-more">
+                                        <span><%= row.goodsCode%></span>&nbsp;
+                                        <span><%= row.classes%></span>&nbsp;
+                                        <span><%= row.grade%></span>
+                                    </p>
+                                </div>
+                            </li>
+                            <%})%>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/index.js"></script>
+</body>
+</html>

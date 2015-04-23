@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8" CONTENT="TEXT/HTML">
+    <title>商品管理</title>
+    <link href="../css/order.css" rel="stylesheet">
+</head>
+<body onload="order_onlode()">
+<div id="box">
+    <div class="head">
+        <div class="head-inner">
+            <div class="h-r-left">
+                校卖部
+            </div>
+            <div class="h-right">
+                <p id="personName" class="h-r-userName"><%= personName %></p>
+                <p><input type="button" value="发布商品" class="h-r-input" onclick="getOrder()"/>
+                    <input type="button" value="我的关注" class="h-r-input"/>
+                </p>
+            </div>
+        </div>
+    </div>
+    <p class="lin"></p>
+    <div class="content">
+        <div class="c-left">
+            <ul class="c-l-ul">
+                <li onclick="rt_index()">首&nbsp;页</li>
+                <li>发布商品</li>
+                <li onclick="order_search()">在线商品</li>
+                <li>我的关注</li>
+            </ul>
+        </div>
+        <div class="c-right">
+            <h1>商品信息表</h1>
+
+            <form id="orderForm" action="/order" method="post">
+                <input class="nav hidden" id="personName" name="personName" value="<%= personName%>" onclick="" />
+                <p class="c-r-from-p">
+                    商品名称：<input type="text" name="goodsName" id="goodsName">&nbsp;
+                    商品数量：<input type="text" name="num" id="num" class="textRight">&nbsp;
+                    商品单价：<input type="text" name="price" id="price" class="textRight"><br/>
+                </p>
+                <p class="c-r-from-p">
+                    发布时间：&nbsp;<input type="text" name="date" id="date" readonly="true" class="only">&nbsp;
+                    联系方式：<input type="text" name="tel" id="tel">&nbsp;
+                    Email:&nbsp;<input type="text" name="email" id="email"><br>
+                </p>
+                <p class="c-r-from-p">
+                    商品序列号：
+                    <select class="c-r-select" id="goodsCode" name="goodsCode">
+                        <option>书籍</option>
+                        <option>女装</option>
+                        <option>男装</option>
+                        <option>鞋</option>
+                        <option>配饰礼物</option>
+                        <option>学习用品</option>
+                        <option>生活用品</option>
+                        <option>运动娱乐</option>
+                    </select>&nbsp;
+                    书籍分类：<select class="c-r-select " id="classes" name="classes">
+                        <option>其他</option>
+                        <option>公共课</option>
+                        <option>计算机类</option>
+                        <option>经管财会</option>
+                        <option>历史地理</option>
+                        <option>文学语言</option>
+                        <option>电气机械</option>
+                        <option>生物化工</option>
+                        <option>教育心理</option>
+                        <option>音乐美术</option>
+                        <option>体育健康</option>
+                        <option>杂志小说</option>
+                    </select>
+                    书籍年级：
+                    <select class="c-r-select" id="grade" name="grade">
+                        <option>无</option>
+                        <option>一年级</option>
+                        <option>二年级</option>
+                        <option>三年级</option>
+                        <option>四年级</option>
+                    </select><br>
+                </p>
+
+                <textarea class="c-r-txt" name="describe"></textarea>
+                    <span id="warning"><%= errMsg%></span>
+                    <input type="submit" value="发布商品" class="btn" onclick="Add()">
+                </p>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script src="../js/order.js"></script>
+</body>
+</html>
