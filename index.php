@@ -5,6 +5,8 @@
  * @Description: Description
  */
 
+
+
 //  设置好路径
 
 defined('ROOT') or define('ROOT', str_replace('\\', '/', dirname(__FILE__)).'/');
@@ -17,11 +19,10 @@ defined('VIEW') or define('VIEW', ROOT.'View/');
 defined('DATA') or define('DATA', ROOT.'Data/');
 defined('LANG') or define('LANG', ROOT.'Lang/');
 defined('SITE') or define('SITE', 'http://www.xphp.com');
+
+
 define('DEBUG', true);
 define('ACC',true); // 设置标志
-
-require CONF.'system.php';
 require CORE.'App.class.php';
-
-Core\App::run($CONFIG);
+Core\App::run();
 

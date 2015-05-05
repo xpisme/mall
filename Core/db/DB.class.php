@@ -5,9 +5,10 @@
  * @Description: 数据库基础类
  */
 namespace Core\db;
+use Core;
 defined('ACC')||exit('ACC Denied');
 
-class DB{
+abstract class DB{
 	// 数据库配置
 	public $db_config;
 	// 链接资源
@@ -124,7 +125,8 @@ class DB{
 	 * @return str
 	 */
 	public function table($table){
-		return $this->currdb = $this->db_config['db_name'].'.'.$table;
+		$CONFIG = config::offsetGet('config');
+		return $this->currdb = $this->db_config['db_name'].'.'. $CONFIG['db_prefix'] .$table;
 	}
 
 

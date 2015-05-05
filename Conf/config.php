@@ -16,9 +16,13 @@ $CONFIG['db'] = array(
 	'db_pass' => '',
 	'db_name' => 'test',
 	'db_char' => 'utf8',
-	'db_type' => 'pdo' // mysql mysqli pdo
+	'db_type' => 'pdo', // mysql mysqli pdo
+	'db_prefix'=> 'm_', // 数据表前缀
 );
 
 $CONFIG['lang'] = 'zh_cn';
+
+
+return $CONFIG;
 
  ?>

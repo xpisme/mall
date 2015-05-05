@@ -11,20 +11,24 @@ defined('ACC')||exit('ACC Denied');
 
 final class App {
 	public static $_config;
-	public static function init($config){
+	public static function init(){
+		spl_autoload_register(array('Core\App','my_autoload'));
+		$config = config::offsetGet('config');
 		self::$_config = $config;
 		require CORE.'functions.php';
-		spl_autoload_register(array('Core\App','my_autoload'));
 		L('',$config['lang']);
 		error_reporting(0);
 		if(DEBUG){
 			error_reporting(-1);
 		}
 		ini_set('error_log',DATA.'errorlog/my_error.log');
+		$_GET = _addslashes($_GET);
+		$_POST = _addslashes($_POST);
+		$_REQUEST = _addslashes($_REQUEST);
 	}
 
-	public static function run($config){
-		self::init($config);
+	public static function run(){
+		self::init();
 		self::router();
 	}
 
@@ -41,7 +45,7 @@ final class App {
 	 */
 	public static function router(){
 		$url = parse_url($_SERVER['REQUEST_URI']);
-		$query = $url['query'];
+		$query = isset($url['query']) ? $url['query'] : '' ;
 		if(!empty($query)){
 			$res = explode('&', $query);
 			foreach ($res as $v) {
@@ -64,10 +68,9 @@ final class App {
 			}
 			$temp->$action();
 		}else{
-			exit('控制器方法不存在');
+			exit(L('controller_method_does_not_exist'));
 		}
 	}
 }
 
 
- ?>

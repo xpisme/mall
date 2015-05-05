@@ -9,9 +9,7 @@ namespace Controller;
 defined('ACC')||exit('ACC Denied');
 
 class UserController extends Controller{
-	public function index(){
-		echo '默认';
-	}
+	
 	public function reg(){
 		$model = M('staff');
 		$resdata = $model->getAll();

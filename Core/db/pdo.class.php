@@ -16,7 +16,7 @@ class pdodb extends DB{
 		$dsn = 'mysql:dbname='.$this->db_config['db_name'].';host='.$this->db_config['db_host'];
 		
 		try {
-			$this->link = new PDO($dsn,$this->db_config['db_user'],$this->db_config['db_pass']);
+			$this->link = new \PDO($dsn,$this->db_config['db_user'],$this->db_config['db_pass']);
 		}catch(PDOException $e ){
 			echo 'connect failed :',$e->getMessage();
 		}

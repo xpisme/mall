@@ -22,7 +22,13 @@ class Controller{
 	*展示信息
 	*/
 	public function showMessage($mes){
-
+		
+	}
+	/*
+	* 默认
+	*/
+	public function index(){
+		echo '默认';
 	}
 }
 

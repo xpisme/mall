@@ -74,8 +74,11 @@ class Model{
 	/** 读取文件，选择数据库，创建链接
 	 */
 	public function __construct(){
-		$CONFIG = Core\App::$_config['db'];
+		$CONFIG = Core\config::offsetGet('config');
 		require CORE.'db/DB.class.php';
+		print_r($CONFIG);
+		print_r($CONFIG['db']['db_type']);
+		exit();
 		require CORE.'db/'.$CONFIG['db_type'].'.class.php';
 		$db = 'Core\\db\\'.$CONFIG['db_type'].'db';
 		$this->db =  new $db($CONFIG);

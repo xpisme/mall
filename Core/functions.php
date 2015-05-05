@@ -65,3 +65,18 @@ function M($name){
 	$tmp->table($name);
 	return $m[$name] = $tmp;
 }
+
+/*过滤字符串
+ * @param array $arr 
+ * @return array
+ */
+function _addslashes($arr){
+	foreach ($arr as $key => $value) {
+		if(is_array($value)){
+			_addslashes($value);
+		}else{
+			$arr[$key] = addslashes($value);
+		}
+	}
+	return $arr;
+}
