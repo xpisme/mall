@@ -1,0 +1,92 @@
+*{margin: 0;padding: 0;border: none;
+    list-style-type: none;text-decoration: none;}
+/*注册/登陆*/
+.signBox{
+    width: 100%;
+    height: 100%;
+    color: white;
+    opacity: 1;
+}
+.signBox img{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+}
+.signBox-inner{
+    width: 100%;
+    height: 430px;
+    position: fixed;
+    top:25%;
+}
+.sign{
+    width: 600px;
+    height: 100%;
+    margin: 0 auto;
+    background: rgba(245,245,245,0.5);
+    font-weight: 600;
+    z-index: 1;
+}
+.signTitle{
+    width: 100%;
+    height: 30%;
+    position: relative;
+}
+.signTitle h1{
+    text-align: center;
+    font-size: 52px;
+    letter-spacing: 8px;
+    color: #00b188;
+    padding-top:30px;
+}
+.signText{
+    width: 100%;
+    height: 60%;
+    position: relative;
+    text-align: center;
+    color: #00b188;
+}
+.signText input {
+    width: 250px;
+    height: 25px;
+    position: relative;
+    margin-top: 17px;
+    border: none;
+    padding-left: 10px;
+    outline: none;
+}
+.signBtn{
+    width: 260px;
+    height: 25px;
+    position: relative;
+    left: 37px;
+    margin-top: 30px;
+    background: #00b188;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border: none;
+    outline: none;
+}
+.signBtn:hover{
+    background: #ef735f;
+    cursor: pointer;
+}
+.toSignIn{
+    position: relative;
+    left: 116px;
+    color: #00b188;
+    margin-top: 20px;
+}
+.toSignIn:hover{
+    color: #ef735f;
+    cursor: pointer;
+}
+#warning{
+    position: relative;
+    top:10px;
+    color: #ef735f;
+    font-size: 12px;
+}
