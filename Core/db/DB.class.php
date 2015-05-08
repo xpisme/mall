@@ -19,8 +19,9 @@ abstract class DB{
 	private $lastSql;
 	// 当前数据库
 	public $currdb;
-	public function __construct($CONFIG){
-		$this->db_config = $CONFIG;
+	public function __construct(){
+		$tmp = C('config');
+        $this->db_config = $tmp['db'];
 		$this->connect();
 	}
 	
@@ -125,11 +126,9 @@ abstract class DB{
 	 * @return str
 	 */
 	public function table($table){
-		$CONFIG = config::offsetGet('config');
-		return $this->currdb = $this->db_config['db_name'].'.'. $CONFIG['db_prefix'] .$table;
+		return $this->currdb = $this->db_config['db_name'].'.'. $this->db_config['db_prefix'] .$table;
 	}
 
 
 }
-
 

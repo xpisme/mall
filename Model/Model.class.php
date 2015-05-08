@@ -8,7 +8,7 @@
 
 
 namespace Model;
-use Core;
+use Core\db;
 
 defined('ACC')||exit('ACC Denied');
 
@@ -26,6 +26,7 @@ class Model{
 					break;
 				case 'unique':
 					$res = $this->getAll($value[0]);
+					if(empty($res)) return;
 					if(in_array($data[$value[0]], $res[0])){
 						exit($value[0].' : '. $value[2]);
 					}
@@ -39,7 +40,7 @@ class Model{
 					}
 					break;
 				case 'email':
-					$reg = '/^[\da-z._]+@[\da-z._]$/i';
+					$reg = '/^[\da-z._]+@[\da-z._]+$/i';
 					if(preg_match($reg, $data[$value[0]]) === 0) exit($value[0].' : '. $value[2]);
 					break;
 				case 'url': 
@@ -74,14 +75,12 @@ class Model{
 	/** 读取文件，选择数据库，创建链接
 	 */
 	public function __construct(){
-		$CONFIG = Core\config::offsetGet('config');
+		$CONFIG = C('config');
+        $config = $CONFIG['db'];
 		require CORE.'db/DB.class.php';
-		print_r($CONFIG);
-		print_r($CONFIG['db']['db_type']);
-		exit();
-		require CORE.'db/'.$CONFIG['db_type'].'.class.php';
-		$db = 'Core\\db\\'.$CONFIG['db_type'].'db';
-		$this->db =  new $db($CONFIG);
+		require CORE.'db/'.$config['db_type'].'.class.php';
+		$db = 'Core\\db\\'.$config['db_type'].'db';
+		$this->db =  new $db();
 	}
 	public function table($table){
 		return $this->db->table($table);

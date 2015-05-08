@@ -5,6 +5,7 @@
  * @Description: mysqli类
  */
 namespace Core\db;
+use Core;
 defined('ACC')||exit('ACC Denied');
 class mysqlidb extends DB{
 	/**
@@ -13,6 +14,7 @@ class mysqlidb extends DB{
 	 * @return resource
 	 */
 	public function connect(){
+
 		$this->link = mysqli_connect($this->db_config['db_host'],$this->db_config['db_user'],$this->db_config['db_pass'],$this->db_config['db_name']) or die('链接失败');
 
 		if(!$this->query("set names ".$this->db_config['db_char'])){
@@ -56,7 +58,8 @@ class mysqlidb extends DB{
 	 */
 	public function getOne($field,$where){
 		$sql = "select ".$field." from ".$this->currdb." where ".$where;
-		return $this->query($sql);
+        $res = $this->query($sql);
+        return $res[0];
 	}
 
 	/**
@@ -97,6 +100,7 @@ class mysqlidb extends DB{
 	 * @return int  insertid
 	 */
 	public function add($arr){
+
 		$sql = '';
 		$sql .= 'insert into '.$this->currdb.' ';
 		foreach ($arr as $key => $value) {
@@ -126,7 +130,7 @@ class mysqlidb extends DB{
 				return $this->fetch($res);
 			}
 		}else{
-			log::write($sql);
+			Core\log::write($sql);
 			return false;
 		}
 	}

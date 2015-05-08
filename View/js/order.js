@@ -2,7 +2,7 @@
  * Created by lenovo on 2015/4/6.
  */
 function order_onlode(){
-    document.getElementById('date').value =new Date().toJSON().slice(0,10);
+    // document.getElementById('date').value =new Date().toJSON().slice(0,10);
 }
 //发布商品
 function Add(){
@@ -25,36 +25,35 @@ function Add(){
     }
 
 }
-//搜索
-function order_search(){
-    var personName = document.getElementById('personName').innerText;
-    window.location = "/person_search"+personName;
-}
-//返回首页
-function rt_index(){
-    var personName = document.getElementById('personName').innerText;
-    window.location = "/rt_index" + personName;
-}
+//添加分类
 
-/*order_search  */
-
-function order_index(){
-    var personName = document.getElementById('personName').innerHTML;
-    window.location = "/order"+personName;
-}
-
-function order_correct(id){
-    window.location ="/correct"+id;
-}
-
-function order_delete(id){
-    window.location ="/delete"+id
+var exit = document.getElementById('exit');
+var addClass =document.getElementById('addClass');
+var hidLayer = document.getElementsByClassName('hidLayer')[0];
+var reset = document.getElementsByClassName('reset')[0];
+var submit = document.getElementsByClassName('submit')[0];
+var layerInput = document.getElementsByClassName('layerInput')[0];
+var layerSelect = document.getElementsByClassName('layerSelect')[0];
+var layerTextarea = document.getElementsByClassName('layerTextarea')[0];
+var errMsg  = document.getElementsByClassName('errMsg')[0];
+addClass.onclick = function(){
+    hidLayer.style.display = "block";
+};
+exit.onclick = function(){
+    empt();
+    hidLayer.style.display = "none";
+};
+reset.onclick = function(){
+    empt();
+};
+function empt(){
+    layerInput.value = "";
+    layerSelect.value = "";
+    layerTextarea.value = "";
+    errMsg.innerHTML = "";
 }
 
 /*correct  */
-function correct_onlode(){
-    document.getElementById('date').value =new Date().toJSON().slice(0,10);
-}
 function correct(){
     var goodsName = document.getElementById('goodsName').value;
     var num = document.getElementById('num').value;

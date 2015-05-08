@@ -17,12 +17,12 @@ defined('LIB') or define('LIB', ROOT.'Lib/');
 defined('MODEL') or define('MODEL', ROOT.'Model/');
 defined('VIEW') or define('VIEW', ROOT.'View/');
 defined('DATA') or define('DATA', ROOT.'Data/');
+defined('DBCACHE') or define('DBCACHE', ROOT.'Data/dbcache/');
 defined('LANG') or define('LANG', ROOT.'Lang/');
-defined('SITE') or define('SITE', 'http://www.xphp.com');
-
+defined('SITE') or define('SITE', 'http://www.xphp.com/');
+defined('FRONT') or define('FRONT',SITE.'View/');
 
 define('DEBUG', true);
 define('ACC',true); // 设置标志
 require CORE.'App.class.php';
 Core\App::run();
-

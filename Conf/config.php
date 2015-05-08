@@ -14,15 +14,16 @@ $CONFIG['db'] = array(
 	'db_host' => 'localhost',
 	'db_user' => 'root',
 	'db_pass' => '',
-	'db_name' => 'test',
+	'db_name' => 'mall',
 	'db_char' => 'utf8',
-	'db_type' => 'pdo', // mysql mysqli pdo
+	'db_type' => 'mysqli', // mysql mysqli pdo
 	'db_prefix'=> 'm_', // 数据表前缀
 );
 
 $CONFIG['lang'] = 'zh_cn';
+$CONFIG['default_view_group'] = 'home';
+$CONFIG['view_groups'] = 'home,admin';
 
 
 return $CONFIG;
 
- ?>

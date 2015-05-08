@@ -1,0 +1,123 @@
+*{margin: 0;padding: 0;border: none;
+    list-style-type: none;text-decoration: none;}
+.fl{float: left}
+.fr{float: right}
+/*注册/登陆*/
+.signBox{
+    width: 100%;
+    height: 100%;
+    color: white;
+    opacity: 1;
+}
+.signBox>img{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+}
+.signBox-inner{
+    width: 100%;
+    height: 430px;
+    position: fixed;
+    top:25%;
+}
+.sign{
+    width: 600px;
+    height: 100%;
+    margin: 0 auto;
+    background: rgba(245,245,245,0.5);
+    font-weight: 600;
+    z-index: 1;
+}
+.signTitle{
+    width: 100%;
+    height: 30%;
+    position: relative;
+}
+.signTitle h1{
+    text-align: center;
+    font-size: 52px;
+    letter-spacing: 8px;
+    color: #00b188;
+    padding-top:30px;
+}
+.signText{
+    width: 60%;
+    height: 68%;
+    position: relative;
+    margin: 0 auto;
+    color: #00b188;
+}
+.signText-input {
+    width: 250px;
+    height: 25px;
+    line-height: 25px;
+    position: relative;
+    margin-top: 17px;
+    border: none;
+    padding-left: 10px;
+    outline: none;
+}
+.signBtn{
+    width: 260px;
+    height: 25px;
+    line-height: 25px;
+    position: relative;
+    left: 65px;
+    margin-top: 30px;
+    background: #00b188;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border: none;
+    outline: none;
+}
+.signBtnUp{
+    position: relative;
+    left: 85px;
+}
+.signBtn:hover{
+    background: #ef735f;
+    cursor: pointer;
+}
+.toSignIn{
+    position: relative;
+    left: 210px;
+    color: #00b188;
+    margin-top: 20px;
+}
+.toSignIn:hover{
+    color: #ef735f;
+    cursor: pointer;
+}
+#warning{
+    position: relative;
+    left: 65px;
+    color: #ef735f;
+    font-size: 12px;
+}
+
+
+/*验证码*/
+.CodeBox{
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+}
+.verCode-p{
+    width: 55%;
+    height: 100%;
+}
+#verCode{
+    width: 100px;
+    height: 30px;
+    line-height: 25px;
+    padding: 0 5px;
+}
+.Code{
+    width: 130px;
+    height: 100%;
+    margin-right:30px;
+}

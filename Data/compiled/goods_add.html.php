@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8" CONTENT="TEXT/HTML">
     <title>商品管理</title>
-    <link href="../css/order.css" rel="stylesheet">
+    <link href="<?php echo $this->_var['path']; ?>css/order.css" rel="stylesheet">
 </head>
 <body onload="order_onlode()">
 <div id="box">
@@ -14,7 +14,7 @@
             </div>
             <div class="h-right">
                 <p id="personName" class="h-r-userName"></p>
-                <p><input type="button" value="发布商品" class="h-r-input" onclick="getOrder()"/>
+                <p><a href="index.php?m=admin&c=goods&a=manage"><input type="button" value="发布商品" class="h-r-input" /></a>
                     <input type="button" value="我的关注" class="h-r-input"/>
                 </p>
             </div>
@@ -90,6 +90,6 @@
         </div>
     </div>
 </div>
-<script src="../js/order.js"></script>
+<script src="js/order.js"></script>
 </body>
 </html>

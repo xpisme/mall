@@ -1,5 +1,5 @@
 @charset "utf-8";
-body,div,p,h1,h2,h3,h4,h5,h6,ul,li,span{margin: 0;padding: 0;border: none;
+body,div,p,h1,h2,h3,h4,h5,h6,ul,li,span,a{margin: 0;padding: 0;border: none;
     list-style-type: none;text-decoration: none;}
 input{outline:none;}
 select{outline: none;}
@@ -177,7 +177,7 @@ td{
 .c-r-td-addLength{width: 150px;}
 .edit{font-weight: 600;}
 .edit:hover{background:#ef735f;color: white;}
- /*correct  correct  correct  correct  correct  correct  correct  correct  correct  */
+/*correct  correct  correct  correct  correct  correct  correct  correct  correct  */
 .c-r-correct{
     position: relative;
     right: 90px;
@@ -229,3 +229,82 @@ td{
     display: none;
 }
 .only{background:#e8edf1 }
+
+.hidLayer{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(245,245,245,0.7);
+    display: none;
+}
+.layer{
+    width: 600px;
+    height: 400px;
+    position: relative;
+    left: 50%;
+    top: 20%;
+    margin-left: -300px;
+    background-color: white;
+    border: 2px solid #00b188;
+    text-align: center;
+}
+.layer-inner{
+    margin-top: 50px;
+}
+.layerInput{
+    width: 180px;
+    height: 15px;
+    position: relative;
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+}
+.layer-inner-Pselect{
+    position: relative;
+    left: -60px;
+    top: 15px;
+}
+.layerSelect{
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+}
+
+.layerTextp{
+    position: relative;
+    top: 20px;
+}
+.layerTextspan{
+    position: relative;
+    left: -105px;
+}
+.layerTextarea{
+    width: 300px;
+    height: 150px;
+    max-width: 300px;
+    max-height: 150px;
+    position: relative;
+    margin-top: 10px;
+    border: 1px solid lightgray;
+}
+.layerBtn{
+    position: relative;
+    top: 50px;
+    right: 150px;
+}
+.layerBtn-input{
+    width: 50px;
+    border: none;
+    background: #00b188;
+    color: white;
+    font-size: 14px;
+    padding: 2px;
+    margin-left: 5px;
+}
+.layerBtn-input:hover{
+    background: #ef735f;
+    cursor: pointer;
+}
+.errMsg{
+    margin-right: 30px;
+}

@@ -6,18 +6,29 @@
  * @Description: 控制器基类
  */
 namespace Controller;
+use Core;
 defined('ACC')||exit('ACC Denied');
 
 class Controller{
-	public $data;
-	public function assign($name,$value){
-		$this->data[$name] = $value;
-	}
+    protected $view;
+
+    public function  __construct(){
+        $this->view = Core\mytpl::getins();
+        $this->assign("path",FRONT);
+        // 加载全局的信息变量
+        $cate = M('cate');
+        $category =$cate->getAll('cid,cname,pid,childlist,pidlist,level');
+        $catetree = catetree($category);
+        $this->assign('catetree',$catetree);
+    }
+
 	public function display($file){
-		$data = $this->data;
-		if(file_exists(VIEW.$file.'.php'))
-		require VIEW.$file.'.php';
+        $file = $file.'.html';
+		$this->view->display($file);
 	}
+    public  function assign($var,$value=''){
+        $this->view->assign($var,$value);
+    }
 	/*
 	*展示信息
 	*/
@@ -30,7 +41,31 @@ class Controller{
 	public function index(){
 		echo '默认';
 	}
+
+    /**返回客户端
+     * @param $data 数据
+     * @param string $info 信息
+     * @param int $status 状态 0为失败，1为成功
+     * @param string $type 类型
+     */
+    protected function ajaxReturn($data,$info='',$status=1,$type='json') {
+        $result  =  array();
+        $result['status']  =  $status;
+        $result['info'] =  $info;
+        $result['data'] = $data;
+        if(strtolower($type)=='json') {
+            header('Content-Type:text/html; charset=utf-8');
+            exit(json_encode($result));
+        }elseif(strtolower($type)=='xml'){
+            header('Content-Type:text/xml; charset=utf-8');
+            exit(xml_encode($result));
+        }elseif(strtolower($type)=='html'){
+            header('Content-Type:text/html; charset=utf-8');
+            exit($data);
+        }else{
+            // .........
+        }
+    }
 }
 
 
- ?>

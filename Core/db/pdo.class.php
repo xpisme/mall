@@ -5,6 +5,7 @@
  * @Description: pdo
  */
 namespace Core\db;
+use Core;
 defined('ACC')||exit('ACC Denied');
 class pdodb extends DB{
 	/**
@@ -61,7 +62,8 @@ class pdodb extends DB{
 	 */
 	public function getOne($field,$where){
 		$sql = "select ".$field." from ".$this->currdb." where ".$where;
-		return $this->query($sql);
+        $res = $this->query($sql);
+        return $res[0];
 	}
 
 	/**
@@ -131,7 +133,7 @@ class pdodb extends DB{
 				return $this->fetch($res);
 			}
 		}else{
-			log::write($sql);
+            Core\log::write($sql);
 			return false;
 		}
 	}
@@ -168,4 +170,3 @@ class pdodb extends DB{
 	}
 }
 
- ?>

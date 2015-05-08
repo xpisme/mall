@@ -75,8 +75,83 @@ function _addslashes($arr){
 		if(is_array($value)){
 			_addslashes($value);
 		}else{
-			$arr[$key] = addslashes($value);
+			$arr[$key] = trim(addslashes($value));
 		}
 	}
 	return $arr;
 }
+/**
+ *读取配置信息
+ */
+function C($key){
+    static $config;
+    if(!isset($config)) {
+        $config = new \Core\Config();
+    }
+    return $config->offsetGet($key);
+}
+
+/** 获取缓存信息  get cache GC
+ * @param $key
+ * @param $value
+ */
+function GC($key,$value=array()){
+    static $cache = array();
+    $filename = DBCACHE.$key.'.php';
+    if(empty($value)){
+        if(isset($cache[$key])) return $cache[$key];
+        $value = include $filename;
+        $cache[$key] = unserialize($value);
+        return $cache[$key];
+    }
+    file_put_contents($filename,"<?php return '".serialize($value)."';");
+}
+
+/**
+ * @param $currid  当前id
+ * @param $data   总数据
+ * @param $list  引用传值 返回string
+ */
+function getPlist($currid,$data,&$list){
+    if(empty($data)) return;
+    if($currid == 0) {
+        $list = substr($list,0,-1);
+        return;
+    }
+    foreach($data as $curr){
+        if($curr['cid'] == $currid){
+            $list .= $curr['pid'].',';
+            getPlist($curr['pid'],$data,$list);
+        }
+    }
+}
+
+/**
+ * @param $currid 当前id
+ * @param $data  所有的数据
+ * @param $list   返回的的子元素
+ */
+function getChildlist($currid,$data,&$list){
+    if(empty($data)) return;
+    foreach($data as $curr){
+        if($curr['pid'] == $currid){
+            $list .= $curr['cid'].',';
+        }
+    }
+    $list = substr($list,0,-1);
+}
+
+function catetree($cates,$pid=0){
+    static $tree = array();
+    foreach($cates as $cate){
+        if($cate['pid'] == $pid){
+            $cate['pre'] = str_repeat("&nbsp;",($cate['level']-1)*2);
+            $tree[] = $cate;
+            if(!empty($cate['childlist'])){
+                catetree($cates,$cate['cid']);
+            }
+        }
+    }
+    return $tree;
+}
+

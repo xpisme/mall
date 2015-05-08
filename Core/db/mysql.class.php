@@ -5,6 +5,7 @@
  * @Description: Mysql 类
  */
 namespace Core\db;
+use Core;
 defined('ACC')||exit('ACC Denied');
 
 class mysqldb extends DB{
@@ -56,7 +57,8 @@ class mysqldb extends DB{
 	 */
 	public function getOne($field,$where){
 		$sql = "select ".$field." from ".$this->currdb." where ".$where;
-		return $this->query($sql);
+        $res = $this->query($sql);
+        return $res[0];
 	}
 
 	/**
@@ -126,7 +128,7 @@ class mysqldb extends DB{
 				return $this->fetch($res);
 			}
 		}else{
-			log::write($sql);// error sql
+            Core\log::write($sql);
 			return false;
 		}
 	}

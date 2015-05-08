@@ -2,10 +2,10 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8" CONTENT="TEXT/HTML">
-    <title>订单查询页</title>
+    <title>我的关注</title>
     <link rel="stylesheet" href="../css/order.css">
 </head>
-<body onload="order_search_onlode()">
+<body>
 <div id="box">
     <div class="head">
         <div class="head-inner">
@@ -26,12 +26,12 @@
             <ul class="c-l-ul">
                 <li onclick="rt_index()">首&nbsp;页</li>
                 <li onclick="order_index()">发布商品</li>
-                <li>在线商品</li>
+                <li onclick="order_search()">在线商品</li>
                 <li>我的关注</li>
             </ul>
         </div>
         <div class="c-right">
-            <h1 class="c-r-h1">在线商品信息表</h1>
+            <h1 class="c-r-h1">我关注的商品</h1>
             <table id="c-r-tb">
                 <tr class="c-r-table">
                     <th class="c-r-td-addLength">商品名称</th>
@@ -42,7 +42,6 @@
                     <th class="c-r-td-addLength">联系方式</th>
                     <th class="c-r-td-addLength">Email</th>
                     <th class="c-r-td-addLength">发布时间</th>
-                    <th>修改</th>
                     <th>删除</th>
                 </tr>
                 <% orders.forEach(function(order){%>
@@ -55,7 +54,6 @@
                     <td><%=order.tel%></td>
                     <td><%=order.email%></td>
                     <td class="c-r-td-addLength"><%=order.date.toJSON().slice(0,10)%></td>
-                    <td class="edit" id="correct" onclick="order_correct('<%=order._id%>')">修改</td>
                     <td class="edit" id="delete" onclick="order_delete('<%=order._id%>')">删除</td>
                 </tr>
                 <% });%>
