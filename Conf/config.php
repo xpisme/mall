@@ -23,7 +23,8 @@ $CONFIG['db'] = array(
 $CONFIG['lang'] = 'zh_cn';
 $CONFIG['default_view_group'] = 'home';
 $CONFIG['view_groups'] = 'home,admin';
-
+$CONFIG['upload_max_size'] = 1048576;// 1M
+$CONFIG['image_type'] = 'image/png,image/jpg,image/jpeg,image/gif';
 
 return $CONFIG;
 

@@ -95,11 +95,11 @@ function C($key){
  * @param $key
  * @param $value
  */
-function GC($key,$value=array()){
+function GC($key,$value=array(),$flag=false){
     static $cache = array();
     $filename = DBCACHE.$key.'.php';
     if(empty($value)){
-        if(isset($cache[$key])) return $cache[$key];
+        if(isset($cache[$key]) && !$flag) return $cache[$key];
         $value = include $filename;
         $cache[$key] = unserialize($value);
         return $cache[$key];
@@ -141,17 +141,48 @@ function getChildlist($currid,$data,&$list){
     $list = substr($list,0,-1);
 }
 
-function catetree($cates,$pid=0){
+function catetree($cates,$pid=0,$flag=true){
     static $tree = array();
-    foreach($cates as $cate){
+    static $frontkey;
+    if($flag) $tree = array();
+    foreach($cates as $key => $cate){
         if($cate['pid'] == $pid){
-            $cate['pre'] = str_repeat("&nbsp;",($cate['level']-1)*2);
+            $level = $cate['level'];
+            if($level == 1){
+                $cate['pre'] = '&nbsp;&nbsp;';
+                $num = count($tree);
+                if($num > 0)  $tree[$num-1]['pre'] = str_replace('├','└',$tree[$num-1]['pre']);
+            }elseif( ($cha = ($level - $cates[$frontkey]['level'])) == 0){
+                $cate['pre'] =  str_repeat("&nbsp;",($level-1)*3).'├─';
+                if(count($tree) == (count($cates) -1) )   $cate['pre'] =  str_repeat("&nbsp;",($level-1)*3).'└─';
+            }else{
+                $cate['pre'] =  str_repeat("&nbsp;",($level-1)*3).'├─';
+                $num = count($tree);
+                if($cha<0) $tree[$num-1]['pre'] = str_replace('├','└',$tree[$num-1]['pre']);
+            }
+            $frontkey = $key;
             $tree[] = $cate;
             if(!empty($cate['childlist'])){
-                catetree($cates,$cate['cid']);
+                catetree($cates,$cate['cid'],false);
             }
         }
     }
     return $tree;
 }
 
+function get_all_child($arr,$id=0,&$childs){
+    if(!is_array($arr)) return false;
+    foreach($arr as $k=>$v){
+
+        if($v['pid'] == $id){
+            $childs[] = $v['cid'];
+            if($v['childlist'] != ''){ // 有子节点
+                $array = explode(',',$v['childlist']);
+                foreach($array as $tv){
+                    $childs[] = $tv;
+                    get_all_child($arr,$tv,$childs);
+                }
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@
     <title>校卖部</title>
     <link href="../css/index.css" rel="stylesheet">
 </head>
-<body onload="idx_ajx()">
+<body>
 <div id="box">
     <div class="head">
         <div class="head-inner">
@@ -15,7 +15,7 @@
             </div>
             <div class="h-right">
                 <p id="personName" class="h-r-userName"><%= personName %></p>
-                <p><a href="index.php?m=admin&c=goods&a=manage"><input type="button" value="发布商品" class="h-r-input" /></a>
+                <p><input type="button" value="发布商品" class="h-r-input" onclick="getOrder()"/>
                     <input type="button" value="我的关注" class="h-r-input"/>
                 </p>
             </div>
@@ -25,15 +25,76 @@
         <div class="nav-inner">
             <ul class="nav-inner-ul">
                 <li onclick="rt_index()">首页</li>
-                <li onclick="book_search('书籍')">图书</li>
-                <li onclick="book_search('女装')">女装</li>
-                <li onclick="book_search('男装')">男装</li>
-                <li onclick="book_search('鞋')">男/女鞋</li>
-                <li onclick="book_search('配饰礼物')">配饰/礼物</li>
-                <li onclick="book_search('学习用品')">学习用品</li>
-                <li onclick="book_search('生活用品')">生活用品</li>
-                <li onclick="book_search('运动娱乐')">运动/娱乐</li>
+                <li>图书</li>
+                <li>服装</li>
+                <li>鞋靴</li>
+                <li>礼物</li>
+                <li>生活</li>
+                <li>饰品</li>
+                <li>美食</li>
+                <li>其他</li>
             </ul>
+        </div>
+    </div>
+    <div class="filter-box">
+        <div class="filter">
+            <div class="filter-path">
+                <a href="" class="filter-path-a" style="margin-left: 40px;">全部</a>
+                <span> > </span>
+                <a href="" class="filter-path-a">美食</a>
+            </div>
+            <div class="filter-content">
+                <div class="filter-c-class">
+                    <div class="filter-c-class-title fl">
+                        分类 :
+                    </div>
+                    <div class="filter-c-class-list fr" id="filter-c-class-list" style="border-bottom: 1px solid lightgray">
+                        <a href="" class="filter-c-class-a"><span>全部</span></a>
+                        <a href="" class="filter-c-class-a"><span>小吃/快餐</span></a>
+                        <a href="" class="filter-c-class-a"><span>自助餐</span></a>
+                        <a href="" class="filter-c-class-a"><span>火锅</span></a>
+                        <a href="" class="filter-c-class-a"><span>甜品</span></a>
+                        <a href="" class="filter-c-class-a"><span>咖啡厅/酒吧/夜店 </span></a>
+                        <a href="" class="filter-c-class-a"><span>烤鱼</span></a>
+                        <a href="" class="filter-c-class-a"><span>川菜</span></a>
+                        <a href="" class="filter-c-class-a"><span>湘菜</span></a>
+                        <a href="" class="filter-c-class-a"><span>粤菜</span></a>
+                        <a href="" class="filter-c-class-a"><span>韩国料理</span></a>
+                        <a href="" class="filter-c-class-a"><span>日本料理</span></a>
+                        <a href="" class="filter-c-class-a"><span>西餐</span></a>
+                        <a href="" class="filter-c-class-a"><span>意大利餐</span></a>
+                        <a href="" class="filter-c-class-a"><span>素食</span></a>
+                        <a href="" class="filter-c-class-a"><span>小吃/快餐</span></a>
+                        <a href="" class="filter-c-class-a"><span>自助餐</span></a>
+                        <a href="" class="filter-c-class-a"><span>火锅</span></a>
+                        <a href="" class="filter-c-class-a"><span>甜品</span></a>
+                        <a href="" class="filter-c-class-a"><span>咖啡厅/酒吧/夜店 </span></a>
+                        <a href="" class="filter-c-class-a"><span>烤鱼</span></a>
+                        <a href="" class="filter-c-class-a"><span>川菜</span></a>
+                        <a href="" class="filter-c-class-a"><span>湘菜</span></a>
+                        <a href="" class="filter-c-class-a"><span>粤菜</span></a>
+                        <a href="" class="filter-c-class-a"><span>韩国料理</span></a>
+                        <a href="" class="filter-c-class-a"><span>日本料理</span></a>
+                        <a href="" class="filter-c-class-a"><span>西餐</span></a>
+                        <a href="" class="filter-c-class-a"><span>意大利餐</span></a>
+                        <a href="" class="filter-c-class-a"><span>素食</span></a>
+                        <span class="filter-c-class-a showMore">更多...</span>
+                    </div>
+                </div>
+                <div class="filter-c-price">
+                    <div class="filter-c-class-title fl">
+                        价格 ：
+                    </div>
+                    <div class="filter-c-class-list fr">
+                        <a href="" class="filter-c-class-a"><span>全部</span></a>
+                        <a href="" class="filter-c-class-a"><span>0 - 50</span></a>
+                        <a href="" class="filter-c-class-a"><span>50 - 100</span></a>
+                        <a href="" class="filter-c-class-a"><span>100 - 500</span></a>
+                        <a href="" class="filter-c-class-a"><span>500 - 1000</span></a>
+                        <a href="" class="filter-c-class-a"><span>1000元以上</span></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="content">
@@ -44,7 +105,7 @@
                         <ul class="c-part2-new-ul">
                             <% rows.forEach(function(row){%>
                             <li onclick="order_show('<%= row.id%>')">
-                                <img src="/public/images/show1.png" class="c-part2-new-ul-img">
+                                <img src="/avatar/<%= row.imagePath%>" class="c-part2-new-ul-img">
                                 <div class="c-part2-new-ul-img-price fr">￥<%= row.price%></div>
                                 <div class="c-part2-detail">
                                     <p class="c-part2-detail-goodsName"><%= row.goodsName%></p>
@@ -53,8 +114,6 @@
                                     </p>
                                     <p class="c-part2-detail-more">
                                         <span><%= row.goodsCode%></span>&nbsp;
-                                        <span><%= row.classes%></span>&nbsp;
-                                        <span><%= row.grade%></span>
                                     </p>
                                 </div>
                             </li>
@@ -67,5 +126,24 @@
     </div>
 </div>
 <script src="../js/index.js"></script>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script>
+    $(function(){
+        var element = $('#filter-c-class-list>a:gt(8)');
+        element.hide();
+        $('.showMore').click(function(){
+            if(element.is(":visible")){
+                element.hide(100);
+                $('.showMore').text('更多...');
+                $('.filter-c-class').height('70px');
+            }else{
+                element.show(100);
+                $('.showMore').text('收 起');
+                $('.filter-c-class').height('120px');
+            }
+        });
+
+    });
+</script>
 </body>
 </html>

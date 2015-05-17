@@ -2,10 +2,11 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8" CONTENT="TEXT/HTML">
+    <meta name="viewport" content="width=device-width">
     <title>商品管理</title>
     <link href="<?php echo $this->_var['path']; ?>css/order.css" rel="stylesheet">
 </head>
-<body onload="order_onlode()">
+<body>
 <div id="box">
     <div class="head">
         <div class="head-inner">
@@ -13,8 +14,14 @@
                 校卖部
             </div>
             <div class="h-right">
-                <p id="personName" class="h-r-userName"></p>
-                <p><a href="index.php?m=admin&c=goods&a=manage"><input type="button" value="发布商品" class="h-r-input" /></a>
+                <p id="personName" class="h-r-userName">
+                <?php if ($this->_var['username'] == ''): ?>
+                <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                <?php else: ?>
+                    欢迎 <?php echo $this->_var['username']; ?><a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                <?php endif; ?>
+                </p>
+                <p><a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
                     <input type="button" value="我的关注" class="h-r-input"/>
                 </p>
             </div>
@@ -24,72 +31,81 @@
     <div class="content">
         <div class="c-left">
             <ul class="c-l-ul">
-                <li onclick="rt_index()">首&nbsp;页</li>
-                <li>发布商品</li>
-                <li onclick="order_search()">在线商品</li>
+                <a href="index.php"><li>首&nbsp;页</li></a>
+                <a href="index.php?m=admin&c=goods&a=lists"><li>在线商品</li></a>
+                <a href="index.php?m=admin&c=goods&a=add"><li>发布商品</li></a>
+                <a href="index.php?m=admin&c=cate&a=lists"><li>分类列表</li></a>
                 <li>我的关注</li>
             </ul>
         </div>
         <div class="c-right">
             <h1>商品信息表</h1>
 
-            <form id="orderForm" action="/order" method="post">
-                <input class="nav hidden" id="personName" name="personName" value="<%= personName%>" onclick="" />
+            <form id="orderForm" action="" method="post" enctype="multipart/form-data" onsubmit="validata();">
                 <p class="c-r-from-p">
-                    商品名称：<input type="text" name="goodsName" id="goodsName">&nbsp;
-                    商品数量：<input type="text" name="num" id="num" class="textRight">&nbsp;
-                    商品单价：<input type="text" name="price" id="price" class="textRight"><br/>
+                    商品名称：<input type="text" name="goods_name" id="goods_name" required="required">&nbsp;
+                    商品数量：<input type="text" name="goods_number" id="goods_number" class="textRight" required="required">&nbsp;
+                    商品单价：<input type="text" name="shop_price" id="shop_price" class="textRight"  required="required"><br/>
                 </p>
                 <p class="c-r-from-p">
-                    发布时间：&nbsp;<input type="text" name="date" id="date" readonly="true" class="only">&nbsp;
-                    联系方式：<input type="text" name="tel" id="tel">&nbsp;
-                    Email:&nbsp;<input type="text" name="email" id="email"><br>
-                </p>
-                <p class="c-r-from-p">
-                    商品序列号：
-                    <select class="c-r-select" id="goodsCode" name="goodsCode">
-                        <option>书籍</option>
-                        <option>女装</option>
-                        <option>男装</option>
-                        <option>鞋</option>
-                        <option>配饰礼物</option>
-                        <option>学习用品</option>
-                        <option>生活用品</option>
-                        <option>运动娱乐</option>
+                    促销单价：<input type="text" name="activi_price" id="activi_price" class="textRight"  required="required">&nbsp;
+                    商品分类：
+                    <select class="c-r-select" id="goodsCode" name="catid"  required="required">
+                        <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cate');if (count($_from)):
+    foreach ($_from AS $this->_var['cate']):
+?>
+                        <option value="<?php echo $this->_var['cate']['cid']; ?>"><?php echo $this->_var['cate']['pre']; ?><?php echo $this->_var['cate']['cname']; ?></option>
+                        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
                     </select>&nbsp;
-                    书籍分类：<select class="c-r-select " id="classes" name="classes">
-                        <option>其他</option>
-                        <option>公共课</option>
-                        <option>计算机类</option>
-                        <option>经管财会</option>
-                        <option>历史地理</option>
-                        <option>文学语言</option>
-                        <option>电气机械</option>
-                        <option>生物化工</option>
-                        <option>教育心理</option>
-                        <option>音乐美术</option>
-                        <option>体育健康</option>
-                        <option>杂志小说</option>
-                    </select>
-                    书籍年级：
-                    <select class="c-r-select" id="grade" name="grade">
-                        <option>无</option>
-                        <option>一年级</option>
-                        <option>二年级</option>
-                        <option>三年级</option>
-                        <option>四年级</option>
-                    </select><br>
                 </p>
-
-                <textarea class="c-r-txt" name="describe"></textarea>
-                    <span id="warning"><%= errMsg%></span>
-                    <input type="submit" value="发布商品" class="btn" onclick="Add()">
+                <p class="c-r-from-p">
+                    上传图片：
+                    <input id="fulAvatar" name="fileimg[]" type="file" class="form-control" accept="image/*" required="required" multiple="multiple" /><br/>
+                </p>
+                <p class="c-r-from-p">商品描述：</p>
+                <textarea class="c-r-txt" name="describe"  required="required"></textarea>
+                <div class="c-r-img" style="display:none"> </div>
+                 <span id="warning"></span>
+                <input type="submit" value="发布商品" class="btn">
                 </p>
             </form>
-
+        </div>
+    </div>
+    <div class="hidLayer">
+        <div class="layer">
+            <div class="layer-inner">
+                <form action="afs" method="post" onsubmit="return false;">
+                    <p>分类名称：<input type="text" class="layerInput" name="className" ></p>
+                    <p class="layer-inner-Pselect">
+                        上级分类：
+                        <select class="layerSelect" id="layerSelect" name="selectName">
+                            <option value="0">顶级分类</option>
+                            <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cate');if (count($_from)):
+    foreach ($_from AS $this->_var['cate']):
+?>
+                            <option value="<?php echo $this->_var['cate']['cid']; ?>"><?php echo $this->_var['cate']['pre']; ?><?php echo $this->_var['cate']['cname']; ?></option>
+                            <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+                        </select>
+                    </p>
+                    <p class="layerTextp">
+                        <span class="layerTextspan">分类描述：</span><br/>
+                        <textarea class="layerTextarea" name="" ></textarea>
+                    </p>
+                    <p class="layerBtn">
+                        <input type="button" id="exit" class="fr layerBtn-input" value="退出">
+                        <input type="reset" class="fr layerBtn-input reset" value="重置">
+                        <input type="submit" id="dosubmit" class="fr layerBtn-input submit" value="确定">
+                        <span class="errMsg fr"></span>
+                    </p>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-<script src="js/order.js"></script>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="<?php echo $this->_var['path']; ?>js/order.js"></script>
+<script>
+
+</script>
 </body>
 </html>

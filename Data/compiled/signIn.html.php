@@ -26,12 +26,6 @@
                             <img src="index.php?m=home&c=user&a=getverify" id="verifycode" title="看不清换一张" alt="看不清换一张"/>
                         </div>
                     </div>
-                    <!-- <p class="verCode-p">
-                        验证码：<input type="text" name="verifynum" id="verCode" required="required">
-                    </p>
-                    <div class="Code">
-                        <img src="index.php?m=home&c=user&a=getverify" id="verifycode" title="看不清换一张" alt="看不清换一张"/>
-                    </div><br/> -->
                     <button type="submit" onclick="signIn()" class="signBtn">Sign in</button>
                     <a href="index.php?m=home&c=user&a=signup"><p class="toSignIn"> >> to Sign up</p></a>
                     <p id="warning"></p>

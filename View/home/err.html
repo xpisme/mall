@@ -4,9 +4,9 @@
     <meta charset="UTF-8" CONTENT="TEXT/HTML">
     <meta name="viewport" content="width=device-width">
     <title>商品管理</title>
-    <link href="../css/index.css" rel="stylesheet">
+    <link href="{$path}css/index.css" rel="stylesheet">
 </head>
-<body onload="order_onlode()">
+<body>
 <div id="box">
     <div class="head">
         <div class="head-inner">
@@ -17,9 +17,15 @@
     </div>
     <p class="lin"></p>
     <div class="content errContent">
-        <p class="errContent-p">您的页面出错了！</p>
+        <p class="errContent-p">{$msg}</p>
     </div>
 </div>
-<script src="../js/order.js"></script>
+<script type="text/javascript">
+function go(){
+    var href = window.location.href;
+    window.location.replace(href);
+}
+setTimeout("go()",1500);
+</script>
 </body>
 </html>

@@ -15,7 +15,7 @@
             </div>
             <div class="h-right">
                 <p id="personName" class="h-r-userName"><%= personName%></p>
-                <p><a href="index.php?m=admin&c=goods&a=manage"><input type="button" value="发布商品" class="h-r-input" /></a>
+                <p><a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
                     <input type="button" value="我的关注" class="h-r-input"/>
                 </p>
             </div>
@@ -23,16 +23,16 @@
     </div>
     <div class="nav">
         <div class="nav-inner">
-            <ul class="nav-inner-ul">
+            <ul class="nav-inner-ul" id="nav-inner-ul">
                 <li onclick="rt_index()">首页</li>
-                <li onclick="book_search('书籍')">图书</li>
-                <li onclick="book_search('女装')">女装</li>
-                <li onclick="book_search('男装')">男装</li>
-                <li onclick="book_search('鞋')">男/女鞋</li>
-                <li onclick="book_search('配饰礼物')">配饰/礼物</li>
-                <li onclick="book_search('学习用品')">学习用品</li>
-                <li onclick="book_search('生活用品')">生活用品</li>
-                <li onclick="book_search('运动娱乐')">运动/娱乐</li>
+                <li>图书</li>
+                <li>服装</li>
+                <li>鞋靴</li>
+                <li>礼物</li>
+                <li>生活</li>
+                <li>饰品</li>
+                <li>美食</li>
+                <li>其他</li>
             </ul>
         </div>
     </div>
@@ -40,11 +40,13 @@
         <div class="content-inner">
             <div class="c-goods">
                 <div class="c-goods-img">
-                    <img src="/images/show1.png">
+                    <% goods.forEach(function(goods){%>
+                    <img src="/avatar/<%= goods.imagePath%>">
+                    <%})%>
                 </div>
                 <div class="c-part1-right">
                     <img src="../images/paart1-1.jpg">
-                    <img src="../images/paart1-7.jpg" class="fr">
+                    <img src="../images/paart1-7.jpg">
                     <img src="../images/paart1-2.jpg">
                     <img src="../images/paart1-6.jpg" class="fr">
                     <img src="../images/paart1-5.jpg">

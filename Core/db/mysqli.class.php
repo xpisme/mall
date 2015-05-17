@@ -44,10 +44,11 @@ class mysqlidb extends DB{
 	 * @param where str
 	 * @return array
 	 */
-	public function getRow($where){
-		$sql = "select * from ".$this->currdb." where ".$where." limit 1";
-		return $this->query($sql);
-	}
+    public function getRow($filed='*',$where){
+        $sql = "select ".$filed." from ".$this->currdb." where ".$where." limit 1";
+        $res = $this->query($sql);
+        return empty($res) ? false : $res[0] ;
+    }
 
 	/**
 	 * 获得一个数据
@@ -59,7 +60,7 @@ class mysqlidb extends DB{
 	public function getOne($field,$where){
 		$sql = "select ".$field." from ".$this->currdb." where ".$where;
         $res = $this->query($sql);
-        return $res[0];
+        return empty($res) ? false : $res[0] ;
 	}
 
 	/**
@@ -69,6 +70,7 @@ class mysqlidb extends DB{
 	 * @return bool
 	 */
 	public function delete($where){
+        if(empty($where)) exit();
 		$sql = 'delete from '.$this->currdb.' where '.$where;
 		return $this->query($sql);
 	}
@@ -88,7 +90,7 @@ class mysqlidb extends DB{
             $set[]    = $key.'='.$value;
 		}
 		$sql .= implode(',', $set);
-		$where = "where ".$where;
+		$where = " where ".$where;
 		$sql .= $where;
 		return $this->query($sql);
 	}
@@ -121,6 +123,7 @@ class mysqlidb extends DB{
 	public function query($sql){
 		require_once CORE.'log.class.php';
 		sqllog($sql);
+        Core\log::write($sql);
 		$this->lastSql = $sql;
 		if($res = mysqli_query($this->link,$sql))
 		{

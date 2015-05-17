@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>categorytree</title>
+</head>
+<body>
+	<ul>
+		{foreach from=$catetree item=cate}
+			<li>{$cate.pre}{$cate.cname}</li>
+	    {/foreach}
+    </ul>
+</body>
+</html>
+<br>
+<br>
+<br>
+<ul>
+	<li>图书
+		<ul>
+			<li>计算机
+				<ul>
+					<li>php</li>
+					<li>java</li>
+					<li>.net</li>
+				</ul>
+			</li>
+			<li>历史</li>
+		</ul>
+	</li>
+	<li>服装</li>
+	<li>美食</li>
+</ul>

@@ -14,9 +14,15 @@
                 校卖部
             </div>
             <div class="h-right">
-                <p id="personName" class="h-r-userName"><%= personName %></p>
+                <p id="personName" class="h-r-userName">
+                <?php if ($this->_var['username'] == ''): ?>
+                <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                <?php else: ?>
+                    欢迎 <?php echo $this->_var['username']; ?><a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                <?php endif; ?>
+                </p>
                 <p>
-                    <a href="index.php?m=admin&c=goods&a=manage"><input type="button" value="发布商品" class="h-r-input" /></a>
+                    <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
                     <input type="button" value="我的关注" class="h-r-input"/>
                 </p>
             </div>
@@ -27,16 +33,15 @@
         <div class="content-part1">
             <div class="c-part1-inner">
                 <div class="c-part1-left">
-                    <ul id="c-part1-list" class="c-part1-list">
-                        
+                    <ul class="c-part1-list"  id="c-part1-list">
                         <li>图书</li>
-                        <li>女装</li>
-                        <li>男装</li>
-                        <li>男/女鞋</li>
-                        <li>配饰/礼物</li>
-                        <li>学习用品</li>
-                        <li>生活用品</li>
-                        <li>运动/娱乐</li>
+                        <li>服装</li>
+                        <li>鞋靴</li>
+                        <li>礼物</li>
+                        <li>生活</li>
+                        <li>饰品</li>
+                        <li>美食</li>
+                        <li>其他</li>
                     </ul>
                 </div>
                 <div class="c-part1-right">

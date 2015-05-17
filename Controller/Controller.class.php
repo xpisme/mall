@@ -19,6 +19,8 @@ class Controller{
         $cate = M('cate');
         $category =$cate->getAll('cid,cname,pid,childlist,pidlist,level');
         $catetree = catetree($category);
+        $username = empty($_SESSION['username']) ? '' : $_SESSION['username'] ;
+        $this->assign('username',$username);
         $this->assign('catetree',$catetree);
     }
 
@@ -33,13 +35,14 @@ class Controller{
 	*展示信息
 	*/
 	public function showMessage($mes){
-		
+        $this->assign('msg',$mes);
+        exit ($this->display('err'));
 	}
 	/*
 	* 默认
 	*/
 	public function index(){
-		echo '默认';
+		$this->display('index');
 	}
 
     /**返回客户端

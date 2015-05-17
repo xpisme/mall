@@ -46,7 +46,7 @@ abstract class DB{
 	 * @param where str
 	 * @return array
 	 */
-	public function getRow($where){}
+	public function getRow($filed,$where){}
 
 	/**
 	 * 获得一个数据

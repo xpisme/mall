@@ -43,9 +43,10 @@ class mysqldb extends DB{
 	 * @param where str
 	 * @return array
 	 */
-	public function getRow($where){
-		$sql = "select * from ".$this->currdb." where ".$where." limit 1";
-		return $this->query($sql);
+	public function getRow($filed='*',$where){
+		$sql = "select ".$filed." from ".$this->currdb." where ".$where." limit 1";
+        $res = $this->query($sql);
+        return empty($res) ? false : $res[0] ;
 	}
 
 	/**
@@ -58,7 +59,7 @@ class mysqldb extends DB{
 	public function getOne($field,$where){
 		$sql = "select ".$field." from ".$this->currdb." where ".$where;
         $res = $this->query($sql);
-        return $res[0];
+        return empty($res) ? false : $res[0] ;
 	}
 
 	/**
@@ -87,7 +88,7 @@ class mysqldb extends DB{
             $set[]    = $key.'='.$value;
 		}
 		$sql .= implode(',', $set);
-		$where = "where ".$where;
+		$where = " where ".$where;
 		$sql .= $where;
 		return $this->query($sql);
 	}

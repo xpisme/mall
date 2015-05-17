@@ -38,9 +38,12 @@ final class App {
 	 */
 	public static function my_autoload($name){
 		$str = str_replace('\\', '/', $name);
-//        echo ROOT . $str . '.class.php<br />';
-		if(file_exists(ROOT.$str.'.class.php'))
-		require_once ROOT.$str.'.class.php';
+		if(@file_exists(ROOT.$str.'.class.php')){
+            require_once ROOT.$str.'.class.php';
+        }else{
+            header('HTTP/1.1 404  Bad Request');
+            header("Location: /View/404.html");
+        }
 	}
 	/*
 	 * 路由 分发控制器
@@ -66,15 +69,19 @@ final class App {
 			$action = 'index';
 		}
 		if(isset($controller)){
-
            $ctrl = 'Controller\\'.$model.'\\'.$controller.'Controller';
-			$temp = new $ctrl();
+		   $temp = new $ctrl();
 			if(!isset($action) || !method_exists($temp, $action)){
 				$action = 'index';
 			}
 			$temp->$action();
 		}else{
-			exit(L('controller_method_does_not_exist'));
+            $ctrl = 'Controller\Home\IndexController';
+            $temp = new $ctrl();
+            if(!isset($action) || !method_exists($temp, $action)){
+                $action = 'index';
+            }
+            $temp->$action();
 		}
 	}
 }
