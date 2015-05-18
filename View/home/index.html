@@ -19,11 +19,11 @@
                 <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
                 {else}
                     欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
+                        <input type="button" value="我的关注" class="h-r-input"/>
+                    </p>
                 {/if}
-                </p>
-                <p>
-                    <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
-                    <input type="button" value="我的关注" class="h-r-input"/>
                 </p>
             </div>
         </div>
@@ -34,32 +34,29 @@
             <div class="c-part1-inner">
                 <div class="c-part1-left">
                     <ul class="c-part1-list"  id="c-part1-list">
-                        <li>图书</li>
-                        <li>服装</li>
-                        <li>鞋靴</li>
-                        <li>礼物</li>
-                        <li>生活</li>
-                        <li>饰品</li>
-                        <li>美食</li>
-                        <li>其他</li>
+                    {foreach from=$catetree item=cate}
+                        {if $cate.level eq 1}
+                            <a href="index.php?m=home&c=index&a=gory&z={$cate.url}"><li>{$cate.cname}</li></a>
+                        {/if}
+                    {/foreach}
                     </ul>
                 </div>
                 <div class="c-part1-right">
-                    <img src="{$path}images/paart1-1.jpg">
-                    <img src="{$path}images/paart1-7.jpg" class="fr">
-                    <img src="{$path}images/paart1-2.jpg">
-                    <img src="{$path}images/paart1-6.jpg" class="fr">
-                    <img src="{$path}images/paart1-5.jpg">
-                    <img src="{$path}images/paart1-4.jpg" class="fr">
+                    {foreach from=$images item=img}
+                        <img src="{$img.thumb_img}" alt="{$img.goods_name}" />
+                    {/foreach}
                 </div>
                 <div class="c-part1-main-index">
                     <div id="slider">
                         <ul class="list">
-                            <li class="current"><img src="{$path}images/slider1.jpg"/></li>
-                            <li><img src="{$path}images/slider2.jpg"/></li>
-                            <li><img src="{$path}images/slider3.jpg"/></li>
-                            <li><img src="{$path}images/slider4.jpg"/></li>
-                            <li><img src="{$path}images/slider5.jpg"/></li>
+                        {php} $i=1; {/php}
+                        {foreach from=$goodsimg item=tem}
+                            {php} if($i) {{/php}
+                            <li class="current"><img src="{$tem.thumb_img}" alt="{$tem.goods_name}" /></li>
+                            {php} }else{ {/php}
+                            <li><img src="{$tem.thumb_img}" alt="{$tem.goods_name}" /></li>
+                            {php}} $i=0; {/php}
+                        {/foreach}
                         </ul>
 
                     </div>
@@ -71,18 +68,18 @@
                 <p class="part-title">新单速递<span>.&nbsp;.&nbsp;.</span></p>
                 <div class="c-part2-new">
                     <ul class="c-part2-new-ul" id="c-part2-new-ul">
-                        <% rows.forEach(function(row){%>
-                         <li onclick="order_show('<%= row.id%>')">
-                            <img src="{$path}images/show1.png" class="c-part2-new-ul-img">
-                            <div class="c-part2-new-ul-img-price fr">￥<%= row.price%></div>
+                        {foreach from=$goods item=good}
+                         <li>
+                            <a href="index.php?m=home&c=index&a=goods&sn={$good.goods_sn}"><img src="{$good.thumb_img}" class="c-part2-new-ul-img"></a>
+                            <div class="c-part2-new-ul-img-price fr">￥{$good.shop_price}</div>
                             <div class="c-part2-detail">
-                                <p class="c-part2-detail-goodsName"><%= row.goodsName%></p>
+                                <p class="c-part2-detail-goodsName">{$good.goods_name}</p>
                                 <p class="c-part2-detail-describe">
-                                    <%= row.describe%>
+                                    {$good.goods_desc}
                                 </p>
                             </div>
                          </li>
-                        <%})%>
+                        {/foreach}
                     </ul>
                 </div>
             </div>
@@ -91,8 +88,49 @@
     </div>
     <div class="footer"></div>
 </div>
+<script src="{$path}js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+//slider事件
+    var slider = document.getElementById('slider');
+    var sliderLi = slider.getElementsByTagName('li');
+    var timer = pl= null;
+    var index = 1;
+    function autoPlay(){
+        pl= setInterval(function(){
+            index >= sliderLi.length && (index = 0);
+            show(index);
+            index++;
+        },4000);
+    }
+    autoPlay();
+    
+
+function show(index){
+    var alpha = 0;
+    for(var i=0;i<sliderLi.length;i++){
+        sliderLi[i].style.opacity = 0;
+        sliderLi[i].filter ="alpha(opacity=0)";
+    }
+
+    timer = setInterval(function(){
+        alpha += 2;
+        alpha > 100 && (alpha = 0);
+        sliderLi[index].style.opacity = alpha/100;
+        sliderLi[index].style.filter = "alpha(opacity="+ alpha+")";
+        alpha == 100 && (clearInterval(timer));
+    },20);
+}
+var cList = document.getElementById('c-part1-list').getElementsByTagName('li');
+for(var i=0;i<cList.length;i++){
+    cList[i].onclick = function(){
+        var x = this.innerHTML;
+        window.location = '/book_search' + x;
+    }
+}
+</script>
 <script src="{$path}js/index.js"></script>
 <script>
+  
 
     // //ajax
     // window.onload = function(){

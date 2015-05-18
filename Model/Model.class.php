@@ -146,8 +146,3 @@ class Model{
         return $this->errormsg;
     }
 }
-
-
-
-
- ?>

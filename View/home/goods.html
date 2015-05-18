@@ -3,8 +3,9 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link href="../css/index.css" rel="stylesheet">
-    <script src="../js/index.js"></script>
+    <link href="{$path}css/index.css" rel="stylesheet">
+    <script src="{$path}js/jquery-1.11.3.min.js"></script>
+    <script src="{$path}js/index.js"></script>
 </head>
 <body>
 <div id="box">
@@ -14,9 +15,16 @@
                 校卖部
             </div>
             <div class="h-right">
-                <p id="personName" class="h-r-userName"><%= personName%></p>
-                <p><a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
-                    <input type="button" value="我的关注" class="h-r-input"/>
+                <p id="personName" class="h-r-userName">
+                {if $username eq ''}
+                <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                {else}
+                    欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
+                        <input type="button" value="我的关注" class="h-r-input"/>
+                    </p>
+                {/if}
                 </p>
             </div>
         </div>
@@ -24,15 +32,12 @@
     <div class="nav">
         <div class="nav-inner">
             <ul class="nav-inner-ul" id="nav-inner-ul">
-                <li onclick="rt_index()">首页</li>
-                <li>图书</li>
-                <li>服装</li>
-                <li>鞋靴</li>
-                <li>礼物</li>
-                <li>生活</li>
-                <li>饰品</li>
-                <li>美食</li>
-                <li>其他</li>
+                <a href="index.php"><li>首页</li></a>
+                {foreach from=$catetree item=cate}
+                    {if $cate.level eq 1}
+                        <a href="index.php?m=home&c=index&a=gory&z={$cate.url}"><li>{$cate.cname}</li></a>
+                    {/if}
+                {/foreach}
             </ul>
         </div>
     </div>
@@ -40,52 +45,38 @@
         <div class="content-inner">
             <div class="c-goods">
                 <div class="c-goods-img">
-                    <% goods.forEach(function(goods){%>
-                    <img src="/avatar/<%= goods.imagePath%>">
-                    <%})%>
+                    
+                    <img src="{$goodsinfo.thumb_img}">
+                    
                 </div>
                 <div class="c-part1-right">
-                    <img src="../images/paart1-1.jpg">
-                    <img src="../images/paart1-7.jpg">
-                    <img src="../images/paart1-2.jpg">
-                    <img src="../images/paart1-6.jpg" class="fr">
-                    <img src="../images/paart1-5.jpg">
-                    <img src="../images/paart1-4.jpg" class="fr">
+                    {foreach from=$others item=other}
+                        <a href="index.php?m=home&c=index&a=goods&sn={$other.goods_sn}"><img src="{$other.thumb_img}" alt="{$other.goods_name}"></a>
+                    {/foreach}
+                    
                 </div>
 
                 <div class="c-part1-main">
-                    <% goods.forEach(function(goods){%>
+                    
                     <form>
-                        <p class="c-goods-username">&nbsp;<%= goods.personName%>&nbsp;<span class="c-goods-username-span">发布</span></p>
-                        <p class="c-goods-price">￥<%= goods.price%><span class="c-goods-price-span">元</span></p>
-                        <p class="c-goods-goodsName"><%= goods.goodsName%></p>
+                        <p class="c-goods-username">&nbsp;{$goodsinfo.name}&nbsp;<span class="c-goods-username-span">发布</span></p>
+                        <p class="c-goods-price">￥{$goodsinfo.shop_price}<span class="c-goods-price-span">元</span></p>
+                        <p class="c-goods-goodsName">{$goodsinfo.goods_name}</p>
                         <div class="c-goods-describe">
-                            <%= goods.describe%>
+                            {$goodsinfo.goods_desc}
                         </div>
                         <p class="c-goods-contact">
                             联系：&nbsp;
-                            <span><%= goods.tel %></span>&nbsp;
-                            <span><%= goods.email%></span>
+                            <span>{$goodsinfo.tel}</span>&nbsp;
                         </p>
                         <input type="button" value="关注一下" class="c-goods-focus fl" onclick="careOrder()">
                     </form>
-                    <%})%>
+                    
                 </div>
 
             </div>
         </div>
     </div>
 </div>
-<script>
-    //分类查询
-    function book_search(x){
-        window.location = '/book_search' + x;
-    }
-    //返回首页
-    function rt_index(){
-        var personName = document.getElementById('personName').innerText;
-        window.location = "/rt_index" + personName;
-    }
-</script>
 </body>
 </html>

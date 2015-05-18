@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>校卖部</title>
-    <link href="../css/index.css" rel="stylesheet">
+    <link href="{$path}css/index.css" rel="stylesheet">
 </head>
 <body>
 <div id="box">
@@ -14,9 +14,16 @@
                 校卖部
             </div>
             <div class="h-right">
-                <p id="personName" class="h-r-userName"><%= personName %></p>
-                <p><input type="button" value="发布商品" class="h-r-input" onclick="getOrder()"/>
-                    <input type="button" value="我的关注" class="h-r-input"/>
+                <p id="personName" class="h-r-userName">
+                {if $username eq ''}
+                <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                {else}
+                    欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
+                        <input type="button" value="我的关注" class="h-r-input"/>
+                    </p>
+                {/if}
                 </p>
             </div>
         </div>
@@ -24,24 +31,23 @@
     <div class="nav">
         <div class="nav-inner">
             <ul class="nav-inner-ul">
-                <li onclick="rt_index()">首页</li>
-                <li>图书</li>
-                <li>服装</li>
-                <li>鞋靴</li>
-                <li>礼物</li>
-                <li>生活</li>
-                <li>饰品</li>
-                <li>美食</li>
-                <li>其他</li>
+                <a href="index.php"><li>首页</li></a>
+                {foreach from=$catetree item=cate}
+                    {if $cate.level eq 1}
+                        <a href="index.php?m=home&c=index&a=gory&z={$cate.url}"><li>{$cate.cname}</li></a>
+                    {/if}
+                {/foreach}
             </ul>
         </div>
     </div>
     <div class="filter-box">
         <div class="filter">
             <div class="filter-path">
-                <a href="" class="filter-path-a" style="margin-left: 40px;">全部</a>
+                <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}0" class="filter-path-a" style="margin-left: 40px;">全部</a>
+                {foreach from=$crumbs item=mb}
                 <span> > </span>
-                <a href="" class="filter-path-a">美食</a>
+                <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$mb.cid}" class="filter-path-a">{$mb.cname}</a>
+                {/foreach}
             </div>
             <div class="filter-content">
                 <div class="filter-c-class">
@@ -49,36 +55,10 @@
                         分类 :
                     </div>
                     <div class="filter-c-class-list fr" id="filter-c-class-list" style="border-bottom: 1px solid lightgray">
-                        <a href="" class="filter-c-class-a"><span>全部</span></a>
-                        <a href="" class="filter-c-class-a"><span>小吃/快餐</span></a>
-                        <a href="" class="filter-c-class-a"><span>自助餐</span></a>
-                        <a href="" class="filter-c-class-a"><span>火锅</span></a>
-                        <a href="" class="filter-c-class-a"><span>甜品</span></a>
-                        <a href="" class="filter-c-class-a"><span>咖啡厅/酒吧/夜店 </span></a>
-                        <a href="" class="filter-c-class-a"><span>烤鱼</span></a>
-                        <a href="" class="filter-c-class-a"><span>川菜</span></a>
-                        <a href="" class="filter-c-class-a"><span>湘菜</span></a>
-                        <a href="" class="filter-c-class-a"><span>粤菜</span></a>
-                        <a href="" class="filter-c-class-a"><span>韩国料理</span></a>
-                        <a href="" class="filter-c-class-a"><span>日本料理</span></a>
-                        <a href="" class="filter-c-class-a"><span>西餐</span></a>
-                        <a href="" class="filter-c-class-a"><span>意大利餐</span></a>
-                        <a href="" class="filter-c-class-a"><span>素食</span></a>
-                        <a href="" class="filter-c-class-a"><span>小吃/快餐</span></a>
-                        <a href="" class="filter-c-class-a"><span>自助餐</span></a>
-                        <a href="" class="filter-c-class-a"><span>火锅</span></a>
-                        <a href="" class="filter-c-class-a"><span>甜品</span></a>
-                        <a href="" class="filter-c-class-a"><span>咖啡厅/酒吧/夜店 </span></a>
-                        <a href="" class="filter-c-class-a"><span>烤鱼</span></a>
-                        <a href="" class="filter-c-class-a"><span>川菜</span></a>
-                        <a href="" class="filter-c-class-a"><span>湘菜</span></a>
-                        <a href="" class="filter-c-class-a"><span>粤菜</span></a>
-                        <a href="" class="filter-c-class-a"><span>韩国料理</span></a>
-                        <a href="" class="filter-c-class-a"><span>日本料理</span></a>
-                        <a href="" class="filter-c-class-a"><span>西餐</span></a>
-                        <a href="" class="filter-c-class-a"><span>意大利餐</span></a>
-                        <a href="" class="filter-c-class-a"><span>素食</span></a>
-                        <span class="filter-c-class-a showMore">更多...</span>
+                        {foreach from=$childs item=child}
+                        <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$child.cid}" class="filter-c-class-a"><span>{$child.cname}</span></a>
+                        {/foreach}
+                        <!-- <span class="filter-c-class-a showMore">更多...</span> -->
                     </div>
                 </div>
                 <div class="filter-c-price">
@@ -86,12 +66,12 @@
                         价格 ：
                     </div>
                     <div class="filter-c-class-list fr">
-                        <a href="" class="filter-c-class-a"><span>全部</span></a>
-                        <a href="" class="filter-c-class-a"><span>0 - 50</span></a>
-                        <a href="" class="filter-c-class-a"><span>50 - 100</span></a>
-                        <a href="" class="filter-c-class-a"><span>100 - 500</span></a>
-                        <a href="" class="filter-c-class-a"><span>500 - 1000</span></a>
-                        <a href="" class="filter-c-class-a"><span>1000元以上</span></a>
+                        <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$cid}" class="filter-c-class-a"><span>全部</span></a>
+                        <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$cid}&price=0,50" class="filter-c-class-a"><span>0 - 50</span></a>
+                        <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$cid}&price=50,100" class="filter-c-class-a"><span>50 - 100</span></a>
+                        <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$cid}&price=100,500" class="filter-c-class-a"><span>100 - 500</span></a>
+                        <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$cid}&price=500,1000" class="filter-c-class-a"><span>500 - 1000</span></a>
+                        <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$cid}&price=1000,*" class="filter-c-class-a"><span>1000元以上</span></a>
                     </div>
                 </div>
             </div>
@@ -102,22 +82,19 @@
             <div class="content-part2">
                 <div class="c-part2-inner">
                     <div class="c-part2-new">
-                        <ul class="c-part2-new-ul">
-                            <% rows.forEach(function(row){%>
-                            <li onclick="order_show('<%= row.id%>')">
-                                <img src="/avatar/<%= row.imagePath%>" class="c-part2-new-ul-img">
-                                <div class="c-part2-new-ul-img-price fr">￥<%= row.price%></div>
+                        <ul class="c-part2-new-ul" id="c-part2-new-ul">
+                            {foreach from=$goods item=good}
+                             <li>
+                                <a href="index.php?m=home&c=index&a=goods&sn={$good.goods_sn}"><img src="{$good.thumb_img}" class="c-part2-new-ul-img"></a>
+                                <div class="c-part2-new-ul-img-price fr">￥{$good.shop_price}</div>
                                 <div class="c-part2-detail">
-                                    <p class="c-part2-detail-goodsName"><%= row.goodsName%></p>
+                                    <p class="c-part2-detail-goodsName">{$good.goods_name}</p>
                                     <p class="c-part2-detail-describe">
-                                        <%= row.describe%>
-                                    </p>
-                                    <p class="c-part2-detail-more">
-                                        <span><%= row.goodsCode%></span>&nbsp;
+                                        {$good.goods_desc}
                                     </p>
                                 </div>
-                            </li>
-                            <%})%>
+                             </li>
+                            {/foreach}
                         </ul>
                     </div>
                 </div>
@@ -125,8 +102,8 @@
         </div>
     </div>
 </div>
-<script src="../js/index.js"></script>
-<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="{$path}js/jquery-1.11.3.min.js"></script>
+<script src="{$path}js/index.js"></script>
 <script>
     $(function(){
         var element = $('#filter-c-class-list>a:gt(8)');
@@ -142,8 +119,8 @@
                 $('.filter-c-class').height('120px');
             }
         });
-
     });
+
 </script>
 </body>
 </html>

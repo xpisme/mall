@@ -120,6 +120,7 @@ class GoodsController extends Controller\Controller{
             $this->showMessage('删除失败');
         }
     }
+
 }
 
 

@@ -19,11 +19,11 @@
                 <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
                 <?php else: ?>
                     欢迎 <?php echo $this->_var['username']; ?><a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
+                        <input type="button" value="我的关注" class="h-r-input"/>
+                    </p>
                 <?php endif; ?>
-                </p>
-                <p>
-                    <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
-                    <input type="button" value="我的关注" class="h-r-input"/>
                 </p>
             </div>
         </div>
@@ -34,32 +34,35 @@
             <div class="c-part1-inner">
                 <div class="c-part1-left">
                     <ul class="c-part1-list"  id="c-part1-list">
-                        <li>图书</li>
-                        <li>服装</li>
-                        <li>鞋靴</li>
-                        <li>礼物</li>
-                        <li>生活</li>
-                        <li>饰品</li>
-                        <li>美食</li>
-                        <li>其他</li>
+                    <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cate');if (count($_from)):
+    foreach ($_from AS $this->_var['cate']):
+?>
+                        <?php if ($this->_var['cate']['level'] == 1): ?>
+                            <a href="index.php?m=home&c=index&a=gory&z=<?php echo $this->_var['cate']['url']; ?>"><li><?php echo $this->_var['cate']['cname']; ?></li></a>
+                        <?php endif; ?>
+                    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
                     </ul>
                 </div>
                 <div class="c-part1-right">
-                    <img src="<?php echo $this->_var['path']; ?>images/paart1-1.jpg">
-                    <img src="<?php echo $this->_var['path']; ?>images/paart1-7.jpg" class="fr">
-                    <img src="<?php echo $this->_var['path']; ?>images/paart1-2.jpg">
-                    <img src="<?php echo $this->_var['path']; ?>images/paart1-6.jpg" class="fr">
-                    <img src="<?php echo $this->_var['path']; ?>images/paart1-5.jpg">
-                    <img src="<?php echo $this->_var['path']; ?>images/paart1-4.jpg" class="fr">
+                    <?php $_from = $this->_var['images']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'img');if (count($_from)):
+    foreach ($_from AS $this->_var['img']):
+?>
+                        <img src="<?php echo $this->_var['img']['thumb_img']; ?>" alt="<?php echo $this->_var['img']['goods_name']; ?>" />
+                    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
                 </div>
                 <div class="c-part1-main-index">
                     <div id="slider">
                         <ul class="list">
-                            <li class="current"><img src="<?php echo $this->_var['path']; ?>images/slider1.jpg"/></li>
-                            <li><img src="<?php echo $this->_var['path']; ?>images/slider2.jpg"/></li>
-                            <li><img src="<?php echo $this->_var['path']; ?>images/slider3.jpg"/></li>
-                            <li><img src="<?php echo $this->_var['path']; ?>images/slider4.jpg"/></li>
-                            <li><img src="<?php echo $this->_var['path']; ?>images/slider5.jpg"/></li>
+                        <?php  $i=1; ?>
+                        <?php $_from = $this->_var['goodsimg']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'tem');if (count($_from)):
+    foreach ($_from AS $this->_var['tem']):
+?>
+                            <?php  if($i) {?>
+                            <li class="current"><img src="<?php echo $this->_var['tem']['thumb_img']; ?>" alt="<?php echo $this->_var['tem']['goods_name']; ?>" /></li>
+                            <?php  }else{ ?>
+                            <li><img src="<?php echo $this->_var['tem']['thumb_img']; ?>" alt="<?php echo $this->_var['tem']['goods_name']; ?>" /></li>
+                            <?php } $i=0; ?>
+                        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
                         </ul>
 
                     </div>
@@ -71,18 +74,20 @@
                 <p class="part-title">新单速递<span>.&nbsp;.&nbsp;.</span></p>
                 <div class="c-part2-new">
                     <ul class="c-part2-new-ul" id="c-part2-new-ul">
-                        <% rows.forEach(function(row){%>
-                         <li onclick="order_show('<%= row.id%>')">
-                            <img src="<?php echo $this->_var['path']; ?>images/show1.png" class="c-part2-new-ul-img">
-                            <div class="c-part2-new-ul-img-price fr">￥<%= row.price%></div>
+                        <?php $_from = $this->_var['goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'good');if (count($_from)):
+    foreach ($_from AS $this->_var['good']):
+?>
+                         <li>
+                            <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['good']['goods_sn']; ?>"><img src="<?php echo $this->_var['good']['thumb_img']; ?>" class="c-part2-new-ul-img"></a>
+                            <div class="c-part2-new-ul-img-price fr">￥<?php echo $this->_var['good']['shop_price']; ?></div>
                             <div class="c-part2-detail">
-                                <p class="c-part2-detail-goodsName"><%= row.goodsName%></p>
+                                <p class="c-part2-detail-goodsName"><?php echo $this->_var['good']['goods_name']; ?></p>
                                 <p class="c-part2-detail-describe">
-                                    <%= row.describe%>
+                                    <?php echo $this->_var['good']['goods_desc']; ?>
                                 </p>
                             </div>
                          </li>
-                        <%})%>
+                        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
                     </ul>
                 </div>
             </div>
@@ -91,8 +96,49 @@
     </div>
     <div class="footer"></div>
 </div>
+<script src="<?php echo $this->_var['path']; ?>js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+//slider事件
+    var slider = document.getElementById('slider');
+    var sliderLi = slider.getElementsByTagName('li');
+    var timer = pl= null;
+    var index = 1;
+    function autoPlay(){
+        pl= setInterval(function(){
+            index >= sliderLi.length && (index = 0);
+            show(index);
+            index++;
+        },4000);
+    }
+    autoPlay();
+    
+
+function show(index){
+    var alpha = 0;
+    for(var i=0;i<sliderLi.length;i++){
+        sliderLi[i].style.opacity = 0;
+        sliderLi[i].filter ="alpha(opacity=0)";
+    }
+
+    timer = setInterval(function(){
+        alpha += 2;
+        alpha > 100 && (alpha = 0);
+        sliderLi[index].style.opacity = alpha/100;
+        sliderLi[index].style.filter = "alpha(opacity="+ alpha+")";
+        alpha == 100 && (clearInterval(timer));
+    },20);
+}
+var cList = document.getElementById('c-part1-list').getElementsByTagName('li');
+for(var i=0;i<cList.length;i++){
+    cList[i].onclick = function(){
+        var x = this.innerHTML;
+        window.location = '/book_search' + x;
+    }
+}
+</script>
 <script src="<?php echo $this->_var['path']; ?>js/index.js"></script>
 <script>
+  
 
     // //ajax
     // window.onload = function(){

@@ -161,6 +161,7 @@ function catetree($cates,$pid=0,$flag=true){
                 if($cha<0) $tree[$num-1]['pre'] = str_replace('├','└',$tree[$num-1]['pre']);
             }
             $frontkey = $key;
+            $cate['url'] = md5($cate['cid']).'bxve'.$cate['cid'];
             $tree[] = $cate;
             if(!empty($cate['childlist'])){
                 catetree($cates,$cate['cid'],false);
@@ -185,4 +186,21 @@ function get_all_child($arr,$id=0,&$childs){
             }
         }
     }
+}
+
+/**
+ * @param $cid 当前的栏目id
+ * @return array 面包屑导航
+ */
+function get_crumbs($cid){
+    getPlist($cid,GC('category'),$plist);
+    $parray = explode(',',$plist);
+    $cname = array();
+    foreach($parray as $v){
+        if($v) array_unshift($cname,M('cate')->getRow('cid,cname','cid='.$v));
+    }
+    $temp['cname'] = M("cate")->getOne("cname",'cid='.$cid);
+    $temp['cid'] = $cid;
+    array_push($cname,$temp);
+    return $cname;
 }
