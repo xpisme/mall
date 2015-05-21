@@ -2,6 +2,9 @@
     list-style-type: none;text-decoration: none;}
 .fl{float: left}
 .fr{float: right}
+h1>a{
+    color: #00b188;
+}
 /*注册/登陆*/
 .signBox{
     width: 100%;
@@ -40,7 +43,6 @@
     text-align: center;
     font-size: 52px;
     letter-spacing: 8px;
-    color: #00b188;
     padding-top:30px;
 }
 .signText{

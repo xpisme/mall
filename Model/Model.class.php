@@ -13,7 +13,7 @@ use Core\db;
 defined('ACC')||exit('ACC Denied');
 
 class Model{
-	protected $db;
+	protected $db = '';
     protected $errormsg;
 	public $validata = array(); 
 	// validata array(field,rule,message,condition)
@@ -92,12 +92,8 @@ class Model{
 
 	/** 读取文件，选择数据库，创建链接
 	 */
-	public function __construct(){
-		$CONFIG = C('config');
-        $config = $CONFIG['db'];
-		require_once CORE.'db/'.$config['db_type'].'.class.php';
-		$db = 'Core\\db\\'.$config['db_type'].'db';
-		$this->db =  new $db();
+	public function __construct($resource){
+        $this->db = $resource;
 	}
 	public function table($table){
 		return $this->db->table($table);

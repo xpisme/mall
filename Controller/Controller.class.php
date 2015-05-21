@@ -13,6 +13,7 @@ class Controller{
     protected $view;
 
     public function  __construct(){
+
         $this->view = Core\mytpl::getins();
         $this->assign("path",FRONT);
         // 加载全局的信息变量
@@ -20,8 +21,8 @@ class Controller{
         $category =$cate->getAll('cid,cname,pid,childlist,pidlist,level');
         $catetree = catetree($category);
         $username = empty($_SESSION['username']) ? '' : $_SESSION['username'] ;
-        $this->assign('username',$username);
         $this->assign('catetree',$catetree);
+
     }
 
 	public function display($file){

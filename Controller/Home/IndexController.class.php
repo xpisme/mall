@@ -43,6 +43,7 @@ class IndexController extends Controller\Controller{
             $this->index();
         }else{
             $res = $goods->getAll('gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img,ori_img',$where,'','','click_count desc','8');
+            echo $goods->lastSql();
             $pname = get_crumbs($cid);
             $childlist = M('cate')->getOne('childlist','cid='.$cid);
             $childs = M('cate')->getAll('cid,cname','cid in ('.$childlist.')');

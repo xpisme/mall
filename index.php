@@ -6,7 +6,6 @@
  */
 
 
-
 //  设置好路径
 
 defined('ROOT') or define('ROOT', str_replace('\\', '/', dirname(__FILE__)).'/');
@@ -27,3 +26,4 @@ define('DEBUG', true);
 define('ACC',true); // 设置标志
 require CORE.'App.class.php';
 Core\App::run();
+

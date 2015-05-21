@@ -60,8 +60,16 @@ function L($key,$kind=''){
  */
 function M($name){
 	static $m = array();
-	if(!empty($m[$name])) return $m[$name];
-	$tmp = new Model\Model();
+	static $resource = '';
+    if(!empty($m[$name])) return $m[$name];
+    if(empty($resource)){
+        $CONFIG = C('config');
+        $config = $CONFIG['db'];
+        require_once CORE.'db/'.$config['db_type'].'.class.php';
+        $db = 'Core\\db\\'.$config['db_type'].'db';
+        $resource =  new $db();
+    }
+	$tmp = new Model\Model($resource);
 	$tmp->table($name);
 	return $m[$name] = $tmp;
 }

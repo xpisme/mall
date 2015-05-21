@@ -123,6 +123,7 @@ class mysqlidb extends DB{
 	public function query($sql){
 		require_once CORE.'log.class.php';
 		sqllog($sql);
+//        Core\log::write(implode("\r\n",get_trace()));
 //        Core\log::write($sql);
 		$this->lastSql = $sql;
 		if($res = mysqli_query($this->link,$sql))

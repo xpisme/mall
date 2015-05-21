@@ -39,6 +39,7 @@ final class App {
 	public static function my_autoload($name){
 		$str = str_replace('\\', '/', $name);
 		if(@file_exists(ROOT.$str.'.class.php')){
+//            echo ROOT.$str.'.class.php',"<br />";
             require_once ROOT.$str.'.class.php';
         }else{
             header('HTTP/1.1 404  Bad Request');
@@ -68,9 +69,10 @@ final class App {
 			$controller = 'index';
 			$action = 'index';
 		}
+
 		if(isset($controller)){
            $ctrl = 'Controller\\'.$model.'\\'.$controller.'Controller';
-		   $temp = new $ctrl();
+            $temp = new $ctrl();
 			if(!isset($action) || !method_exists($temp, $action)){
 				$action = 'index';
 			}
