@@ -43,7 +43,7 @@
                 </div>
                 <div class="c-part1-right">
                     {foreach from=$images item=img}
-                        <img src="{$img.thumb_img}" alt="{$img.goods_name}" />
+                        <a href="index.php?m=home&c=index&a=goods&sn={$img.goods_sn}"><img src="{$img.thumb_img}" alt="{$img.goods_name}" /></a>
                     {/foreach}
                 </div>
                 <div class="c-part1-main-index">
@@ -58,7 +58,6 @@
                             {php}} $i=0; {/php}
                         {/foreach}
                         </ul>
-
                     </div>
                 </div>
             </div>

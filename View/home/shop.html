@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8" CONTENT="TEXT/HTML">
+    <title>商品管理</title>
+    <link href="../css/order.css" rel="stylesheet">
+</head>
+<body onload="correct_onlode()">
+<div id="box">
+    <div class="head">
+        <div class="head-inner">
+            <div class="h-r-left">
+                校卖部
+            </div>
+            <div class="h-right">
+                <p id="personName" class="h-r-userName"><%= personName %></p>
+                <span class="exit fr">退出登录</span>
+                <p><input type="button" value="发布商品" class="h-r-input" onclick="getOrder()"/>
+                    <input type="button" value="我的关注" class="h-r-input"/>
+                </p>
+            </div>
+        </div>
+    </div>
+    <p class="lin"></p>
+    <div class="content">
+        <div class="c-right c-r-correct">
+            <h1 class="c-r-h1">*我要开店*</h1>
+            <form id="orderForm" action="/update" method="post">
+                <p class="c-r-from-p">
+                    店铺名称：<input type="text" name="goodsName" id="goodsName" value="">&nbsp;
+                    店主Tel：<input type="text" name="num" id="num" value="">&nbsp;
+                    店主住址：<input type="text" name="price" id="price" value=""><br/>
+                </p>
+                <p class="c-r-from-p">
+                    店 主 QQ：<input type="text" name="goodsName" id="goodsName" value="">&nbsp;
+                    店主邮箱：<input type="text" name="goodsName" id="goodsName" value="">&nbsp;
+                </p>
+                <br/>
+                店铺描述
+                <textarea class="c-r-txt" name="describe"></textarea>
+                <p>
+                    <span id="warning"></span>
+                    <input type="button" value=" 放 弃" class="btn" onclick="correct_back()">
+                    <input type="submit" value="确认开店" class="btn" onclick="correct()">
+                </p>
+            </form>
+
+        </div>
+    </div>
+    <div class="footer fl"></div>
+</div>
+<script src="../js/order.js"></script>
+</body>
+</html>

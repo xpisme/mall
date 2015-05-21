@@ -13,7 +13,7 @@ class IndexController extends Controller\Controller{
         $goods = M('goods');
         $where = ' is_on_sale = 1 and is_delete = 0 ';
         $goodsimg = $goods->getAll('gid,goods_name,thumb_img',$where,'','','click_count desc','5');
-        $images = $goods->getAll('gid,goods_name,thumb_img',$where,'','','rand()','6');
+        $images = $goods->getAll('gid,goods_sn,goods_name,thumb_img',$where,'','','rand()','6');
         $all = $goods->getAll('gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img,ori_img',$where,'','','',8);
         $this->assign('goods',$all);
         $this->assign('images',$images);
@@ -82,12 +82,13 @@ class IndexController extends Controller\Controller{
         if(empty($goodinfo)) $this->index();
         $goods = current($goodinfo);
         $where = 'cat_id='.$goods['cat_id'].' and gid <> '.$goods['gid'];
-        $sql = 'select gid,goods_sn,thumb_img from m_shop where '.$where.' order by click_count desc limit 6';
         $othergoods = M('goods')->getAll('gid,goods_sn,goods_name,thumb_img',$where,'','','click_count desc',6);
         $this->assign('others',$othergoods);
         $this->assign('goodsinfo',$goods);
         $this->display('goods');
     }
+
+
 }
 
 
