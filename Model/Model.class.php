@@ -12,10 +12,12 @@ use Core\db;
 
 defined('ACC')||exit('ACC Denied');
 
-class Model{
+final class Model{
 	protected $db = '';
+    protected $table;
     protected $errormsg;
 	public $validata = array(); 
+	protected static $ins='';
 	// validata array(field,rule,message,condition)
 	public function _validata($data){
 		foreach ($this->validata as $value) {
@@ -92,39 +94,49 @@ class Model{
 
 	/** 读取文件，选择数据库，创建链接
 	 */
-	public function __construct($resource){
+	final protected function __construct($resource){
         $this->db = $resource;
 	}
-	public function table($table){
-		return $this->db->table($table);
+
+	public static function getIns($resource){
+		if(self::$ins instanceof self){
+			return self::$ins;
+		}
+		self::$ins = new self($resource);
+		return self::$ins;
 	}
+
+    public function setTable($table){
+        return $this->table = $table;
+    }
+
 	public function getAll($field = '*',$where = 1,$group='',$having='',$order='',$limit=''){
-		return $this->db->getAll($field,$where,$group,$having,$order,$limit);
+		return $this->db->getAll($this->table,$field,$where,$group,$having,$order,$limit);
 	}
 
 	public function getRow($field,$where){
-		return $this->db->getRow($field,$where);
+		return $this->db->getRow($this->table,$field,$where);
 	}
 
 	public function getOne($field,$where){
-		$res = $this->db->getOne($field,$where);
+		$res = $this->db->getOne($this->table,$field,$where);
         return current($res);
 	}
 
 	public function delete($where){
-		return $this->db->delete($where);
+		return $this->db->delete($this->table,$where);
 	}
 
 	public function update($arr,$where){
         $this->_validata($arr);
         if(!empty($this->getError()))  return false;
-		return $this->db->update($arr,$where);
+		return $this->db->update($this->table,$arr,$where);
 	}
 
 	public function add($arr){
         $this->_validata($arr);
         if(!empty($this->getError())) return false;
-		return $this->db->add($arr);
+		return $this->db->add($this->table,$arr);
 	}
 
 	public function query($sql){

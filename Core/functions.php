@@ -59,19 +59,23 @@ function L($key,$kind=''){
  * @return object
  */
 function M($name){
-	static $m = array();
+	static $m = '';
 	static $resource = '';
-    if(!empty($m[$name])) return $m[$name];
+    if(!empty($m)){
+        $m->setTable($name);
+        return $m;
+    }
     if(empty($resource)){
         $CONFIG = C('config');
         $config = $CONFIG['db'];
         require_once CORE.'db/'.$config['db_type'].'.class.php';
         $db = 'Core\\db\\'.$config['db_type'].'db';
-        $resource =  new $db();
+        $resource =  new $db($config);
     }
-	$tmp = new Model\Model($resource);
-	$tmp->table($name);
-	return $m[$name] = $tmp;
+
+    $m = Model\Model::getIns($resource);
+    $m->setTable($name);
+    return $m;
 }
 
 /*过滤字符串

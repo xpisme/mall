@@ -38,12 +38,11 @@ class IndexController extends Controller\Controller{
                 $where .= ' and shop_price >'.$price[0].' and shop_price <'.$price[1];
             }
         }
-        $goods = M('goods');
         if($cid == 0){
             $this->index();
         }else{
-            $res = $goods->getAll('gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img,ori_img',$where,'','','click_count desc','8');
-            echo $goods->lastSql();
+
+            $res = M('goods')->getAll('gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img,ori_img',$where,'','','click_count desc','8');
             $pname = get_crumbs($cid);
             $childlist = M('cate')->getOne('childlist','cid='.$cid);
             $childs = M('cate')->getAll('cid,cname','cid in ('.$childlist.')');

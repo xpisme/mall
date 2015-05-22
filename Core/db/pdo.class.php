@@ -31,14 +31,15 @@ class pdodb extends DB{
 	 * @access public
 	 * @return array
 	 */
-	public function getAll($field = '*',$where = 1,$group='',$having='',$order='',$limit=''){
+	public function getAll($table,$field = '*',$where = 1,$group='',$having='',$order='',$limit=''){
+		$table = $this->jointable($table);
 		$sql = 'select ';
 		$where = $where == 1 ? '' : ' where '.$where;
 		$group = $group == '' ? '' : ' group by '.$group ;
 		$having = $having == '' ? '' : ' having '.$having;
 		$order = $order == '' ? '' : ' order by '.$order ;
 		$limit = $limit == '' ? '' : ' limit '.$limit;
-		$sql = $sql . $field . ' from '.$this->currdb.$where.$group.$having.$order.$limit;
+		$sql = $sql . $field . ' from '.$table.$where.$group.$having.$order.$limit;
 		return $this->query($sql);
 	}
 
@@ -48,8 +49,9 @@ class pdodb extends DB{
 	 * @param where str
 	 * @return array
 	 */
-    public function getRow($filed='*',$where){
-        $sql = "select ".$filed." from ".$this->currdb." where ".$where." limit 1";
+    public function getRow($table,$filed='*',$where){
+    	$table = $this->jointable($table);
+        $sql = "select ".$filed." from ".$table." where ".$where." limit 1";
         $res = $this->query($sql);
         return empty($res) ? false : $res[0] ;
     }
@@ -61,8 +63,9 @@ class pdodb extends DB{
 	 * @param where str
 	 * @return mix
 	 */
-	public function getOne($field,$where){
-		$sql = "select ".$field." from ".$this->currdb." where ".$where;
+	public function getOne($table,$field,$where){
+		$table = $this->jointable($table);
+		$sql = "select ".$field." from ".$table." where ".$where;
         $res = $this->query($sql);
         return empty($res) ? false : $res[0] ;
 	}
@@ -73,8 +76,9 @@ class pdodb extends DB{
 	 * @param where  str
 	 * @return bool
 	 */
-	public function delete($where){
-		$sql = 'delete from '.$this->currdb.' where '.$where;
+	public function delete($table,$where){
+		$table = $this->jointable($table);
+		$sql = 'delete from '.$table.' where '.$where;
 		return $this->query($sql);
 	}
 
@@ -85,9 +89,10 @@ class pdodb extends DB{
 	 * @param arr  array
 	 * @return bool
 	 */
-	public function update($arr,$where){
+	public function update($table,$arr,$where){
+		$table = $this->jointable($table);
 		if(empty($where)) exit();
-		$sql = "update ".$this->currdb." set ";
+		$sql = "update ".$table." set ";
 		foreach ($arr as $key => $value) {
 			$value = $this->parseValue($value);
             $set[]    = $key.'='.$value;
@@ -104,9 +109,10 @@ class pdodb extends DB{
 	 * @param arr array
 	 * @return int  insertid
 	 */
-	public function add($arr){
+	public function add($table,$arr){
+		$table = $this->jointable($table);
 		$sql = '';
-		$sql .= 'insert into '.$this->currdb.' ';
+		$sql .= 'insert into '.$table.' ';
 		foreach ($arr as $key => $value) {
 			$values[]=$this->parseValue($value);
 		}
@@ -123,7 +129,6 @@ class pdodb extends DB{
 	 * @return array
 	 */
 	public function query($sql){
-		require_once CORE.'log.class.php';
 		sqllog($sql);
 		$this->lastSql = $sql;
 		if($res = $this->link->query($sql))

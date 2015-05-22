@@ -17,11 +17,11 @@ abstract class DB{
 	private $insertid;
 	// 最后的sql语句
 	private $lastSql;
-	// 当前数据库
-	public $currdb;
-	public function __construct(){
-		$tmp = C('config');
-        $this->db_config = $tmp['db'];
+	// 表前缀
+	private $prefix;
+	public function __construct($db){
+        $this->db_config = $db;
+        $this->prefix = $db['db_prefix'];
 		$this->connect();
 	}
 	
@@ -37,7 +37,7 @@ abstract class DB{
 	 * @access public
 	 * @return array
 	 */
-	public function getAll($field = '*',$where = 1,$group='',$having='',$order='',$limit=''){
+	public function getAll($table,$field = '*',$where = 1,$group='',$having='',$order='',$limit=''){
 	}
 
 	/**
@@ -46,7 +46,7 @@ abstract class DB{
 	 * @param where str
 	 * @return array
 	 */
-	public function getRow($filed,$where){}
+	public function getRow($table,$filed,$where){}
 
 	/**
 	 * 获得一个数据
@@ -55,7 +55,7 @@ abstract class DB{
 	 * @param where str
 	 * @return mix
 	 */
-	public function getOne($field,$where){}
+	public function getOne($table,$field,$where){}
 
 	/**
 	 * 删除数据
@@ -63,7 +63,7 @@ abstract class DB{
 	 * @param where  str
 	 * @return bool
 	 */
-	public function delete($where){}
+	public function delete($table,$where){}
 
 	/**
 	 * 更新数据
@@ -72,7 +72,7 @@ abstract class DB{
 	 * @param arr  array
 	 * @return bool
 	 */
-	public function update($arr,$where){}
+	public function update($table,$arr,$where){}
 	
 	/**
 	 * 增加数据
@@ -80,7 +80,7 @@ abstract class DB{
 	 * @param arr array
 	 * @return int  insertid
 	 */
-	public function add($arr){}
+	public function add($table,$arr){}
 
 	/**
 	 * 执行sql语句
@@ -121,12 +121,12 @@ abstract class DB{
 		return $this->lastSql;
 	}
 	/**
-	 * 设置当前数据库
+	 * 拼接表
 	 * @access public
 	 * @return str
 	 */
-	public function table($table){
-		return $this->currdb = $this->db_config['db_name'].'.'. $this->db_config['db_prefix'] .$table;
+	public function jointable($table){
+		return  $this->prefix.$table;
 	}
 
 
