@@ -1249,3 +1249,179 @@
 [18-May-2015 11:26:22 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 65
 [18-May-2015 11:26:22 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 65
 [18-May-2015 11:26:22 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 65
+[22-May-2015 04:44:38 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 04:44:38 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:06:29 Europe/Berlin] PHP Notice:  Undefined index: username in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 18
+[22-May-2015 05:06:29 Europe/Berlin] PHP Notice:  Undefined index: catetree in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 37
+[22-May-2015 05:06:30 Europe/Berlin] PHP Notice:  Undefined index: username in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 18
+[22-May-2015 05:06:30 Europe/Berlin] PHP Notice:  Undefined index: catetree in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 37
+[22-May-2015 05:07:13 Europe/Berlin] PHP Warning:  Missing argument 1 for M(), called in D:\xampp\www\xphp\Controller\Controller.class.php on line 25 and defined in D:\xampp\www\xphp\Core\functions.php on line 61
+[22-May-2015 05:07:13 Europe/Berlin] PHP Notice:  Undefined variable: name in D:\xampp\www\xphp\Core\functions.php on line 65
+[22-May-2015 05:07:13 Europe/Berlin] PHP Warning:  Missing argument 1 for M(), called in D:\xampp\www\xphp\Controller\Controller.class.php on line 25 and defined in D:\xampp\www\xphp\Core\functions.php on line 61
+[22-May-2015 05:07:13 Europe/Berlin] PHP Notice:  Undefined variable: name in D:\xampp\www\xphp\Core\functions.php on line 65
+[22-May-2015 05:15:34 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:15:34 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:19:44 Europe/Berlin] PHP Warning:  array_sum() expects parameter 1 to be array, string given in D:\xampp\www\xphp\Controller\Controller.class.php on line 27
+[22-May-2015 05:19:44 Europe/Berlin] PHP Warning:  array_sum() expects parameter 1 to be array, string given in D:\xampp\www\xphp\Controller\Controller.class.php on line 27
+[22-May-2015 05:20:47 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:20:47 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:20:58 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:20:58 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:33:07 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:33:07 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:34:33 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:34:33 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:34:44 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:34:44 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:34:59 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:34:59 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:36:32 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:36:32 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 05:36:44 Europe/Berlin] PHP Parse error:  syntax error, unexpected '"', expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in D:\xampp\www\xphp\Controller\Admin\AdminController.class.php on line 15
+[22-May-2015 05:42:33 Europe/Berlin] PHP Warning:  file_get_contents(D:/xampp/www/xphp/View/home/.html): failed to open stream: No such file or directory in D:\xampp\www\xphp\Lib\template.class.php on line 254
+[22-May-2015 05:44:27 Europe/Berlin] PHP Fatal error:  Class 'Controller\Admin\ShopController' not found in D:\xampp\www\xphp\Core\App.class.php on line 75
+[22-May-2015 05:56:36 Europe/Berlin] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in D:\xampp\www\xphp\Controller\Home\ShopController.class.php on line 8
+[22-May-2015 07:21:13 Europe/Berlin] PHP Notice:  Undefined index: shopname in D:\xampp\www\xphp\Controller\Home\ShopController.class.php on line 21
+[22-May-2015 07:28:55 Europe/Berlin] PHP Warning:  preg_match(): Compilation failed: reference to non-existent subpattern at offset 9 in D:\xampp\www\xphp\Model\Model.class.php on line 56
+[22-May-2015 07:29:02 Europe/Berlin] PHP Warning:  preg_match(): Compilation failed: reference to non-existent subpattern at offset 9 in D:\xampp\www\xphp\Model\Model.class.php on line 56
+[22-May-2015 07:43:43 Europe/Berlin] PHP Warning:  file_get_contents(D:/xampp/www/xphp/View/home/goods.html): failed to open stream: No such file or directory in D:\xampp\www\xphp\Lib\template.class.php on line 254
+[22-May-2015 07:44:13 Europe/Berlin] PHP Warning:  file_get_contents(D:/xampp/www/xphp/View/home/goods.html): failed to open stream: No such file or directory in D:\xampp\www\xphp\Lib\template.class.php on line 254
+[22-May-2015 07:44:16 Europe/Berlin] PHP Warning:  file_get_contents(D:/xampp/www/xphp/View/home/goods.html): failed to open stream: No such file or directory in D:\xampp\www\xphp\Lib\template.class.php on line 254
+[22-May-2015 07:49:02 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 51
+[22-May-2015 07:49:02 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 67
+[22-May-2015 07:49:52 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 51
+[22-May-2015 07:49:52 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 67
+[22-May-2015 07:50:09 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 51
+[22-May-2015 07:50:09 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 67
+[22-May-2015 07:51:10 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:10 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:51:10 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:10 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:51:11 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:11 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:51:11 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:11 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:51:11 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:11 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:51:13 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:13 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:51:13 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:13 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:51:14 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:14 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:51:14 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:14 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:51:15 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:15 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:51:15 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:51:15 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:52:06 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:52:06 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:52:06 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:52:06 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:52:06 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:52:06 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:52:07 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:52:07 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:52:07 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:52:07 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:52:07 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:52:07 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:52:07 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:52:07 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:52:08 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:52:08 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:53:24 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:53:24 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:53:27 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:53:27 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:53:45 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:53:45 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:53:46 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:53:46 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:53:46 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:53:46 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:53:47 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:53:47 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:54:08 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:54:08 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:54:19 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:54:19 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:54:19 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:54:19 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:54:46 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:54:46 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:54:48 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:54:48 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:57:00 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:57:00 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 07:57:03 Europe/Berlin] PHP Notice:  Undefined index: lists in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 56
+[22-May-2015 07:57:03 Europe/Berlin] PHP Notice:  Undefined index: pagenav in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 72
+[22-May-2015 08:03:23 Europe/Berlin] PHP Notice:  Uninitialized string offset: 4 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 08:03:23 Europe/Berlin] PHP Notice:  Uninitialized string offset: 5 in D:\xampp\www\xphp\Lib\image.class.php on line 18
+[22-May-2015 08:14:53 Europe/Berlin] PHP Notice:  Undefined variable: pname in D:\xampp\www\xphp\Controller\Home\IndexController.class.php on line 55
+[22-May-2015 08:14:53 Europe/Berlin] PHP Notice:  Undefined variable: res in D:\xampp\www\xphp\Controller\Home\IndexController.class.php on line 56
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cid' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:14:53 Europe/Berlin] PHP Warning:  Illegal string offset 'cname' in D:\xampp\www\xphp\Lib\template.class.php(1176) : eval()'d code on line 71
+[22-May-2015 08:27:18 Europe/Berlin] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in D:\xampp\www\xphp\Controller\Home\IndexController.class.php on line 87
+[22-May-2015 08:27:18 Europe/Berlin] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in D:\xampp\www\xphp\Controller\Home\IndexController.class.php on line 87

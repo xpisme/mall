@@ -31,9 +31,12 @@ select{outline: none;}
     text-align: center;
     position: relative;
     display: inline-block;
+}
+.h-r-left>a{
     color: #00b188;
     font-size: 3em;
     font-weight: 800;
+    
 }
 .h-r-left img{
     width: 100%;

@@ -19,7 +19,13 @@ class Controller{
         $cate = M('cate');
         $category =$cate->getAll('cid,cname,pid,childlist,pidlist,level');
         $catetree = catetree($category);
-        $username = empty($_SESSION['username']) ? '' : $_SESSION['username'] ;
+        $username = empty($_SESSION['username']) ? '' : $_SESSION['username'];
+        $exshop = 0;
+        if(!empty($username)){
+            $exshop = M()->query('select count(*) as sum from m_shop s left join m_customer c on s.uid=c.uid where c.uname='."'$username'");
+            $exshop = current($exshop)['sum'];
+        }
+        $this->assign('exshop',$exshop);
         $this->assign('username',$username);
         $this->assign('catetree',$catetree);
     }

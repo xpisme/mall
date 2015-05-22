@@ -1,113 +1,32 @@
-[2015-05-18 06:35:27]  select cname from mall.m_cate where 
-[2015-05-18 10:25:50]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 10:25:52]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 10:25:53]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 10:25:53]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 10:25:54]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 10:41:51]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=
-[2015-05-18 10:41:52]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=
-[2015-05-18 10:41:53]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018
-[2015-05-18 10:42:09]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:42:09]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:42:09]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:42:10]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:42:10]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:42:53]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:42:54]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:42:54]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:42:54]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:42:54]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:04]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:05]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:05]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:43]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:44]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:44]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:44]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:45]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:45]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:48]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:48]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:48]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:43:52]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:07]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:08]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:08]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:09]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:09]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:09]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:09]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:10]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:11]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:11]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 10:44:24]  select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img from mall.m_goods where goods_sn=MERPS1983323018 limit 1
-[2015-05-18 11:09:07]  select gid,goods_sn,goods_name,thumb_img from mall.m_goods where catid=17 order by click_count desc limit 6
-[2015-05-18 11:09:08]  select gid,goods_sn,goods_name,thumb_img from mall.m_goods where catid=17 order by click_count desc limit 6
-[2015-05-18 11:09:08]  select gid,goods_sn,goods_name,thumb_img from mall.m_goods where catid=17 order by click_count desc limit 6
-[2015-05-18 11:09:09]  select gid,goods_sn,goods_name,thumb_img from mall.m_goods where catid=17 order by click_count desc limit 6
-[2015-05-18 11:09:09]  select gid,goods_sn,goods_name,thumb_img from mall.m_goods where catid=17 order by click_count desc limit 6
-[2015-05-18 11:09:09]  select gid,goods_sn,goods_name,thumb_img from mall.m_goods where catid=17 order by click_count desc limit 6
-[2015-05-18 11:09:21]  select gid,goods_sn,goods_name,thumb_img from mall.m_goods where catid=17 order by click_count desc limit 6
-[2015-05-18 11:20:10]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:16]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:18]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:18]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:24]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:27]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:34]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:35]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:35]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:35]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:35]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:36]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:36]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:36]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:36]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:38]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:39]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:40]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:40]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:41]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:20:42]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:10]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:11]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:12]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:12]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:54]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:55]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:55]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:55]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:56]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:56]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:56]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:22:56]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:23:25]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:24:19]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:24:20]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:24:20]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:24:21]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:24:21]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:24:21]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:25:36]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:25:36]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:25:36]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:25:37]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:25:37]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:25:37]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:25:37]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:25:37]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:26:16]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:26:19]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:26:33]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:01]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:02]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:02]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:02]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:03]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:03]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:03]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:03]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:05]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:06]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:07]  select cid,cname from mall.m_cate where cid in ()
-[2015-05-18 11:28:07]  select cid,cname from mall.m_cate where cid in ()
+[2015-05-22 07:45:23]  select cid,cname from m_cate where cid in ()
+[2015-05-22 07:46:51]  select cid,cname from m_cate where cid in ()
+[2015-05-22 07:46:51]  select cid,cname from m_cate where cid in ()
+[2015-05-22 07:46:52]  select cid,cname from m_cate where cid in ()
+[2015-05-22 07:46:53]  select cid,cname from m_cate where cid in ()
+[2015-05-22 07:46:54]  select cid,cname from m_cate where cid in ()
+[2015-05-22 07:47:05]  select cid,cname from m_cate where cid in ()
+[2015-05-22 07:47:06]  select cid,cname from m_cate where cid in ()
+[2015-05-22 08:10:46]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:10:48]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:10:49]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:10:51]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:10:52]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:10:54]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:10:55]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:10:57]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:10:58]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:11:00]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:11:02]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:11:03]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:11:05]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:11:06]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:11:08]  update m_goods set is_delete=1 where gid={$list.gid
+[2015-05-22 08:17:38]  select cid,cname from m_cate where cid in ()
+[2015-05-22 08:17:40]  select cid,cname from m_cate where cid in ()
+[2015-05-22 08:17:42]  select cid,cname from m_cate where cid in ()
+[2015-05-22 08:17:44]  select cid,cname from m_cate where cid in ()
+[2015-05-22 08:22:39]  select cid,cname from m_cate where cid in ()
+[2015-05-22 08:22:41]  select cid,cname from m_cate where cid in ()
+[2015-05-22 08:22:42]  select cid,cname from m_cate where cid in ()
+[2015-05-22 08:22:42]  select cid,cname from m_cate where cid in ()
+[2015-05-22 08:22:47]  select cid,cname from m_cate where cid in ()

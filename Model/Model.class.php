@@ -23,7 +23,6 @@ final class Model{
 		foreach ($this->validata as $value) {
 			switch ($value[1]) {
 				case 'require':
-
                     if($data[$value[0]] == 0) continue ;
 					if (empty($data[$value[0]])) {
 							return $this->errormsg = $value[0].':'.$value[2];
@@ -38,13 +37,30 @@ final class Model{
 					$reg = '/^\d+$/';
 					if(preg_match($reg, $data[$value[0]]) === 0){
 							return $this->errormsg = $value[0].':'.$value[2];
-								
 					}elseif(!empty($value[3])){
 						if(strlen($data[$value[0]]) !== $value[3]) 
 							return $this->errormsg = $value[0].':'.$value[2];
-								
 					}
 					break;
+                case 'qq':
+                    $reg = '/^\d{6,12}$/';
+                    if(preg_match($reg, $data[$value[0]]) === 0){
+							return $this->errormsg = $value[0].':'.$value[2];
+					}elseif(!empty($value[3])){
+						if(strlen($data[$value[0]]) !== $value[3])
+							return $this->errormsg = $value[0].':'.$value[2];
+					}
+					break;
+                case 'tel':
+                    $reg = '/^1[3587]{1}\d{9}$/';
+                    if(preg_match($reg, $data[$value[0]]) === 0){
+							return $this->errormsg = $value[0].':'.$value[2];
+					}elseif(!empty($value[3])){
+						if(strlen($data[$value[0]]) !== $value[3])
+							return $this->errormsg = $value[0].':'.$value[2];
+					}
+					break;
+
 				case 'email':
 					$reg = '/^[\da-z._]+@[\da-z._]+$/i';
 					if(preg_match($reg, $data[$value[0]]) === 0) 

@@ -17,6 +17,12 @@
                 <p id="personName" class="h-r-userName">
                 {if $username eq ''}
                 <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                {elseif $exshop eq 0}
+                    欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=home&c=shop&a=add"><input type="button" value="开店" class="h-r-input" /></a>
+                        <input type="button" value="我的关注" class="h-r-input"/>
+                    </p>
                 {else}
                     欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
@@ -24,6 +30,7 @@
                         <input type="button" value="我的关注" class="h-r-input"/>
                     </p>
                 {/if}
+
                 </p>
             </div>
         </div>

@@ -10,12 +10,7 @@ use Controller;
 defined('ACC') or exit('ACC Denied');
 
 
-class CateController extends Controller\Controller{
-    public function __construct(){
-        parent::__construct();
-        if(empty($_SESSION['username'])) header('location:'.SITE);
-        $this->assign('username',$_SESSION['username']);
-    }
+class CateController extends AdminController{
 	public function add(){
         if(empty($_POST)) $this->showMessage('not value');
         $data = array();

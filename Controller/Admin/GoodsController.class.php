@@ -10,12 +10,7 @@ use Lib;
 
 defined('ACC')||exit('ACC Denied');
 
-class GoodsController extends Controller\Controller{
-    public function __construct(){
-        parent::__construct();
-        if(empty($_SESSION['username'])) header('location:'.SITE);
-        $this->assign('username',$_SESSION['username']);
-    }
+class GoodsController extends AdminController{
     public function lists(){
         $goods = M('goods');
         $config = C('config');
@@ -24,7 +19,7 @@ class GoodsController extends Controller\Controller{
         }else{
             $page = 1;
         }
-        $prepage = 9;
+        $prepage = 10;
         $limit = ' limit '. ($page-1)*$prepage . ','.$prepage;
         $sql = 'select gid,name,left(goods_name,7)as gname,goods_name,goods_number,shop_price,activi_price,click_count,left(add_time,10) as addtime from '.$config["db"]["db_prefix"].'goods a left join '.$config["db"]["db_prefix"].'shop b on a.sid=b.sid where a.is_delete = 0 and b.uid='.$_SESSION['userid'].$limit;
         $lists = $goods->query($sql);
@@ -114,6 +109,18 @@ class GoodsController extends Controller\Controller{
     public function dele(){
         $where = 'gid='.$_GET['gid'];
         $goods = M('goods');
+        $arr = array();
+        $arr['is_delete'] = 1;
+        if($goods->update($arr,$where)){
+            $this->showMessage('删除成功');
+        }else{
+            $this->showMessage('删除失败');
+        }
+    }
+
+    public function del(){
+        $where = 'gid='.$_GET['gid'];
+        $goods = M('goods');
         if($goods->delete($where)){
             $this->showMessage('删除成功');
         }else{
@@ -121,6 +128,41 @@ class GoodsController extends Controller\Controller{
         }
     }
 
+    public function recycle(){
+        $goods = M('goods');
+        $config = C('config');
+        if(isset($_GET['page']) && $_GET['page']>0) {
+            $page = $_GET['page']+0;
+        }else{
+            $page = 1;
+        }
+        $prepage = 10;
+        $limit = ' limit '. ($page-1)*$prepage . ','.$prepage;
+        $sql = 'select gid,name,left(goods_name,7)as gname,goods_name,goods_number,shop_price,activi_price,click_count,left(add_time,10) as addtime from '.$config["db"]["db_prefix"].'goods a left join '.$config["db"]["db_prefix"].'shop b on a.sid=b.sid where a.is_delete = 1 and b.uid='.$_SESSION['userid'].$limit;
+        $lists = $goods->query($sql);
+        $sql=  'select count(*) as total from '.$config["db"]["db_prefix"].'goods a left join '.$config["db"]["db_prefix"].'shop b on a.sid=b.sid where a.is_delete = 0 and b.uid='.$_SESSION['userid'];
+        $total = $goods->query($sql);
+        if($prepage < $total[0]['total']){
+            $page = new Lib\page($total[0]['total'],$page,$prepage);
+            $pagenav = $page->show();
+        }else{
+            $pagenav = '';
+        }
+        $this->assign('pagenav',$pagenav);
+        $this->assign('lists',$lists);
+        $this->display('recycle');
+    }
+    public function reset(){
+        $where = 'gid='.$_GET['gid'];
+        $goods = M('goods');
+        $arr = array();
+        $arr['is_delete'] = 0;
+        if($goods->update($arr,$where)){
+            $this->showMessage('还原成功');
+        }else{
+            $this->showMessage('还原失败');
+        }
+    }
 }
 
 

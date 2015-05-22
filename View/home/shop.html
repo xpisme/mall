@@ -2,22 +2,35 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8" CONTENT="TEXT/HTML">
-    <title>商品管理</title>
-    <link href="../css/order.css" rel="stylesheet">
+    <title>开店</title>
+    <link href="{$path}css/order.css" rel="stylesheet">
 </head>
 <body onload="correct_onlode()">
 <div id="box">
     <div class="head">
         <div class="head-inner">
             <div class="h-r-left">
-                校卖部
+                <a href="index.php">校卖部</a>
             </div>
             <div class="h-right">
-                <p id="personName" class="h-r-userName"><%= personName %></p>
-                <span class="exit fr">退出登录</span>
-                <p><input type="button" value="发布商品" class="h-r-input" onclick="getOrder()"/>
-                    <input type="button" value="我的关注" class="h-r-input"/>
+                <p id="personName" class="h-r-userName">
+                    {if $username eq ''}
+                    <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                    {elseif $exshop eq 0}
+                        欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                        <p>
+                            <a href="index.php?m=home&c=shop&a=add"><input type="button" value="开店" class="h-r-input" /></a>
+                            <input type="button" value="我的关注" class="h-r-input"/>
+                        </p>
+                    {else}
+                        欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                        <p>
+                            <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
+                            <input type="button" value="我的关注" class="h-r-input"/>
+                        </p>
+                    {/if}
                 </p>
+                
             </div>
         </div>
     </div>
@@ -25,23 +38,23 @@
     <div class="content">
         <div class="c-right c-r-correct">
             <h1 class="c-r-h1">*我要开店*</h1>
-            <form id="orderForm" action="/update" method="post">
+            <form id="orderForm" action="" method="post">
                 <p class="c-r-from-p">
-                    店铺名称：<input type="text" name="goodsName" id="goodsName" value="">&nbsp;
-                    店主Tel：<input type="text" name="num" id="num" value="">&nbsp;
-                    店主住址：<input type="text" name="price" id="price" value=""><br/>
+                    店铺名称：<input type="text" name="shopName" value="" required="required">&nbsp;
+                    店主Tel：<input type="tel" name="tel" value=""  required="required">&nbsp;
+                    店主住址：<input type="text" name="address" value=""  required="required"><br/>
                 </p>
                 <p class="c-r-from-p">
-                    店 主 QQ：<input type="text" name="goodsName" id="goodsName" value="">&nbsp;
-                    店主邮箱：<input type="text" name="goodsName" id="goodsName" value="">&nbsp;
+                    店 主 QQ：<input type="number" name="qq" value=""  required="required">&nbsp;
+                    店主邮箱：<input type="email" name="email" value="" required="required">&nbsp;
                 </p>
                 <br/>
                 店铺描述
-                <textarea class="c-r-txt" name="describe"></textarea>
+                <textarea class="c-r-txt" name="describe" required="required"></textarea>
                 <p>
                     <span id="warning"></span>
-                    <input type="button" value=" 放 弃" class="btn" onclick="correct_back()">
-                    <input type="submit" value="确认开店" class="btn" onclick="correct()">
+                    <input type="reset" value=" 放 弃" class="btn">
+                    <input type="submit" value="确认开店" class="btn">
                 </p>
             </form>
 
@@ -49,6 +62,7 @@
     </div>
     <div class="footer fl"></div>
 </div>
-<script src="../js/order.js"></script>
+<script src="{$path}js/jquery-1.11.3.min.js"></script>
+<script src="{$path}js/order.js"></script>
 </body>
 </html>

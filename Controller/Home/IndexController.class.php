@@ -15,6 +15,7 @@ class IndexController extends Controller\Controller{
         $goodsimg = $goods->getAll('gid,goods_name,thumb_img',$where,'','','click_count desc','5');
         $images = $goods->getAll('gid,goods_sn,goods_name,thumb_img',$where,'','','rand()','6');
         $all = $goods->getAll('gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img,ori_img',$where,'','','',8);
+
         $this->assign('goods',$all);
         $this->assign('images',$images);
         $this->assign('goodsimg',$goodsimg);
@@ -83,6 +84,7 @@ class IndexController extends Controller\Controller{
         $goods = current($goodinfo);
         $where = 'cat_id='.$goods['cat_id'].' and gid <> '.$goods['gid'];
         $othergoods = M('goods')->getAll('gid,goods_sn,goods_name,thumb_img',$where,'','','click_count desc',6);
+        M('goods')->query('update m_goods set click_count=click_count+1 where goods_sn="'.$_GET['sn'].'"');
         $this->assign('others',$othergoods);
         $this->assign('goodsinfo',$goods);
         $this->display('goods');

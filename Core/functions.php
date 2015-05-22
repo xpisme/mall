@@ -58,7 +58,7 @@ function L($key,$kind=''){
  * @param string $name 
  * @return object
  */
-function M($name){
+function M($name=''){
 	static $m = '';
 	static $resource = '';
     if(!empty($m)){
