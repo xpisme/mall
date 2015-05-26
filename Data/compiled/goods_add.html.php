@@ -11,7 +11,7 @@
     <div class="head">
         <div class="head-inner">
             <div class="h-r-left">
-                校卖部
+               <a href="index.php">校卖部</a>
             </div>
             <div class="h-right">
                 <p id="personName" class="h-r-userName">
@@ -35,6 +35,7 @@
                 <a href="index.php?m=admin&c=goods&a=lists"><li>在线商品</li></a>
                 <a href="index.php?m=admin&c=goods&a=add"><li>发布商品</li></a>
                 <a href="index.php?m=admin&c=cate&a=lists"><li>分类列表</li></a>
+                <a href="index.php?m=admin&c=goods&a=recycle"><li>回收站</li></a>
                 <li>我的关注</li>
             </ul>
         </div>
@@ -51,6 +52,7 @@
                     促销单价：<input type="text" name="activi_price" id="activi_price" class="textRight"  required="required">&nbsp;
                     商品分类：
                     <select class="c-r-select" id="goodsCode" name="catid"  required="required">
+                        <option value="0">顶级分类</option>
                         <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cate');if (count($_from)):
     foreach ($_from AS $this->_var['cate']):
 ?>

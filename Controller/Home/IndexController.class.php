@@ -16,7 +16,6 @@ class IndexController extends Controller\Controller{
         $images = $goods->getAll('gid,goods_sn,goods_name,thumb_img',$where,'','','rand()','6');
         $all = $goods->getAll('gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img,ori_img',$where,'','','',8);
         $this->assign('goods',formatgoods($all));
-
         $this->assign('images',formatgoods($images));
         $this->assign('goodsimg',formatgoods($goodsimg));
 		$this->display('index');
@@ -48,12 +47,11 @@ class IndexController extends Controller\Controller{
         if($cid == 0){
             $this->index();
         }else{
-
             $res = M('goods')->getAll('gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img,ori_img',$where,'','','click_count desc','8');
             $res = formatgoods($res);
             $pname = get_crumbs($cid);
             $childlist = M('cate')->getOne('childlist','cid='.$cid);
-            $childs = M('cate')->getAll('cid,cname','cid in ('.$childlist.')');
+            $childs = !empty($childlist) ? M('cate')->getAll('cid,cname','cid in ('.$childlist.')') : '' ;
         }
         $this->assign('cid',$cid);
         $this->assign('childs',$childs);

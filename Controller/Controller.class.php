@@ -7,6 +7,7 @@
  */
 namespace Controller;
 use Core;
+use Controller\Home;
 defined('ACC')||exit('ACC Denied');
 
 class Controller{
@@ -48,7 +49,8 @@ class Controller{
 	* 默认
 	*/
 	public function index(){
-		$this->display('index');
+		$i = new Home\IndexController();
+        $i->index();
 	}
 
     /**返回客户端

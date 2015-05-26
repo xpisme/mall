@@ -17,6 +17,12 @@
                 <p id="personName" class="h-r-userName">
                 <?php if ($this->_var['username'] == ''): ?>
                 <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                <?php elseif ($this->_var['exshop'] == 0): ?>
+                    欢迎 <?php echo $this->_var['username']; ?><a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=home&c=shop&a=add"><input type="button" value="开店" class="h-r-input" /></a>
+                        <input type="button" value="我的关注" class="h-r-input"/>
+                    </p>
                 <?php else: ?>
                     欢迎 <?php echo $this->_var['username']; ?><a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
@@ -24,6 +30,7 @@
                         <input type="button" value="我的关注" class="h-r-input"/>
                     </p>
                 <?php endif; ?>
+
                 </p>
             </div>
         </div>
@@ -47,7 +54,7 @@
                     <?php $_from = $this->_var['images']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'img');if (count($_from)):
     foreach ($_from AS $this->_var['img']):
 ?>
-                        <img src="<?php echo $this->_var['img']['thumb_img']; ?>" alt="<?php echo $this->_var['img']['goods_name']; ?>" />
+                        <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['img']['goods_sn']; ?>"><img src="<?php echo $this->_var['img']['thumb_img']['0']; ?>" alt="<?php echo $this->_var['img']['goods_name']; ?>" /></a>
                     <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
                 </div>
                 <div class="c-part1-main-index">
@@ -58,13 +65,12 @@
     foreach ($_from AS $this->_var['tem']):
 ?>
                             <?php  if($i) {?>
-                            <li class="current"><img src="<?php echo $this->_var['tem']['thumb_img']; ?>" alt="<?php echo $this->_var['tem']['goods_name']; ?>" /></li>
+                            <li class="current"><img src="<?php echo $this->_var['tem']['thumb_img']['0']; ?>" alt="<?php echo $this->_var['tem']['goods_name']; ?>" /></li>
                             <?php  }else{ ?>
-                            <li><img src="<?php echo $this->_var['tem']['thumb_img']; ?>" alt="<?php echo $this->_var['tem']['goods_name']; ?>" /></li>
+                            <li><img src="<?php echo $this->_var['tem']['thumb_img']['0']; ?>" alt="<?php echo $this->_var['tem']['goods_name']; ?>" /></li>
                             <?php } $i=0; ?>
                         <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
                         </ul>
-
                     </div>
                 </div>
             </div>
@@ -78,7 +84,7 @@
     foreach ($_from AS $this->_var['good']):
 ?>
                          <li>
-                            <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['good']['goods_sn']; ?>"><img src="<?php echo $this->_var['good']['thumb_img']; ?>" class="c-part2-new-ul-img"></a>
+                            <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['good']['goods_sn']; ?>"><img src="<?php echo $this->_var['good']['thumb_img']['0']; ?>" class="c-part2-new-ul-img"></a>
                             <div class="c-part2-new-ul-img-price fr">￥<?php echo $this->_var['good']['shop_price']; ?></div>
                             <div class="c-part2-detail">
                                 <p class="c-part2-detail-goodsName"><?php echo $this->_var['good']['goods_name']; ?></p>

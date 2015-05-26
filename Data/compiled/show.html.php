@@ -17,6 +17,12 @@
                 <p id="personName" class="h-r-userName">
                 <?php if ($this->_var['username'] == ''): ?>
                 <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                <?php elseif ($this->_var['exshop'] == 0): ?>
+                    欢迎 <?php echo $this->_var['username']; ?><a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=home&c=shop&a=add"><input type="button" value="开店" class="h-r-input" /></a>
+                        <input type="button" value="我的关注" class="h-r-input"/>
+                    </p>
                 <?php else: ?>
                     欢迎 <?php echo $this->_var['username']; ?><a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
@@ -93,7 +99,7 @@
     foreach ($_from AS $this->_var['good']):
 ?>
                              <li>
-                                <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['good']['goods_sn']; ?>"><img src="<?php echo $this->_var['good']['thumb_img']; ?>" class="c-part2-new-ul-img"></a>
+                                <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['good']['goods_sn']; ?>"><img src="<?php echo $this->_var['good']['thumb_img']['0']; ?>" class="c-part2-new-ul-img"></a>
                                 <div class="c-part2-new-ul-img-price fr">￥<?php echo $this->_var['good']['shop_price']; ?></div>
                                 <div class="c-part2-detail">
                                     <p class="c-part2-detail-goodsName"><?php echo $this->_var['good']['goods_name']; ?></p>

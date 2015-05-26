@@ -48,14 +48,14 @@
             <div class="c-goods">
                 <div class="c-goods-img">
                     
-                    <img src="<?php echo $this->_var['goodsinfo']['thumb_img']; ?>">
+                    <img src="<?php echo $this->_var['goodsinfo']['thumb_img']['0']; ?>">
                     
                 </div>
                 <div class="c-part1-right">
                     <?php $_from = $this->_var['others']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'other');if (count($_from)):
     foreach ($_from AS $this->_var['other']):
 ?>
-                        <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['other']['goods_sn']; ?>"><img src="<?php echo $this->_var['other']['thumb_img']; ?>" alt="<?php echo $this->_var['other']['goods_name']; ?>"></a>
+                        <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['other']['goods_sn']; ?>"><img src="<?php echo $this->_var['other']['thumb_img']['0']; ?>" alt="<?php echo $this->_var['other']['goods_name']; ?>"></a>
                     <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
                     
                 </div>

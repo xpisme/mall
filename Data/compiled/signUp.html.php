@@ -12,7 +12,7 @@
     <div class="signBox-inner">
         <div class="sign">
             <div class="signTitle">
-                <h1>校卖部</h1>
+                <h1><a href="index.php">校卖部</a></h1>
             </div>
             <div class="signText">
                 <form id="signForm" action="" method="post">
