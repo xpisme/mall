@@ -91,7 +91,7 @@
                         <ul class="c-part2-new-ul" id="c-part2-new-ul">
                             {foreach from=$goods item=good}
                              <li>
-                                <a href="index.php?m=home&c=index&a=goods&sn={$good.goods_sn}"><img src="{$good.thumb_img}" class="c-part2-new-ul-img"></a>
+                                <a href="index.php?m=home&c=index&a=goods&sn={$good.goods_sn}"><img src="{$good.thumb_img[0]}" class="c-part2-new-ul-img"></a>
                                 <div class="c-part2-new-ul-img-price fr">￥{$good.shop_price}</div>
                                 <div class="c-part2-detail">
                                     <p class="c-part2-detail-goodsName">{$good.goods_name}</p>

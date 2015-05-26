@@ -59,12 +59,9 @@ function L($key,$kind=''){
  * @return object
  */
 function M($name=''){
-	static $m = '';
+	static $m = array();
 	static $resource = '';
-    if(!empty($m)){
-        $m->setTable($name);
-        return $m;
-    }
+    if(!empty($m[$name]))   return $m[$name];
     if(empty($resource)){
         $CONFIG = C('config');
         $config = $CONFIG['db'];
@@ -72,10 +69,8 @@ function M($name=''){
         $db = 'Core\\db\\'.$config['db_type'].'db';
         $resource =  new $db($config);
     }
-
-    $m = Model\Model::getIns($resource);
-    $m->setTable($name);
-    return $m;
+    $tmp = new Model\Model($resource,$name);
+    return $m[$name] = $tmp;
 }
 
 /*过滤字符串
@@ -215,4 +210,15 @@ function get_crumbs($cid){
     $temp['cid'] = $cid;
     array_push($cname,$temp);
     return $cname;
+}
+
+/** 格式化goods数组中的images
+ * @param $data goods表
+ */
+function formatgoods($data){
+    foreach($data as $k=>$v){
+        if(isset($v['thumb_img'])) $data[$k]['thumb_img'] = explode(',',$v['thumb_img']);
+        if(isset($v['ori_img']))   $data[$k]['ori_img'] = explode(',',$v['ori_img']);
+    }
+    return $data;
 }

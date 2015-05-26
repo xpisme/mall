@@ -110,20 +110,13 @@ final class Model{
 
 	/** 读取文件，选择数据库，创建链接
 	 */
-	final protected function __construct($resource){
+	public function __construct($resource,$table){
         $this->db = $resource;
-	}
-
-	public static function getIns($resource){
-		if(self::$ins instanceof self){
-			return self::$ins;
-		}
-		self::$ins = new self($resource);
-		return self::$ins;
-	}
-
-    public function setTable($table){
         return $this->table = $table;
+	}
+
+    public function gettable(){
+        return $this->table;
     }
 
 	public function getAll($field = '*',$where = 1,$group='',$having='',$order='',$limit=''){

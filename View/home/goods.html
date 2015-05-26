@@ -46,12 +46,12 @@
             <div class="c-goods">
                 <div class="c-goods-img">
                     
-                    <img src="{$goodsinfo.thumb_img}">
+                    <img src="{$goodsinfo.thumb_img[0]}">
                     
                 </div>
                 <div class="c-part1-right">
                     {foreach from=$others item=other}
-                        <a href="index.php?m=home&c=index&a=goods&sn={$other.goods_sn}"><img src="{$other.thumb_img}" alt="{$other.goods_name}"></a>
+                        <a href="index.php?m=home&c=index&a=goods&sn={$other.goods_sn}"><img src="{$other.thumb_img[0]}" alt="{$other.goods_name}"></a>
                     {/foreach}
                     
                 </div>

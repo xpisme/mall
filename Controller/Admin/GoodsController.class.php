@@ -91,6 +91,7 @@ class GoodsController extends AdminController{
             array('activi_price','number','价格不正确'),
             array('cat_id','number','请确认')
         );
+
         $data['goods_name'] = $_POST['goods_name'];
         $data['goods_number'] = $_POST['goods_number'];
         $data['shop_price'] = $_POST['shop_price'];
