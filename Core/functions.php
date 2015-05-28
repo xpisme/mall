@@ -6,8 +6,9 @@
  * @Description: 公用方法
  */
 
-
 defined('ACC')||exit('ACC Denied');
+
+
 
 /*本次运行的sql语句
  * @param string $sql 
@@ -82,7 +83,8 @@ function _addslashes($arr){
 		if(is_array($value)){
 			_addslashes($value);
 		}else{
-			$arr[$key] = trim(addslashes($value));
+            $tv  = trim(addslashes($value));
+            $arr[$key] = remove_xss($tv) ;
 		}
 	}
 	return $arr;
@@ -221,4 +223,12 @@ function formatgoods($data){
         if(isset($v['ori_img']))   $data[$k]['ori_img'] = explode(',',$v['ori_img']);
     }
     return $data;
+}
+
+function remove_xss($data){
+    if( stripos($data,'<script') !== false ){
+        $con = new \Controller\Controller();
+        $con->showMessage('信息不正确');
+    }
+    return htmlentities(strip_tags($data),ENT_QUOTES,"UTF-8");
 }

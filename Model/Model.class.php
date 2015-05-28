@@ -129,6 +129,7 @@ final class Model{
 
 	public function getOne($field,$where){
 		$res = $this->db->getOne($this->table,$field,$where);
+        if(is_bool($res)) return true;
         return current($res);
 	}
 

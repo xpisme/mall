@@ -139,7 +139,7 @@ class CateController extends AdminController{
 //        return;
         $oldwhere = 'cid='. $cate->getOne('pid','cid='.$id);
         $oldchildlist = $cate->getOne('childlist',$oldwhere);
-        print_r($oldchildlist);
+//        print_r($oldchildlist);
     }
 
     public function dele(){
@@ -154,9 +154,16 @@ class CateController extends AdminController{
             $str =  $id.','. implode(',',$childarray);
         }
         $where = 'cid in ('.$str .')';
+        $goodswhere = 'cat_id in ('.$str.') and is_delete = 0 and is_on_sale = 1' ;
+        $goods = M('goods');
+        $goods->getOne('gid',$goodswhere);
+        if(!empty($goods)){
+            $this->ajaxReturn($ajaxdata,'该目录下有商品',0);
+        }
         $cate = M('cate');
         $oldwhere = 'cid='. $cate->getOne('pid','cid='.$id);
         $oldchildlist = $cate->getOne('childlist',$oldwhere);
+
         if($cate->delete($where)){
             $tmpdata = array();
             $childlist = str_replace($id, '', $oldchildlist);

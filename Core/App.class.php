@@ -39,7 +39,6 @@ final class App {
 	public static function my_autoload($name){
 		$str = str_replace('\\', '/', $name);
 		if(@file_exists(ROOT.$str.'.class.php')){
-//            echo ROOT.$str.'.class.php',"<br />";
             require_once ROOT.$str.'.class.php';
         }else{
             header('HTTP/1.1 404  Bad Request');
