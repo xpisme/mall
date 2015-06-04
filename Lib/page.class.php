@@ -11,9 +11,13 @@ class page{
      * @param bool $page 当前页
      * @param bool $perpage 每一页显示的条数
      */
-    public function __construct($total,$page,$perpage){
+    public function __construct($total,$perpage=10){
+        if(isset($_GET['page']) && $_GET['page']>0) {
+            $this->page = $_GET['page']+0;
+        }else{
+            $this->page = 1;
+        }
         $this->total=$total;
-        $this->page=$page;
         $this->perpage=$perpage;
     }
 
@@ -42,4 +46,15 @@ class page{
 
     }
 
+    public function limit(){
+        return ' '. ($this->page-1) * $this->perpage . ','.$this->perpage;
+    }
+    public function pagenav(){
+        if($this->perpage < $this->total){
+            $pagenav = $this->show();
+        }else{
+            $pagenav = '';
+        }
+        return $pagenav;
+    }
 }

@@ -6,6 +6,7 @@
  */
 namespace Controller\Home;
 use Controller;
+use Lib;
 defined('ACC')||exit('ACC Denied');
 
 class IndexController extends Controller\Controller{
@@ -128,8 +129,15 @@ class IndexController extends Controller\Controller{
 
     }
     public function care(){
+        //关注 这里应该有个列表
+        $config = C('config');
         $wheres = 'uid='.$_SESSION['userid'];
-        $goodssn = M('focus')->getAll('gsn',$wheres,'','','fid desc');
+        $sql = 'select count(*) as total from '.$config["db"]["db_prefix"].'focus where '.$wheres.' ';
+        $total = M('focus')->query($sql);
+        $page = new Lib\page($total[0]['total']);
+        $limit = $page->limit();
+        $pagenav = $page->pagenav();
+        $goodssn = M('focus')->getAll('gsn',$wheres,'','','fid desc',$limit);
         $data = array();
         foreach($goodssn as $sn){
             $where = ' goods_sn = "'.$sn['gsn'].'"';
@@ -137,9 +145,12 @@ class IndexController extends Controller\Controller{
         }
         $isshop = is_string(M('shop')->getOne('sid',$wheres)) ? 1 : 0 ;
         $this->assign('isshop',$isshop);
-        $this->assign('lists',$data);
+        $this->assign('pagenav',$pagenav);
+        $this->assign('lists',formatgoods($data));
         $this->display('Care');
     }
+
+
 }
 
 

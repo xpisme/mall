@@ -132,15 +132,6 @@ class CateController extends AdminController{
             $this->ajaxReturn($ajaxdata,'success',1);
         }
     }
-    public function test(){
-        $id=44;
-        $cate = M('cate');
-//        echo $cate->getOne('pid','cid='.$id);
-//        return;
-        $oldwhere = 'cid='. $cate->getOne('pid','cid='.$id);
-        $oldchildlist = $cate->getOne('childlist',$oldwhere);
-//        print_r($oldchildlist);
-    }
 
     public function dele(){
         if(empty($_POST)) $this->showMessage('not value');

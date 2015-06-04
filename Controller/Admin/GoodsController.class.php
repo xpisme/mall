@@ -14,23 +14,14 @@ class GoodsController extends AdminController{
     public function lists(){
         $goods = M('goods');
         $config = C('config');
-        if(isset($_GET['page']) && $_GET['page']>0) {
-            $page = $_GET['page']+0;
-        }else{
-            $page = 1;
-        }
-        $prepage = 10;
-        $limit = ' limit '. ($page-1)*$prepage . ','.$prepage;
-        $sql = 'select gid,name,left(goods_name,7)as gname,goods_name,goods_number,shop_price,activi_price,click_count,left(add_time,10) as addtime from '.$config["db"]["db_prefix"].'goods a left join '.$config["db"]["db_prefix"].'shop b on a.sid=b.sid where a.is_delete = 0 and b.uid='.$_SESSION['userid'].$limit;
-        $lists = $goods->query($sql);
         $sql=  'select count(*) as total from '.$config["db"]["db_prefix"].'goods a left join '.$config["db"]["db_prefix"].'shop b on a.sid=b.sid where a.is_delete = 0 and b.uid='.$_SESSION['userid'];
         $total = $goods->query($sql);
-        if($prepage < $total[0]['total']){
-            $page = new Lib\page($total[0]['total'],$page,$prepage);
-            $pagenav = $page->show();
-        }else{
-            $pagenav = '';
-        }
+        $page = new Lib\page($total[0]['total'],10);
+        $limit = $page->limit();
+        $pagenav = $page->pagenav();
+        $sql = 'select gid,name,left(goods_name,7)as gname,goods_name,goods_number,shop_price,activi_price,click_count,left(add_time,10) as addtime from '.$config["db"]["db_prefix"].'goods a left join '.$config["db"]["db_prefix"].'shop b on a.sid=b.sid where a.is_delete = 0 and b.uid='.$_SESSION['userid'].' limit '.$limit;
+        $lists = $goods->query($sql);
+
         $this->assign('pagenav',$pagenav);
         $this->assign('lists',$lists);
         $this->display('goods_list');
@@ -132,23 +123,13 @@ class GoodsController extends AdminController{
     public function recycle(){
         $goods = M('goods');
         $config = C('config');
-        if(isset($_GET['page']) && $_GET['page']>0) {
-            $page = $_GET['page']+0;
-        }else{
-            $page = 1;
-        }
-        $prepage = 10;
-        $limit = ' limit '. ($page-1)*$prepage . ','.$prepage;
-        $sql = 'select gid,name,left(goods_name,7)as gname,goods_name,goods_number,shop_price,activi_price,click_count,left(add_time,10) as addtime from '.$config["db"]["db_prefix"].'goods a left join '.$config["db"]["db_prefix"].'shop b on a.sid=b.sid where a.is_delete = 1 and b.uid='.$_SESSION['userid'].$limit;
-        $lists = $goods->query($sql);
         $sql=  'select count(*) as total from '.$config["db"]["db_prefix"].'goods a left join '.$config["db"]["db_prefix"].'shop b on a.sid=b.sid where a.is_delete = 0 and b.uid='.$_SESSION['userid'];
         $total = $goods->query($sql);
-        if($prepage < $total[0]['total']){
-            $page = new Lib\page($total[0]['total'],$page,$prepage);
-            $pagenav = $page->show();
-        }else{
-            $pagenav = '';
-        }
+        $page = new Lib\page($total[0]['total'],10);
+        $limit = $page->limit();
+        $sql = 'select gid,name,left(goods_name,7)as gname,goods_name,goods_number,shop_price,activi_price,click_count,left(add_time,10) as addtime from '.$config["db"]["db_prefix"].'goods a left join '.$config["db"]["db_prefix"].'shop b on a.sid=b.sid where a.is_delete = 1 and b.uid='.$_SESSION['userid'].' limit ' . $limit;
+        $lists = $goods->query($sql);
+        $pagenav = $page->pagenav();
         $this->assign('pagenav',$pagenav);
         $this->assign('lists',$lists);
         $this->display('recycle');

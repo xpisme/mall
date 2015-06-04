@@ -413,6 +413,10 @@ td{
     margin-left: 15px;
     overflow: hidden;
 }
+.c-right-care-p{
+    text-align: center;
+    margin-top: 35px;
+}
 .c-right-care-liPrice-p{
     width:100%;
     font-size: 20px;

@@ -4,8 +4,8 @@ namespace Lib;
 class image {
 	public static function getVerifyImg($width=100,$height=30,$type='png'){
 		$im = imagecreate($width, $height)or die('Can not bulid image');
-		imagecolorallocate($im, mt_rand(0,100), mt_rand(0,100), mt_rand(0,100));
-		$text_color  =  imagecolorallocate ( $im ,  mt_rand(100,255) ,  mt_rand(100,255) ,  mt_rand(100,255) );
+		imagecolorallocate($im, mt_rand(255,255), mt_rand(255,255), mt_rand(255,255));
+		$text_color  =  imagecolorallocate ( $im ,  mt_rand(237,255) ,  mt_rand(110,114) ,  mt_rand(90,100) );
 		$line_color  =  imagecolorallocate ( $im ,  mt_rand(50,100) ,  mt_rand(50,100) ,  mt_rand(50,100) );
 		
 		$str = 'abcdefghjkmnpqrstuvwxyABCDEFGHJKMNPQRSTUVWXY3456789';

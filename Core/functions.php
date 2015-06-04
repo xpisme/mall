@@ -218,6 +218,7 @@ function get_crumbs($cid){
  * @param $data goods表
  */
 function formatgoods($data){
+
     foreach($data as $k=>$v){
         if(isset($v['thumb_img'])) $data[$k]['thumb_img'] = explode(',',$v['thumb_img']);
         if(isset($v['ori_img']))   $data[$k]['ori_img'] = explode(',',$v['ori_img']);

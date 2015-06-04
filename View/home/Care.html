@@ -53,7 +53,7 @@
                 {foreach from=$lists item=curr}
                 <li class="cli">
                     <p style="display: none">111</p>
-                    <img src="{$curr.thumb_img}" class="c-right-care-liImg fl">
+                    <a href="index.php?m=home&c=index&a=goods&sn={$curr.goods_sn}"><img src="{$curr.thumb_img.0}" class="c-right-care-liImg fl"></a>
                     <div class="c-right-care-liMsg fl">
                         <p class="c-right-care-orderName">{$curr.goods_name}</p>
                         <div class="c-right-orderDescribe">{$curr.goods_desc}</div>
@@ -67,6 +67,7 @@
                     </div>
                 </li>
                 {/foreach}
+                <p class="c-right-care-p">{$pagenav}</p>
             </ul>
         </div>
     </div>
