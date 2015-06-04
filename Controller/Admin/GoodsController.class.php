@@ -113,19 +113,19 @@ class GoodsController extends AdminController{
         $arr = array();
         $arr['is_delete'] = 1;
         if($goods->update($arr,$where)){
-            $this->showMessage('删除成功');
+            $this->showMessage('删除成功','index.php?m=admin&c=goods&a=lists');
         }else{
-            $this->showMessage('删除失败');
+            $this->showMessage('删除失败','index.php?m=admin&c=goods&a=lists');
         }
     }
 
     public function del(){
-        $where = 'gid='.$_GET['gid'];
+        $where = 'gid='. $_GET['gid'];
         $goods = M('goods');
         if($goods->delete($where)){
-            $this->showMessage('删除成功');
+            $this->showMessage('删除成功','index.php?m=admin&c=goods&a=recycle');
         }else{
-            $this->showMessage('删除失败');
+            $this->showMessage('删除失败','index.php?m=admin&c=goods&a=recycle');
         }
     }
 
@@ -159,11 +159,12 @@ class GoodsController extends AdminController{
         $arr = array();
         $arr['is_delete'] = 0;
         if($goods->update($arr,$where)){
-            $this->showMessage('还原成功');
+            $this->showMessage('还原成功','index.php?m=admin&c=goods&a=recycle');
         }else{
-            $this->showMessage('还原失败');
+            $this->showMessage('还原失败','index.php?m=admin&c=goods&a=recycle');
         }
     }
+
 }
 
 

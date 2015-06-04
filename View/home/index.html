@@ -21,13 +21,13 @@
                     欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
                         <a href="index.php?m=home&c=shop&a=add"><input type="button" value="开店" class="h-r-input" /></a>
-                        <input type="button" value="我的关注" class="h-r-input"/>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
                     </p>
                 {else}
                     欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
                         <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
-                        <input type="button" value="我的关注" class="h-r-input"/>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
                     </p>
                 {/if}
 
@@ -134,50 +134,27 @@ for(var i=0;i<cList.length;i++){
     }
 }
 </script>
-<script src="{$path}js/index.js"></script>
 <script>
   
-
-    // //ajax
-    // window.onload = function(){
-    //     var xhr;
-    //     if (window.XMLHttpRequest) {
-    //         xhr = new XMLHttpRequest();
-    //     } else {
-    //         xhr = new ActiveXObject();
-    //     }
-    //     xhr.open('get', '/idx_ajx', true);
-    //     xhr.send();
-    //     xhr.onreadystatechange = function(){
-    //         if(xhr.readyState == 4 &&  xhr.status == 200){
-    //             var str="";
-    //             var resJson = xhr.responseText;
-    //             var res = eval("("+resJson+")");
-    //             for(var i=0;i<res.length;i++){
-    //                str =str+ "<li id='order_show' onclick='order_show('"+res[i]._id+"')'><p id='hide_id' class='hidden'>"+res[i]._id+"</p>"
-    //                 +"<img src='../images/show1.png' class='c-part2-new-ul-img'>"
-    //                 +"<div class='c-part2-new-ul-img-price fr'>￥"+res[i].price
-    //                 +"</div><div class='c-part2-detail'><p class='c-part2-detail-goodsName'>"
-    //                 +res[i].goodsName+"</p><p class='c-part2-detail-describe'>"+res[i].describe
-    //                 +"<p class='c-part2-detail-more'><span>"+res[i].goodsCode
-    //                 +"</span>&nbsp;<span>"+res[i].classes
-    //                 +"</span>&nbsp;<span>"+res[i].grade
-    //                 +"</span></p></p></div></li>"
-    //             }
-    //             document.getElementById('c-part2-new-ul').innerHTML = str;
-    //             var e=event || window.event;
-
-    //             if (e && e.stopPropagation){
-    //                 e.stopPropagation();
-    //             }
-    //             else{
-    //                 e.cancelBubble=true;
-    //             }
-    //             /*var id = document.getElementById('hide_id').innerHTML;
-    //             document.getElementById('order_show').onclick = order_show(id);*/
-    //         }
-    //     };
-    // };
+$(window).scroll(function(){
+　　var scrollTop = $(this).scrollTop();
+　　var scrollHeight = $(document).height();
+　　var windowHeight = $(this).height();
+　　if(scrollTop + windowHeight == scrollHeight){
+　　　var len = $("#c-part2-new-ul li").length;
+      $.post('index.php?m=home&c=index&a=getgoods', {len:len}, function(res) {
+            if(!res.status){
+               alert(res.info);
+            }else{
+                var data = res.data.res;
+                for (var i = data.length - 1; i >= 0; i--) {
+                    var str = '<li><a href="index.php?m=home&c=index&a=goods&sn='+data[i].goods_sn+'"> <img src="'+data[i].thumb_img[0]+'" class="c-part2-new-ul-img"></a> <div class="c-part2-new-ul-img-price fr">￥'+data[i].shop_price+'</div> <div class="c-part2-detail"> <p class="c-part2-detail-goodsName">'+data[i].goods_name+'</p> <p class="c-part2-detail-describe"> '+data[i].goods_desc+' </p> </div> </li>';
+                    $(str).appendTo('#c-part2-new-ul');
+                }
+            }
+      },'json');
+　　}
+});
 </script>
 </body>
 

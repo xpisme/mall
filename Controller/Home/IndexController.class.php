@@ -89,11 +89,57 @@ class IndexController extends Controller\Controller{
         $where = 'cat_id='.$goods['cat_id'].' and gid <> '.$goods['gid'];
         $othergoods = M('goods')->getAll('gid,goods_sn,goods_name,thumb_img',$where,'','','click_count desc',6);
         M('goods')->query('update m_goods set click_count=click_count+1 where goods_sn="'.$_GET['sn'].'"');
+
+        if(!empty($_SESSION['userid'])){
+            $isfocus =  M('focus')->getOne('fid','gsn="'.$goods['goods_sn'].'" and uid='.$_SESSION['userid']);
+            $isfocus = is_bool($isfocus) ? '关注一下' : '取消关注';
+        }else{
+            $isfocus = '关注一下';
+        }
+        $this->assign('isfocus',$isfocus);
         $this->assign('others',formatgoods($othergoods));
         $this->assign('goodsinfo',$goods);
         $this->display('goods');
     }
+    public function focus(){
+        if(empty($_POST)) echo '失败';
+        if(empty($_SESSION['userid'])) $this->ajaxReturn('','未登录',0);
+        $ajaxdata = array();
+        $data = array();
+        $foucs = M('focus');
+        $data['uid'] = $_SESSION['userid'];
+        $data['gsn'] = remove_xss($_POST['sn']);
+        // 判断是否已关注
+        $where = 'gsn="'.remove_xss($_POST['sn']).'" and uid='.$_SESSION['userid'];
+        $isf = $foucs->getOne('fid',$where);
+        if(is_bool($isf)){
+            if($foucs->add($data)){
+                $this->ajaxReturn('','取消关注',1);
+            }else{
+                $this->ajaxReturn('','关注失败',0);
+            }
+        }else{
+            if($foucs->delete($where)){
+                $this->ajaxReturn('','关注一下',1);
+            }else{
+                $this->ajaxReturn('','取消关注失败',0);
+            }
+        }
 
+    }
+    public function care(){
+        $wheres = 'uid='.$_SESSION['userid'];
+        $goodssn = M('focus')->getAll('gsn',$wheres,'','','fid desc');
+        $data = array();
+        foreach($goodssn as $sn){
+            $where = ' goods_sn = "'.$sn['gsn'].'"';
+            $data[] = M('goods')->getRow('gid,goods_sn,goods_name,shop_price,goods_desc,thumb_img',$where);
+        }
+        $isshop = is_string(M('shop')->getOne('sid',$wheres)) ? 1 : 0 ;
+        $this->assign('isshop',$isshop);
+        $this->assign('lists',$data);
+        $this->display('Care');
+    }
 }
 
 

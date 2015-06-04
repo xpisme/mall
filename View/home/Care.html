@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8" CONTENT="TEXT/HTML">
+    <title>订单查询页</title>
+    <link rel="stylesheet" href="{$path}css/order.css">
+</head>
+<body>
+<div id="box">
+    <div class="head">
+        <div class="head-inner">
+            <div class="h-r-left">
+                <a href="index.php">校卖部</a>
+            </div>
+            <div class="h-right">
+                <p id="personName" class="h-r-userName">
+                {if $username eq ''}
+                <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                {elseif $exshop eq 0}
+                    欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=home&c=shop&a=add"><input type="button" value="开店" class="h-r-input" /></a>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
+                    </p>
+                {else}
+                    欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
+                    </p>
+                {/if}
+                </p>
+            </div>
+        </div>
+    </div>
+    <p class="lin"></p>
+    <div class="content">
+        <div class="c-left">
+            <ul class="c-l-ul">
+                <a href="index.php"><li>首&nbsp;页</li></a>
+                {if $isshop eq 1}
+                <a href="index.php?m=admin&c=goods&a=lists"><li>在线商品</li></a>
+                <a href="index.php?m=admin&c=goods&a=add"><li>发布商品</li></a>
+                <a href="index.php?m=admin&c=cate&a=lists"><li>分类列表</li></a>
+                <a href="index.php?m=admin&c=goods&a=recycle"><li>回收站</li></a>
+                {/if}
+                <a href="index.php?m=home&c=index&a=care"><li>我的关注</li></a>
+            </ul>
+        </div>
+        <div class="c-right">
+            <h1 class="c-r-h1">关注列表</h1>
+            <ul class="c-right-care-ul" id="c-right-care-ul">
+                {foreach from=$lists item=curr}
+                <li class="cli">
+                    <p style="display: none">111</p>
+                    <img src="{$curr.thumb_img}" class="c-right-care-liImg fl">
+                    <div class="c-right-care-liMsg fl">
+                        <p class="c-right-care-orderName">{$curr.goods_name}</p>
+                        <div class="c-right-orderDescribe">{$curr.goods_desc}</div>
+                    </div>
+                    <div class="c-right-care-liPrice fl">
+                        <p class="c-right-care-liPrice-p">{$curr.shop_price}</p>
+                    </div>
+                    <div class="c-right-care-liDo fl">
+                        <input type="button" class="c-right-care-liDo-go c-right-care-liDo-input" value="加入购物车" gsn="{$curr.goods_sn}"><br/>
+                        <span class="c-right-care-liDo-cancelCare" onclick="careOrder(this);" gsn="{$curr.goods_sn}">取消关注</span>
+                    </div>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="{$path}js/jquery-1.11.3.min.js"></script>
+<script>
+//care care
+/*function Care(){
+    var liLength = document.getElementsByClassName('cli');
+    for(var i=0;i<liLength.length;i++){
+        liLength[i].onclick = function(e){
+            var x=this.getElementsByTagName('p')[0].innerHTML;
+            var e = e || window.event;
+            var target = e.target || e.srcElement;
+            if(target.nodeName.toLowerCase() == 'input'){
+                alert('将'+x+'加入购物车');
+            }else if(target.nodeName.toLowerCase() == 'a'){
+                alert('取消关注'+x);
+            }else if(target.nodeName.toLowerCase() == 'p' || target.nodeName.toLowerCase() == 'img'){
+                alert('链接到'+x+'商品详情页');
+            }
+        }
+    }
+}*/
+function careOrder(e){
+  var tmp = $(e).parent().parent();
+  var sn = $(e).attr('gsn');
+  $.post('index.php?m=home&c=index&a=focus', {sn: sn}, function(msg) {
+    if(!msg.status){
+      alert(msg.data.info);
+    }else{
+      $(tmp).remove();
+    }
+  },'json');
+}
+</script>
+</body>
+</html>

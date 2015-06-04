@@ -22,7 +22,7 @@
                     欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
                         <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
-                        <input type="button" value="我的关注" class="h-r-input"/>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
                     </p>
                 {/if}
                 </p>
@@ -59,6 +59,7 @@
                 <div class="c-part1-main">
                     
                     <form>
+                        <input type="hidden" id="goodsn" value="{$goodsinfo.goods_sn}">
                         <p class="c-goods-username">&nbsp;{$goodsinfo.name}&nbsp;<span class="c-goods-username-span">发布</span></p>
                         <p class="c-goods-price">￥{$goodsinfo.shop_price}<span class="c-goods-price-span">元</span></p>
                         <p class="c-goods-goodsName">{$goodsinfo.goods_name}</p>
@@ -69,7 +70,7 @@
                             联系：&nbsp;
                             <span>{$goodsinfo.tel}</span>&nbsp;
                         </p>
-                        <input type="button" value="关注一下" class="c-goods-focus fl" onclick="careOrder()">
+                        <input type="button" value="{$isfocus}" class="c-goods-focus fl" onclick="careOrder()">
                     </form>
                     
                 </div>

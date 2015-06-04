@@ -21,13 +21,13 @@
                     欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
                         <a href="index.php?m=home&c=shop&a=add"><input type="button" value="开店" class="h-r-input" /></a>
-                        <input type="button" value="我的关注" class="h-r-input"/>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
                     </p>
                 {else}
                     欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
                         <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
-                        <input type="button" value="我的关注" class="h-r-input"/>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
                     </p>
                 {/if}
                 </p>
@@ -109,7 +109,6 @@
     </div>
 </div>
 <script src="{$path}js/jquery-1.11.3.min.js"></script>
-<script src="{$path}js/index.js"></script>
 <script>
     $(function(){
         var element = $('#filter-c-class-list>a:gt(8)');
@@ -126,7 +125,25 @@
             }
         });
     });
-
+    $(window).scroll(function(){
+　　var scrollTop = $(this).scrollTop();
+　　var scrollHeight = $(document).height();
+　　var windowHeight = $(this).height();
+　　if(scrollTop + windowHeight == scrollHeight){
+　　　var len = $("#c-part2-new-ul li").length;
+      $.post('index.php?m=home&c=index&a=getgoods', {len:len}, function(res) {
+            if(!res.status){
+               alert(res.info);
+            }else{
+                var data = res.data.res;
+                for (var i = data.length - 1; i >= 0; i--) {
+                    var str = '<li><a href="index.php?m=home&c=index&a=goods&sn='+data[i].goods_sn+'"> <img src="'+data[i].thumb_img[0]+'" class="c-part2-new-ul-img"></a> <div class="c-part2-new-ul-img-price fr">￥'+data[i].shop_price+'</div> <div class="c-part2-detail"> <p class="c-part2-detail-goodsName">'+data[i].goods_name+'</p> <p class="c-part2-detail-describe"> '+data[i].goods_desc+' </p> </div> </li>';
+                    $(str).appendTo('#c-part2-new-ul');
+                }
+            }
+      },'json');
+　　}
+});
 </script>
 </body>
 </html>

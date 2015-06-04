@@ -23,7 +23,7 @@ class Controller{
         $username = empty($_SESSION['username']) ? '' : $_SESSION['username'];
         $exshop = 0;
         if(!empty($username)){
-            $exshop = M()->query('select count(*) as sum from m_shop s left join m_customer c on s.uid=c.uid where c.uname='."'$username'");
+            $exshop = M('')->query('select count(*) as sum from m_shop s left join m_customer c on s.uid=c.uid where c.uname='."'$username'");
             $exshop = current($exshop)['sum'];
         }
         $this->assign('exshop',$exshop);
@@ -41,8 +41,9 @@ class Controller{
 	/*
 	*展示信息
 	*/
-	public function showMessage($mes){
+	public function showMessage($mes,$n=''){
         $this->assign('msg',$mes);
+        $this->assign('ref',$n);
         exit ($this->display('err'));
 	}
 	/*

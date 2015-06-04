@@ -18,7 +18,7 @@
                 <p id="personName" class="h-r-userName"><%= personName %></p>
                 <p>
                     <a href="index.php?m=Admin&c=goods&a=list"><input type="button" value="发布商品" class="h-r-input"/></a>
-                    <input type="button" value="我的关注" class="h-r-input"/>
+                    <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
                 </p>
             </div>
         </div>
