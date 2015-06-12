@@ -58,6 +58,7 @@ class UserController extends Controller\Controller{
     public function logout(){
         unset($_SESSION['username']);
         unset($_SESSION['userid']);
+        unset($_SESSION['goods']);
         header ( 'Location: '.SITE );
     }
 }

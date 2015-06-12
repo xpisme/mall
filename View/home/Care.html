@@ -62,7 +62,13 @@
                         <p class="c-right-care-liPrice-p">{$curr.shop_price}</p>
                     </div>
                     <div class="c-right-care-liDo fl">
-                        <input type="button" class="c-right-care-liDo-go c-right-care-liDo-input" value="加入购物车" gsn="{$curr.goods_sn}"><br/>
+                        <button class="c-right-care-liDo-go c-right-care-liDo-input" gsn="{$curr.goods_sn}">
+                        {if $curr.iscart == 1}
+                        已添加购物车
+                        {else}
+                        <a href="index.php?m=home&c=cart&a=add&sn={$curr.goods_sn}">加入购物车</a>
+                        {/if}
+                        </button><br/>
                         <span class="c-right-care-liDo-cancelCare" onclick="careOrder(this);" gsn="{$curr.goods_sn}">取消关注</span>
                     </div>
                 </li>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8" CONTENT="TEXT/HTML">
+    <title>结算页——校卖部</title>
+    <link href="{$path}css/order.css" rel="stylesheet">
+    <link href="{$path}css/shopping.css" rel="stylesheet">
+    <script type="text/javascript" src="{$path}js/linkage.js"></script>
+    
+</head>
+<body>
+<div id="box">
+    <div class="head">
+        <div class="head-inner">
+            <div class="h-r-left">
+                <a href="index.php">校卖部</a>
+            </div>
+            <div class="h-right">
+                {if $username eq ''}
+                <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                {elseif $exshop eq 0}
+                    欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=home&c=shop&a=add"><input type="button" value="开店" class="h-r-input" /></a>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
+                    </p>
+                {else}
+                    欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
+                    </p>
+                {/if}
+            </div>
+        </div>
+    </div>
+    <p class="lin"></p>
+    <div class="content">
+        <div class="spC-right spC-r-correct">
+            <p class="spC-title">提示：请认真核对商品信息</p>
+            <div class="user">
+                <p class="fontSize12">
+                    > 收货人信息
+                    <span class="add-address fr">新增收货地址</span>
+                </p>
+                <div class="user-inner fontSize12">
+                    <!--用户首次购物，需添加收货人信息-->
+                    {if $exists == 0}
+                    <form action="" method="post" onsubmit="return false;">
+                        收 货 人：<input type="text" name="gname" id="gname"><br/><br>
+                        所在地区：<select name="" id="provice" onchange="provices(this)">
+                                    <option value="0">请选择省</option>
+                                </select>
+                                <select name="" id="city" onchange="citys(this)">
+                                    <option value="0">请选择市</option>
+                                </select>
+                                <select name="" id="country">
+                                    <option value="0">请选择县</option>
+                                </select><br/>
+                        详细地址：<input type="text" class="user-address" name="" id="user-address"><br/>
+                        手机号码：<input type="number" name="" id="user-phone"><br/>
+                        <input type="submit" value="保存收货人信息" id="firstsubmit" class="submit">
+                    </form>
+
+                    {else}
+                    <!--用户已经添加过收货信息-->
+                    <form action="" method="">
+                        收货人为郭新朋
+                        <p class="userList">
+                            <span class="userName ">郭新朋</span>
+                            <span class="userDress ">河北省石家庄市珠峰大街南口288号 石家庄学院（南校区）</span>
+                            <span class="userTel">Tel:15738882343</span>
+                        </p>
+                        收货人为赵鑫
+                        <p class="userList">
+                            <span class="userName ">赵鑫</span>
+                            <span class="userDress ">河北省石家庄市珠峰大街南口288号 石家庄学院（南校区）</span>
+                            <span class="userTel">Tel:15738882343</span>
+                        </p>
+                        收货人为董俊童
+                        <p class="userList">
+                            <span class="userName ">董俊童</span>
+                            <span class="userDress ">河北省石家庄市珠峰大街南口288号 石家庄学院（南校区）</span>
+                            <span class="userTel">Tel:15738882343</span>
+                        </p>
+                    </form>
+                    {/if}
+                </div>
+            </div>
+            <div class="wey">
+                <p class="spC-title">支付方式</p>
+                <div class="wey-inner">
+                    <span class="weys fontSize12">货到付款</span>
+                    <span class="weys fontSize12">银行卡支付</span>
+                    <span class="weys fontSize12">支 付 宝</span>
+                </div>
+            </div>
+            <div class="spC-list">
+                <div class="spC-list-th">
+                    <span class="spC-list-th-span" style="width: 440px;">商品</span>
+                    <span class="spC-list-th-span" style="width: 90px;">单价（元）</span>
+                    <span class="spC-list-th-span" style="width: 140px;">数量</span>
+                    <span class="spC-list-th-span" style="width: 100px;">小计（元）</span>
+                    <span class="spC-list-th-span" style="width: 130px;">操作</span>
+                </div>
+                <ul class="spC-list-ul">
+                    {foreach from=$items item=info}
+                    <li><span class="goodsn" sn="{$info.goods_sn}"></span>
+                        <div class="spC-list-goods fl">
+                            <a href="index.php?m=home&c=index&a=goods&sn={$info.goods_sn}"><img src="{$info.thumb_img.0}" class="spC-list-goodsImg fl"></a>
+                            <div class="spC-list-goodsName fr">
+                                {$info.goods_name}
+                            </div>
+                        </div>
+                        <div class="spC-list-price fl">
+                            <p class="spC-list-subtotal-p">{$info.shop_price}</p>
+                        </div>
+                        <div class="spC-list-number fl">
+                            <div class="spC-number-box">
+                                <p class="spC-number-span spcNumber" style="margin-left: 15px; width: 34px;">{$info.goods_number}</p>
+                            </div>
+                        </div>
+                        <div class="spC-list-subtotal fl">
+                            <p class="spC-list-subtotal-p fontWeight600 money">{$info.sintotal}</p>
+                        </div>
+                        <div class="spC-list-doMore fl">
+                            <p class="doMore-delete doMore-p doMore-p-top">删 除</p>
+                        </div>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="spC-finally">
+                <div class="spC-finally-right fr">
+                    <div class="allPrice fl">应付
+                        <span class="Price">￥
+                            <strong><span class="PriceNum">{$total}</span>元</strong>
+                        </span>
+                    </div>
+                    <a href="#"><div class="toPay fr cursor">下 单</div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layer-box">
+        <div class="layer">
+            <span class="layer-close fr"></span>
+            <h3 class="layer-h3">添加新的收货人信息</h3>
+            <div class="user-inner fontSize12 " style="margin-top: 15px;">
+                <form action="" method="">
+                    收 货 人：<input type="text" name="" id=""><br/>
+                    所在地区：<input type="text" name="" id="">
+                    <input type="text" class="user-inputOnly layerUser-inputOnly " name="" id="">
+                    <input type="text"  class="user-inputOnly layerUser-inputOnly" name="" id=""><br/>
+                    详细地址：<input type="text" class="user-address" name="" id=""><br/>
+                    手机号码：<input type="" name="" id=""><br/>
+                    &nbsp;邮 箱 ：<input type="text" name="" id=""><br/>
+                    <input type="submit" value="保存收货人信息" id="" class="submit layer-submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{$path}js/jquery-1.11.3.min.js"></script>
+<script src="{$path}js/payFor.js"></script>
+</body>
+</html>

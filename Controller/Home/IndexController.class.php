@@ -109,7 +109,7 @@ class IndexController extends Controller\Controller{
         $data = array();
         $foucs = M('focus');
         $data['uid'] = $_SESSION['userid'];
-        $data['gsn'] = remove_xss($_POST['sn']);
+        $data['gsn'] = $_POST['sn'];
         // 判断是否已关注
         $where = 'gsn="'.remove_xss($_POST['sn']).'" and uid='.$_SESSION['userid'];
         $isf = $foucs->getOne('fid',$where);
@@ -143,6 +143,18 @@ class IndexController extends Controller\Controller{
             $where = ' goods_sn = "'.$sn['gsn'].'"';
             $data[] = M('goods')->getRow('gid,goods_sn,goods_name,shop_price,goods_desc,thumb_img',$where);
         }
+        if(!empty($_SESSION['goods'])){
+            $keys = array_keys($_SESSION['goods']);
+        }else{
+            $keys = array();
+        }
+        foreach($data as $k => $value){
+            $data[$k]['iscart'] = 0;
+            if(in_array($value['goods_sn'],$keys)){
+                $data[$k]['iscart'] = 1;
+            }
+        }
+
         $isshop = is_string(M('shop')->getOne('sid',$wheres)) ? 1 : 0 ;
         $this->assign('isshop',$isshop);
         $this->assign('pagenav',$pagenav);

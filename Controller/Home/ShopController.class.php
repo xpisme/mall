@@ -31,4 +31,5 @@ class ShopController extends Controller{
             $this->showMessage('已提交，正在审核...');
         }
     }
+
 }

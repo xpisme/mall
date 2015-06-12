@@ -434,7 +434,7 @@
     opacity: 0.7;
 }
 .c-goods-focus{
-    width: 90px;
+    width: 100px;
     height: 25px;
     position: relative;
     background: #00b188;
@@ -443,6 +443,9 @@
     font-weight: 600;
     letter-spacing: 2px;
     margin-top: 10px;
+    margin-left: 15px;
+    text-align: center;
+    line-height: 25px;
 }
 .c-goods-focus:hover{
     background: #ef735f;

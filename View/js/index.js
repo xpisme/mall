@@ -8,7 +8,6 @@
 function careOrder(){
   var sn = $("#goodsn").val();
   $.post('index.php?m=home&c=index&a=focus', {sn: sn}, function(msg) {
-    console.log(msg);
     if(!msg.status){
       alert(msg.info);
     }else{

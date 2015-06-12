@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8" CONTENT="TEXT/HTML">
+    <title>我的购物车——校卖部</title>
+    <link href="{$path}css/order.css" rel="stylesheet">
+    <link href="{$path}css/shopping.css" rel="stylesheet">
+</head>
+<body>
+<div id="box">
+    <div class="head">
+        <div class="head-inner">
+            <div class="h-r-left">
+                <a href="index.php">校卖部</a>
+            </div>
+            <div class="h-right">
+                {if $username eq ''}
+                <a href="index.php?m=home&c=user&a=signin">登录</a>|<a href="index.php?m=home&c=user&a=signup">注册</a>
+                {elseif $exshop eq 0}
+                    欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=home&c=shop&a=add"><input type="button" value="开店" class="h-r-input" /></a>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
+                    </p>
+                {else}
+                    欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
+                    <p>
+                        <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
+                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
+                    </p>
+                {/if}
+            </div>
+        </div>
+    </div>
+    <p class="lin"></p>
+    <div class="content">
+        <div class="spC-right spC-r-correct">
+            <p class="spC-title">我的购物车</p>
+            <div class="spC-list">
+                <div class="spC-list-th">
+                    <span class="spC-list-th-span" style="width: 440px;">商品</span>
+                    <span class="spC-list-th-span" style="width: 90px;">单价（元）</span>
+                    <span class="spC-list-th-span" style="width: 140px;">数量</span>
+                    <span class="spC-list-th-span" style="width: 100px;">小计（元）</span>
+                    <span class="spC-list-th-span" style="width: 130px;">操作</span>
+                </div>
+                <ul class="spC-list-ul">
+                    {foreach from=$items item=info}
+                    <li><span class="goodsn" sn="{$info.goods_sn}"></span>
+                        <div class="spC-list-goods fl">
+                            <input type="checkbox" sn="{$info.goods_sn}" class="spC-list-goodsCheckbox fl">
+                            <a href="index.php?m=home&c=index&a=goods&sn={$info.goods_sn}"><img src="{$info.thumb_img.0}" class="spC-list-goodsImg fl"></a>
+                            <div class="spC-list-goodsName fr">
+                                {$info.goods_name}
+                            </div>
+                        </div>
+                        <div class="spC-list-price fl">
+                            <p class="spC-list-subtotal-p">{$info.shop_price}</p>
+                        </div>
+                        <div class="spC-list-number fl">
+                            <div class="spC-number-box">
+                                <span class="spC-number-span cursor subtract">-</span><p class="spC-number-span spcNumber" style="width: 34px;">{$info.goods_number}</p><span class="spC-number-span cursor add">+</span>
+                            </div>
+                        </div>
+                        <div class="spC-list-subtotal fl">
+                            <p class="spC-list-subtotal-p fontWeight600 money"></p>
+                        </div>
+                        <div class="spC-list-doMore fl">
+                            <p class="doMore-delete doMore-p doMore-p-top">删 除</p>
+                            <p class="doMore-move doMore-p">
+                            {if $info.flag == 0}
+                            <span class="myfocus" sn="{$info.goods_sn}">移动到我的关注</span>
+                            {else}
+                            已关注
+                            {/if}
+                            </p>
+                        </div>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="spC-finally">
+                <input type="checkbox" class="spC-finally-checkAll fl"><span class="fl" style="margin-top: 15px;">全选</span>
+                <span class="spC-finally-delete fl"><a href="#" id="deledgoods">删除选中商品</a></span>
+                <div class="spC-finally-right fr">
+                    <div class="spC-finally-right-sp1 fl">已选择
+                        <span class="spC-finally-right-count"></span>
+                        件商品
+                    </div>
+                    <div class="allPrice fl">总价
+                        <span class="fontSize12">(不含运费)</span>
+                        <span class="Price">￥
+                            <strong><span class="PriceNum"></span></strong>
+                        </span>
+                    </div>
+                    <a href="index.php?m=home&c=cart&a=pay"><div class="toPay fl cursor">去结算</div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer fl"></div>
+</div>
+<script src="{$path}js/jquery-1.11.3.min.js"></script>
+<script src="{$path}js/shopping.js"></script>
+</body>
+</html>

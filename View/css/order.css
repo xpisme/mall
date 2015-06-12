@@ -443,6 +443,9 @@ td{
     font-size: 14px;
     letter-spacing: 1px;
 }
+.c-right-care-liDo-input a{
+    color: white;
+}
 .c-right-care-liDo-input:hover{
     background: #ef735f;
     cursor: pointer;
