@@ -39,7 +39,18 @@ $(document).ready(function(){
             return false;
         }
         $.post('index.php?m=home&c=cart&a=address', {name:name,provice:provice,city:city,country:country,address:address,phone:phone}, function(msg) {
-            console.log(msg);
+            if(!msg.status){
+                alert(msg.info);
+            }else{
+                var datas = msg.data;
+                var res = '<div id="gain">';
+                for(var i=0;i<datas.length;i++){
+                    res += '收货人为'+datas[i].gname+' <p class="userList"> <span class="userName ">'+datas[i].gname+'</span> <span class="userDress ">'+datas[i].prov+' '+datas[i].city+' '+datas[i].country+' '+datas[i].address+'</span> <span class="userTel">Tel:'+datas[i].phone+'</span></p><br />';
+                }
+                res += '</div>';
+                $("#gaininfo").html(res);
+                $('.layer-box').fadeOut(200);
+            }
         },'json');
     });
 });

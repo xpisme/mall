@@ -152,9 +152,9 @@ class CartController extends Controller\Controller{
             $total += $item['shop_price']*$item['goods_number'];
             $items[$k]['sintotal'] =  $item['shop_price']*$item['goods_number'];
         }
-        $exists = M('gain')->getRow('gname','uid='.$_SESSION['userid']);
-        $exists = empty($exists) ? 0 : 1 ;
-        $this->assign('exists',$exists);
+        $gains = M('gain')->getAll('gname,prov,city,country,address,phone','uid='.$_SESSION['userid']);
+        $gains = empty($gains) ? 0 : $gains ;
+        $this->assign('gains',$gains);
         $this->assign('total',$total);
         $this->assign('items',formatgoods($items));
         $this->display('payFor');
@@ -170,7 +170,7 @@ class CartController extends Controller\Controller{
             array('prov','require','省份不能为空'),
             array('city','require','城市不能为空'),
             array('address','require','详细地址不能为空'),
-            array('phone','tel','填写正确邮箱'),
+            array('phone','tel','填写正确手机号'),
         );
         $data['uid'] = $_SESSION['userid'];
         $data['gname'] = $_POST['name'];
@@ -180,10 +180,10 @@ class CartController extends Controller\Controller{
         $data['address'] = $_POST['address'];
         $data['phone'] = $_POST['phone'];
         if($gain->add($data)){
-            $ajaxdata = $gain->getAll('gname,provice,city,country,phone','uid='.$_SESSION['userid']);
+            $ajaxdata = $gain->getAll('gname,prov,city,country,address,phone','uid='.$_SESSION['userid']);
             $this->ajaxReturn($ajaxdata,'成功',1);
         }else{
-            $this->ajaxReturn('','失败',0);
+            $this->ajaxReturn('',$gain->getError(),0);
         }
     }
 
