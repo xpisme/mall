@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link href="{$path}css/index.css" rel="stylesheet">
+	<link href="{$path}css/chat.css" rel="stylesheet">
     <script src="{$path}js/jquery-1.11.3.min.js"></script>
     <script src="{$path}js/index.js"></script>
 </head>
@@ -22,7 +23,9 @@
                     欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
                         <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
-                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
+                        <a href="index.php?m=home&c=cart&a=index"><input type="button" value="我的购物车" class="h-r-input"/></a>
+                <a href="index.php">校卖部</a>
+            </div>
                     </p>
                 {/if}
                 </p>
@@ -73,12 +76,96 @@
                         <input type="button" value="{$isfocus}" class="c-goods-focus fl" onclick="careOrder()">
                         <a href="index.php?m=home&c=cart&a=add&sn={$goodsinfo.goods_sn}" class="c-goods-focus fl">加入购物车</a>
                     </form>
-                    
+
                 </div>
 
             </div>
         </div>
     </div>
+    <div class="comment-box">
+        <div class="comment-inner">
+            <p class="comment-head">
+                商品评论
+                {if $username neq ''}
+                <span class="cmt">写评论</span>
+                </p>
+                <div class="comment-write">
+                    <textarea class="cmt-write"></textarea>
+                    <input type="button" value="评 论" gid="{$goodsinfo.gid}" class="cmt-btn" id="cmt-btn" required="required">
+                </div>
+                {else}
+                </p>
+                {/if}
+            
+            <div class="comment-content">
+                
+                {foreach from=$comments item=comment}
+                <p class="comment-list">
+                    <span class="cmt-list-content">{$comment.content}</span>
+                    <span class="cmt-list-time cmt-list-other">{$comment.time}</span><span class="cmt-list-neme cmt-list-other">{$comment.uname}</span>
+                </p>
+                {/foreach}
+
+
+            </div>
+        </div>
+    </div>
 </div>
+<div class="chat-box">
+    <div class="chat-switch fl">和店主聊聊</div>
+    <div class="chat-inner fl">
+        <div class="chat-head">您正在与<span class="chat-inner-name">石头软软</span>对话中</div>
+        <div class="chat-content fl">
+            <div class="chat font" id="chat">
+                <!--<p class="chat-p"><span><span class="mColor-green">商家：</span>你好</span></p>
+                <p class="chat-p">
+                    <span><span class="mColor-green">您 ：</span>你是哪里人啊？</span>
+                </p>-->
+            </div>
+            <div class="chat-input">
+                <div class="chat-input-inner">
+                    <input type="button" id="btnLogout" value="退 出" class="chat-input-inner-input fl">
+                    <input type="button" id="btnSend" value="发 送"  class="chat-input-inner-input fr">
+                    <div class="chat-input-inner-text fr">
+                        <textarea  class="chat-msgInput" id="tbxMsg"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script></script>
+<script>
+    $(document).ready(function(){
+        $('.cmt').on('click',function(){
+            var write = $('.comment-write');
+            if( write.is(':visible')){
+                write.slideUp(900);
+                $('.cmt').text('写评论');
+            }else{
+                write.slideDown(900);
+                $('.cmt').text('收起');
+            }
+        });
+        $("#cmt-btn").on('click',  function(event) {
+            event.preventDefault();
+            var con = $('.cmt-write').val();
+            var gid = $(this).attr('gid');
+            if(con == '' || gid == '') return false;
+            $.post('index.php?m=home&c=index&a=addcommet', {gid: gid,con:con}, function(msg) {
+                if(!msg.status){
+                    alert(msg.info);
+                }else{
+                    var data = msg.data;
+                    var res = '<p class="comment-list"> <span class="cmt-list-content">'+data.con+'</span> <span class="cmt-list-time cmt-list-other">'+data.time+'</span><span class="cmt-list-neme cmt-list-other">'+data.name+'</span> </p>'; 
+                    $(res).prependTo('.comment-content');
+                    $('.cmt').trigger('click');
+                }
+            },'json');
+        });
+    });
+
+</script>
 </body>
 </html>

@@ -1,0 +1,98 @@
+.mColor-green{
+    color: #01a57f;
+}
+.chat-box{
+    width: 300px;
+    height: 300px;
+    position: fixed;
+    right: -270px;
+    bottom: 20px;
+}
+.chat-switch{
+    width: 30px;
+    height: 150px;
+    line-height: 25px;
+    position: relative;
+    background: #01a57f;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+ }
+.chat-switch:hover{
+    cursor: pointer;
+}
+ .chat-inner{
+     width: 266px;
+     height: 300px;
+     position: relative;
+     background: white;
+     border: 2px solid #01a57f;
+     font-size: 12px;
+ }
+ .chat-head{
+     width: 100%;
+     height:30px;
+     line-height: 30px;
+     position: relative;
+     background: #e8edf1;
+     overflow: hidden;
+     text-indent: 1em;
+ }
+ .chat-content{
+     width: 100%;
+     height: 270px;
+     position: relative;
+ }
+.chat{
+    width: 100%;
+    height:75%;
+    position: relative;
+    border-top: 1px solid #01a57f;
+    border-bottom: 2px solid #01a57f;
+    overflow: auto;
+}
+.chat-p{
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.chat-input{
+    width:100%;
+    height:24%;
+    position: relative;
+    background: #e8edf1;
+}
+.chat-input-inner{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+.chat-input-inner-input{
+    width: 40px;
+    height: 23px;
+    position: relative;
+    top: 27px;
+    background: #01a57f;
+    color: white;
+    font-size: 12px;
+}
+.chat-input-inner-input:hover{
+    cursor: pointer;
+    background: #ef735f;
+}
+.chat-input-inner-text{
+    width: 180px;
+    height:35px;
+    position: relative;
+    top: 15px;
+    right: 2px;
+    background: white;
+}
+.chat-msgInput{
+    width: 176px;
+    height: 31px;
+    position: relative;
+    padding: 2px;
+    border: none;
+    resize: none;
+}

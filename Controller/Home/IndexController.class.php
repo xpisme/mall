@@ -97,6 +97,11 @@ class IndexController extends Controller\Controller{
         }else{
             $isfocus = '关注一下';
         }
+        //  加载当前的评论
+        $comment = M('comment');
+        $sql = 'select uname,content,left(c.add_time,16) as time from m_comment c left join m_customer c2 on c.uid=c2.uid where gid='.$goods['gid'];
+        $comments = $comment->query($sql);
+        $this->assign('comments',$comments);
         $this->assign('isfocus',$isfocus);
         $this->assign('others',formatgoods($othergoods));
         $this->assign('goodsinfo',$goods);
@@ -162,6 +167,26 @@ class IndexController extends Controller\Controller{
         $this->display('Care');
     }
 
+    // 添加评论
+    public function addcommet(){
+        $ajax = array();
+        $comment = M('comment');
+        $data = array();
+        $comment->validata = array(
+            array('content','require','内容不能为空'),
+        );
+        $data['content'] = $_POST['con'];
+        $data['uid'] = $_SESSION['userid'];
+        $data['gid'] = $_POST['gid'];
+        if($comment->add($data)){
+            $ajax['con'] = $data['content'];
+            $ajax['name'] = $_SESSION['username'];
+            $ajax['time'] = date('y年m月d日 H时i分',time());
+            $this->ajaxReturn($ajax,'',1);
+        }else{
+            $this->ajaxReturn('',$comment->getError(),0);
+        }
+    }
 
 }
 

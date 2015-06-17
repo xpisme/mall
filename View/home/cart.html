@@ -11,7 +11,7 @@
     <div class="head">
         <div class="head-inner">
             <div class="h-r-left">
-                校卖部
+                <a href="index.php">校卖部</a>
             </div>
             <div class="h-right">
                 <p id="personName" class="h-r-userName">
@@ -21,13 +21,17 @@
                     欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
                         <a href="index.php?m=home&c=shop&a=add"><input type="button" value="开店" class="h-r-input" /></a>
-                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
+                        <a href="index.php?m=home&c=cart&a=index"><input type="button" value="我的购物车" class="h-r-input"/></a>
+                <a href="index.php">校卖部</a>
+            </div>
                     </p>
                 {else}
                     欢迎 {$username}<a href="index.php?m=home&c=user&a=logout"><span class="exit fr">退出登录</span></a>
                     <p>
                         <a href="index.php?m=admin&c=goods&a=add"><input type="button" value="发布商品" class="h-r-input" /></a>
-                        <a href="index.php?m=home&c=index&a=care"><input type="button" value="我的关注" class="h-r-input"/></a>
+                        <a href="index.php?m=home&c=cart&a=index"><input type="button" value="我的购物车" class="h-r-input"/></a>
+                <a href="index.php">校卖部</a>
+            </div>
                     </p>
                 {/if}
                 </p>

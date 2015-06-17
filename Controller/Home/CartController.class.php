@@ -122,7 +122,7 @@ class CartController extends Controller\Controller{
     // 购物车
     public function index(){
         $items = array();
-        $items = isset($_SESSION['goods']) ? $_SESSION['goods'] : '' ;
+        $items = isset($_SESSION['goods']) ? $_SESSION['goods'] : array() ;
         $temps = M('focus')->getAll('gsn','uid='.$_SESSION['userid']);
         $focus = array();
         foreach($temps as $temp){

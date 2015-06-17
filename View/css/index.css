@@ -463,6 +463,100 @@
     margin-top: 30px;
     background: white;
 }
+
+/*评论 comment-box*/
+.comment-box{
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 60px;
+    margin-bottom: 80px;
+    background: white;
+}
+.comment-inner{
+    width:1024px;
+    height: auto;
+    position: relative;
+    border: 1px solid lightgray;
+    margin: 0 auto;
+    clear: both;
+}
+.comment-head{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    position:relative;
+    background: #e8edf1;
+    color: #ef735f;
+}
+.comment-write{
+    width: 70%;
+    height: 170px;
+    position: relative;
+    border: 1px solid #01a57f;
+    display: none;
+}
+.cmt{
+    display: inline-block;
+    float: right;
+    width: 80px;
+    height: 100%;
+    background: #ef735f;
+    color: white;
+    text-align: center;
+}
+.cmt:hover{
+    cursor: pointer;
+    font-weight: 600;
+}
+.cmt-write{
+    width: 96%;
+    height:110px;
+    position: relative;
+    resize: none;
+    padding: 2%;
+}
+.cmt-btn{
+    width: 100px;
+    height: 25px;
+    position: relative;
+    float: right;
+    background: #01a57f;
+    color: white;
+}
+.cmt-btn:hover{
+    background: #ef735f;
+    cursor: pointer;
+}
+.comment-content{
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+.comment-list{
+    width: 96%;
+    height: auto;
+    position: relative;
+    padding: 1% 2%;
+    font-size: 12px;
+    border-bottom: 1px solid #e8edf1;
+    margin-top: 10px;
+}
+.cmt-list-content{
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    color: grey;
+}
+.cmt-list-other{
+    color: darkgray;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.cmt-list-time{
+    display: inline-block;
+}
 /*filter*/
 .filter-box{
     width: 100%;
