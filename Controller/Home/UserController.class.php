@@ -23,11 +23,12 @@ class UserController extends Controller\Controller{
         $password = $_POST['password'];
         $where = 'uname = "'.$username.'" ';
         $customer = M('customer');
-        $res = $customer->getRow('uid,upass',$where);
+        $res = $customer->getRow('uid,upass,carts',$where);
         if(!$res) $this->showMessage('该用户不存在');
         if(md5(md5($password)) !== $res['upass']){
             $this->showMessage('密码错误');
         }
+        $_SESSION['goods'] = unserialize($res['carts']);
         $_SESSION['username'] = $username;
         $_SESSION['userid'] = $res['uid'];
         header ( 'Location: '.SITE );
@@ -56,6 +57,10 @@ class UserController extends Controller\Controller{
 	}
 
     public function logout(){
+        $data = array();
+        $data['carts'] = serialize($_SESSION['goods']);
+        $where = 'uid='.$_SESSION['userid'];
+        M('customer')->update($data,$where);
         unset($_SESSION['username']);
         unset($_SESSION['userid']);
         unset($_SESSION['goods']);
