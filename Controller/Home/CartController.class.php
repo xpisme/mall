@@ -53,7 +53,7 @@ class CartController extends Controller\Controller{
         if(M('goods')->query($sql)){
             $this->ajaxReturn('','成功',1);
         }else{
-            $this->ajaxReturn('','失败',0);
+            $this->ajaxReturn(M('goods')->getError(),'失败',0);
         }
     }
     // 减少商品数量
@@ -73,7 +73,7 @@ class CartController extends Controller\Controller{
         if(M('goods')->query($sql)){
             $this->ajaxReturn('','成功',1);
         }else{
-            $this->ajaxReturn('','失败',0);
+            $this->ajaxReturn(M('goods')->getError(),'失败',0);
         }
     }
     // 删除商品
@@ -87,7 +87,7 @@ class CartController extends Controller\Controller{
         if(M('goods')->query($sql)){
             $this->ajaxReturn('','成功',1);
         }else{
-            $this->ajaxReturn('','失败',0);
+            $this->ajaxReturn(M('goods')->getError(),'失败',0);
         }
     }
     // 删除商品
@@ -101,7 +101,7 @@ class CartController extends Controller\Controller{
             $pre = $config['db']['db_prefix'];
             $sql = 'update m_goods set goods_number=goods_number+'.$number.' where goods_sn = "'.$sn.'"';
             if(!M('goods')->query($sql)){
-                $this->ajaxReturn('','失败',0);
+                $this->ajaxReturn(M('goods')->getError(),'失败',0);
             }
         }
         $this->ajaxReturn('','成功',1);

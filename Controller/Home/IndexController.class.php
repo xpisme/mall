@@ -108,7 +108,7 @@ class IndexController extends Controller\Controller{
         $this->display('goods');
     }
     public function focus(){
-        if(empty($_POST)) echo '失败';
+        if(empty($_POST)) exit('失败');
         if(empty($_SESSION['userid'])) $this->ajaxReturn('','未登录',0);
         $ajaxdata = array();
         $data = array();

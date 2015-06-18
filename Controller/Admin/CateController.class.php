@@ -31,7 +31,10 @@ class CateController extends AdminController{
         $category = $cate->getAll('cid,pid');
         getPlist($data['pid'],$category,$list);
         $data['pidlist'] = empty($list) ? $data['pid'] : $data['pid'].','.$list ;
+        $cate->query('set autocommit=0');
+        $cate->query('begin');
         if(!$cate->add($data)){
+            $cate->query('rollback');
             $this->ajaxReturn($ajaxdata,'添加失败',0);
         }else{
             // 更新上一级的childlist
@@ -42,10 +45,16 @@ class CateController extends AdminController{
             $tmpdata = array();
             $tmpdata['childlist'] = $childlist.$insertid;
             $cate->validata = array();
-            $cate->update($tmpdata,$where);
+
+            if(!$cate->update($tmpdata,$where)){
+                $cate->query('roolback');
+            }
+            $cate->query('commit');
             $ajaxdata['category'] = catetree($this->getNew());
             $this->ajaxReturn($ajaxdata,'success',1);
         }
+
+
     }
 
     public function lists(){
@@ -91,7 +100,10 @@ class CateController extends AdminController{
         $where = 'cid='.$_POST['id'];
         $oldwhere = 'cid='. $cate->getOne('pid','cid='.$_POST['id']);
         $oldchildlist = $cate->getOne('childlist',$oldwhere);
+        $cate->query('set autocommit=0');
+        $cate->query('begin');
         if(!$cate->update($data,$where)){
+            $cate->query('roolback');
             $this->ajaxReturn($ajaxdata,$cate->getError(),0);
         }else{
             // 更新旧上一级的childlist
@@ -100,7 +112,10 @@ class CateController extends AdminController{
             $arr = explode(',', $childlist);
             $tmpdata['childlist'] = implode(',', array_filter($arr));
             $cate->validata = array();
-            $cate->update($tmpdata,$oldwhere);
+
+            if(!$cate->update($tmpdata,$oldwhere)){
+                $cate->query('roolback');
+            }
 
             // 更新新上一级的childlist
             $where = 'cid='.$data['pid'];
@@ -110,7 +125,9 @@ class CateController extends AdminController{
             $tmpdata = array();
             $tmpdata['childlist'] = $childlist.$currid;
             $cate->validata = array(); //设置需要检测的变量
-            $cate->update($tmpdata,$where);
+            if(!$cate->update($tmpdata,$where)){
+                $cate->query('roolback');
+            }
 
             // 更新所有的pidlist
             get_all_child($category,$_POST['id'],$childarray);
@@ -125,9 +142,12 @@ class CateController extends AdminController{
                     $tmpres = $cate->query('select level from m_cate where cid in (select pid from m_cate where cid='.$childvalue.')');
                     $tmp['level'] = current($tmpres)['level'] + 1;
                     $tmp['pidlist'] = substr($sourcepidlist, 0, stripos($sourcepidlist, $_POST["id"])).$_POST["id"].','.$pidlist2;
-                    $cate->update($tmp,'cid='.$childvalue);
+                    if(!$cate->update($tmp,'cid='.$childvalue)){
+                        $cate->query('roolback');
+                    }
                 }
             }
+            $cate->query('commit');
             $ajaxdata['category'] = catetree($this->getNew());
             $this->ajaxReturn($ajaxdata,'success',1);
         }
@@ -147,24 +167,30 @@ class CateController extends AdminController{
         $where = 'cid in ('.$str .')';
         $goodswhere = 'cat_id in ('.$str.') and is_delete = 0 and is_on_sale = 1' ;
         $goods = M('goods');
-        $goods->getOne('gid',$goodswhere);
-        if(!empty($goods)){
+//        $this->ajaxReturn($goods->getOne('gid',$goodswhere),'该目录下有商品',0);
+        if(!empty($goods->getOne('gid',$goodswhere))){
             $this->ajaxReturn($ajaxdata,'该目录下有商品',0);
         }
         $cate = M('cate');
         $oldwhere = 'cid='. $cate->getOne('pid','cid='.$id);
         $oldchildlist = $cate->getOne('childlist',$oldwhere);
-
+        $cate->query('set autocommit=0');
+        $cate->query('begin');
         if($cate->delete($where)){
             $tmpdata = array();
             $childlist = str_replace($id, '', $oldchildlist);
             $arr = explode(',', $childlist);
             $tmpdata['childlist'] = implode(',', array_filter($arr));
             $cate->validata = array();
-            $cate->update($tmpdata,$oldwhere);
+
+            if(!$cate->update($tmpdata,$oldwhere)){
+                $cate->query('roolback');
+            }
+            $cate->query('commit');
             $ajaxdata['category'] = catetree($this->getNew());
             $this->ajaxReturn($ajaxdata,'',1);
         }else{
+            $cate->query('roolback');
             $this->ajaxReturn($ajaxdata,'删除失败',0);
         }
     }
