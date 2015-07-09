@@ -35,33 +35,34 @@ class image {
         $type = $config['image_type'];
         $filenum = count(current($files)['name']);
         $data = array();
+        $data['msg'] = '';
         $_path = date('Y',time()).'/'.date('md',time()).'/';
         $path = UPLOAD.$_path;
         if(!is_dir($path)) mkdir($path,0777,true);
         if( (count($files) > 1) || ($filenum == 1) ){
             foreach($files as $file){
-                if($file['error']){
+                if($file['error'][0]){
                     $data['info'] = false;
-                    $data['msg'] .= $file['name'] . '上传失败';
+                    $data['msg'] .= $file['name'][0] . '上传失败';
                     continue;
                 }
-                if($file['size'] > $max_size){
+                if($file['size'][0] > $max_size){
                     $data['info'] = false;
-                    $data['msg'] .= $file['name'] . '过大';
+                    $data['msg'] .= $file['name'][0] . '过大';
                     continue;
                 }
-                if( stripos($type,$file['type']) === false ){
+                if( stripos($type,$file['type'][0]) === false ){
                     $data['info'] = false;
-                    $data['msg'] .= $file['name'].'类型不符';
+                    $data['msg'] .= $file['name'][0].'类型不符';
                     continue;
                 }
 
-                $name = time().mt_rand(0,1000).'.'.end(explode('.',$file['name']));
+                $name = time().mt_rand(0,1000).'.'.end(explode('.',$file['name'][0]));
                 $filename = $path.$name;
                 $data['filename'][] = 'Upload/'.$_path.$name;
-                if(!move_uploaded_file($file['tmp_name'],$filename)){
+                if(!move_uploaded_file($file['tmp_name'][0],$filename)){
                     $data['info'] = false;
-                    $data['msg'] .= $file['name'].'移动失败';
+                    $data['msg'] .= $file['name'][0].'移动失败';
                 }else{
                     $data['info'] = true;
                 }

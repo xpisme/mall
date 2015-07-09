@@ -37,8 +37,10 @@ class IndexController extends Controller\Controller{
             $str = $cid;
         }
         $where = 'cat_id in ('.$str.') and is_on_sale = 1 and is_delete = 0 ';
+        $priceRange = '';
         if(isset($_GET['price'])){
-            $price = explode(',',$_GET['price']);
+            $priceRange = $_GET['price'];
+            $price = explode(',',$priceRange);
             if($price[1] == '*'){
                 $where .= ' and shop_price >'.$price[0];
             }else{
@@ -47,13 +49,16 @@ class IndexController extends Controller\Controller{
         }
         if($cid == 0){
             $this->index();
+            exit;
         }else{
             $res = M('goods')->getAll('gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img,ori_img',$where,'','','click_count desc','8');
             $res = formatgoods($res);
             $pname = get_crumbs($cid);
             $childlist = M('cate')->getOne('childlist','cid='.$cid);
             $childs = !empty($childlist) ? M('cate')->getAll('cid,cname','cid in ('.$childlist.')') : '' ;
+
         }
+        $this->assign('priceRange',$priceRange);
         $this->assign('cid',$cid);
         $this->assign('childs',$childs);
         $this->assign('crumbs',$pname);
@@ -64,18 +69,24 @@ class IndexController extends Controller\Controller{
         if(!$_POST['len']) exit;
         $ajaxdata = array();
         $goods = M('goods');
-        if(isset($_GET['price'])){
-            $price = explode(',',$_GET['price']);
+        $where = '';
+        if(!empty($_POST['cid'])){
+            $cid = $_POST['cid'];
+            get_all_child(GC('category'),$cid,$childs);
+            $str = $childs ? implode(',',$childs).','.$cid : $cid ;
+            $where .= ' and cat_id in ('.$str.')';
+        }
+        if(!empty($_POST['p'])){
+            $price = explode(',',$_POST['p']);
             if($price[1] == '*'){
-                $where = ' and shop_price >'.$price[0];
+                $where .= ' and shop_price >'.$price[0];
             }else{
-                $where = ' and shop_price >'.$price[0].' and shop_price <'.$price[1];
+                $where .= ' and shop_price >'.$price[0].' and shop_price <'.$price[1];
             }
-        }else{
-            $where = '';
         }
         $sql = 'select gid,goods_sn,sid,goods_name,shop_price,activi_price,goods_number,click_count,goods_desc,thumb_img,ori_img from m_goods where is_on_sale = 1 and is_delete = 0 '.$where.' limit 8 offset '.$_POST['len'];
         $res = $goods->query($sql);
+        $ajaxdata['sql'] = $goods->lastSql();
         $ajaxdata['res'] = formatgoods($res);
         $this->ajaxReturn($ajaxdata,'',1);
     }

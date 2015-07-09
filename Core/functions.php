@@ -183,7 +183,6 @@ function catetree($cates,$pid=0,$flag=true){
 function get_all_child($arr,$id=0,&$childs){
     if(!is_array($arr)) return false;
     foreach($arr as $k=>$v){
-
         if($v['pid'] == $id){
             $childs[] = $v['cid'];
             if($v['childlist'] != ''){ // 有子节点

@@ -65,7 +65,7 @@ final class App {
 			}
 		}else{
             $model = 'Home';
-			$controller = 'index';
+			$controller = 'Index';
 			$action = 'index';
 		}
 

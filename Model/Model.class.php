@@ -34,7 +34,7 @@ final class Model{
                     if(!empty($res)) return $this->errormsg = $value[0].':'.$value[2];
 					break;
 				case 'number':
-					$reg = '/^\d+$/';
+					$reg = '/^\d+$|^(\d+[.]?\d{0,2})$/';
 					if(preg_match($reg, $data[$value[0]]) === 0){
 							return $this->errormsg = $value[0].':'.$value[2];
 					}elseif(!empty($value[3])){

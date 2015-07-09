@@ -94,7 +94,7 @@ class GoodsController extends AdminController{
         if(!$goods->add($data)){
             $this->showMessage($goods->getError());
         }else{
-            $this->lists();
+            $this->showMessage('商品添加成功！');
         }
     }
 

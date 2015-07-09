@@ -82,6 +82,8 @@
                         <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$cid}&price=100,500" class="filter-c-class-a"><span>100 - 500</span></a>
                         <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$cid}&price=500,1000" class="filter-c-class-a"><span>500 - 1000</span></a>
                         <a href="index.php?m=home&c=index&a=gory&z={php}echo md5(rand()).'bxve'{/php}{$cid}&price=1000,*" class="filter-c-class-a"><span>1000元以上</span></a>
+                        <input type="hidden" id="cidcid" value="{$cid}">
+                        <input type="hidden" id="priceRange" value="{$priceRange}">
                     </div>
                 </div>
             </div>
@@ -113,6 +115,7 @@
     </div>
 </div>
 <script src="{$path}js/jquery-1.11.3.min.js"></script>
+
 <script>
     $(function(){
         var element = $('#filter-c-class-list>a:gt(8)');
@@ -129,13 +132,15 @@
             }
         });
     });
-    $(window).scroll(function(){
+$(window).scroll(function(){
 　　var scrollTop = $(this).scrollTop();
 　　var scrollHeight = $(document).height();
 　　var windowHeight = $(this).height();
+    var cid = $("#cidcid").val();
+    var pr = $("#priceRange").val();
 　　if(scrollTop + windowHeight == scrollHeight){
 　　　var len = $("#c-part2-new-ul li").length;
-      $.post('index.php?m=home&c=index&a=getgoods', {len:len}, function(res) {
+      $.post('index.php?m=home&c=index&a=getgoods', {len:len,cid:cid,p:pr}, function(res) {
             if(!res.status){
                alert(res.info);
             }else{
