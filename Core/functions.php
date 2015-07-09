@@ -113,7 +113,7 @@ function GC($key,$value=array(),$flag=false){
         $cache[$key] = unserialize($value);
         return $cache[$key];
     }
-    file_put_contents($filename,"<?php return '".serialize($value)."';");
+    @file_put_contents($filename,"<?php return '".serialize($value)."';");
 }
 
 /**

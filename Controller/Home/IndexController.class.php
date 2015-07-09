@@ -98,7 +98,7 @@ class IndexController extends Controller\Controller{
         if(empty($goodinfo)) $this->index();
         $goodinfo = formatgoods($goodinfo);
         $goods = current($goodinfo);
-        $where = 'cat_id='.$goods['cat_id'].' and gid <> '.$goods['gid'];
+        $where = 'cat_id='.$goods['cat_id'].' and is_on_sale=1 and is_delete=0 and gid <> '.$goods['gid'];
         $othergoods = M('goods')->getAll('gid,goods_sn,goods_name,thumb_img',$where,'','','click_count desc',6);
         M('goods')->query('update m_goods set click_count=click_count+1 where goods_sn="'.$_GET['sn'].'"');
 

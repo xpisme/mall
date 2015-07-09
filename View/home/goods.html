@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title></title>
     <link href="{$path}css/index.css" rel="stylesheet">
-	<link href="{$path}css/chat.css" rel="stylesheet">
+    <link href="{$path}css/chat.css" rel="stylesheet">
     <script src="{$path}js/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="{$path}js/index.js"></script>
+    <script src="{$path}js/chat.js"></script>
 </head>
 <body>
 <div id="box">
@@ -134,8 +136,6 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-<script></script>
 <script>
     $(document).ready(function(){
         $('.cmt').on('click',function(){
