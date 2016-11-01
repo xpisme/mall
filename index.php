@@ -19,11 +19,10 @@ defined('DATA') or define('DATA', ROOT.'Data/');
 defined('DBCACHE') or define('DBCACHE', ROOT.'Data/dbcache/');
 defined('LANG') or define('LANG', ROOT.'Lang/');
 defined('SITE') or define('SITE', 'http://www.xphp.com/');
-defined('FRONT') or define('FRONT',SITE.'View/');
-defined('UPLOAD') or define('UPLOAD',ROOT.'Upload/');
+defined('FRONT') or define('FRONT', SITE.'View/');
+defined('UPLOAD') or define('UPLOAD', ROOT.'Upload/');
 
 define('DEBUG', true);
-define('ACC',true); // 设置标志
+define('ACC', true); // 设置标志
 require CORE.'App.class.php';
 Core\App::run();
-

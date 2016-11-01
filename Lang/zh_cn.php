@@ -12,6 +12,3 @@ defined('ACC')||exit('ACC Denied');
 $_LANG['login'] = '登录';
 $_LANG['register'] = '注册';
 $_LANG['controller_method_does_not_exist'] = '控制器方法不存在';
-
-
- ?>

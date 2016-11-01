@@ -53,8 +53,10 @@
                     商品分类：
                     <select class="c-r-select" id="goodsCode" name="catid"  required="required">
                         <option value="0">顶级分类</option>
-                        <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cate');if (count($_from)):
-    foreach ($_from AS $this->_var['cate']):
+                        <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'cate'); if (count($_from)):
+    foreach ($_from as $this->_var['cate']):
 ?>
                         <option value="<?php echo $this->_var['cate']['cid']; ?>"><?php echo $this->_var['cate']['pre']; ?><?php echo $this->_var['cate']['cname']; ?></option>
                         <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
@@ -82,8 +84,10 @@
                         上级分类：
                         <select class="layerSelect" id="layerSelect" name="selectName">
                             <option value="0">顶级分类</option>
-                            <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cate');if (count($_from)):
-    foreach ($_from AS $this->_var['cate']):
+                            <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'cate'); if (count($_from)):
+    foreach ($_from as $this->_var['cate']):
 ?>
                             <option value="<?php echo $this->_var['cate']['cid']; ?>"><?php echo $this->_var['cate']['pre']; ?><?php echo $this->_var['cate']['cname']; ?></option>
                             <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>

@@ -38,8 +38,10 @@
         <div class="nav-inner">
             <ul class="nav-inner-ul">
                 <a href="index.php"><li>首页</li></a>
-                <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cate');if (count($_from)):
-    foreach ($_from AS $this->_var['cate']):
+                <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'cate'); if (count($_from)):
+    foreach ($_from as $this->_var['cate']):
 ?>
                     <?php if ($this->_var['cate']['level'] == 1): ?>
                         <a href="index.php?m=home&c=index&a=gory&z=<?php echo $this->_var['cate']['url']; ?>"><li><?php echo $this->_var['cate']['cname']; ?></li></a>
@@ -52,8 +54,10 @@
         <div class="filter">
             <div class="filter-path">
                 <a href="index.php?m=home&c=index&a=gory&z=<?php echo md5(rand()).'bxve'?>0" class="filter-path-a" style="margin-left: 40px;">全部</a>
-                <?php $_from = $this->_var['crumbs']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'mb');if (count($_from)):
-    foreach ($_from AS $this->_var['mb']):
+                <?php $_from = $this->_var['crumbs']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'mb'); if (count($_from)):
+    foreach ($_from as $this->_var['mb']):
 ?>
                 <span> > </span>
                 <a href="index.php?m=home&c=index&a=gory&z=<?php echo md5(rand()).'bxve'?><?php echo $this->_var['mb']['cid']; ?>" class="filter-path-a"><?php echo $this->_var['mb']['cname']; ?></a>
@@ -65,8 +69,10 @@
                         分类 :
                     </div>
                     <div class="filter-c-class-list fr" id="filter-c-class-list" style="border-bottom: 1px solid lightgray">
-                        <?php $_from = $this->_var['childs']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'child');if (count($_from)):
-    foreach ($_from AS $this->_var['child']):
+                        <?php $_from = $this->_var['childs']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'child'); if (count($_from)):
+    foreach ($_from as $this->_var['child']):
 ?>
                         <a href="index.php?m=home&c=index&a=gory&z=<?php echo md5(rand()).'bxve'?><?php echo $this->_var['child']['cid']; ?>" class="filter-c-class-a"><span><?php echo $this->_var['child']['cname']; ?></span></a>
                         <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
@@ -95,8 +101,10 @@
                 <div class="c-part2-inner">
                     <div class="c-part2-new">
                         <ul class="c-part2-new-ul" id="c-part2-new-ul">
-                            <?php $_from = $this->_var['goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'good');if (count($_from)):
-    foreach ($_from AS $this->_var['good']):
+                            <?php $_from = $this->_var['goods']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'good'); if (count($_from)):
+    foreach ($_from as $this->_var['good']):
 ?>
                              <li>
                                 <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['good']['goods_sn']; ?>"><img src="<?php echo $this->_var['good']['thumb_img']['0']; ?>" class="c-part2-new-ul-img"></a>

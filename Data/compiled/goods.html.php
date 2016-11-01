@@ -33,8 +33,10 @@
         <div class="nav-inner">
             <ul class="nav-inner-ul" id="nav-inner-ul">
                 <a href="index.php"><li>首页</li></a>
-                <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cate');if (count($_from)):
-    foreach ($_from AS $this->_var['cate']):
+                <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'cate'); if (count($_from)):
+    foreach ($_from as $this->_var['cate']):
 ?>
                     <?php if ($this->_var['cate']['level'] == 1): ?>
                         <a href="index.php?m=home&c=index&a=gory&z=<?php echo $this->_var['cate']['url']; ?>"><li><?php echo $this->_var['cate']['cname']; ?></li></a>
@@ -52,8 +54,10 @@
                     
                 </div>
                 <div class="c-part1-right">
-                    <?php $_from = $this->_var['others']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'other');if (count($_from)):
-    foreach ($_from AS $this->_var['other']):
+                    <?php $_from = $this->_var['others']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'other'); if (count($_from)):
+    foreach ($_from as $this->_var['other']):
 ?>
                         <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['other']['goods_sn']; ?>"><img src="<?php echo $this->_var['other']['thumb_img']['0']; ?>" alt="<?php echo $this->_var['other']['goods_name']; ?>"></a>
                     <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>

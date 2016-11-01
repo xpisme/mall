@@ -6,16 +6,22 @@
  * @Description: Description
  */
 namespace Controller\Admin;
+
 use Controller;
 
-class AdminController extends Controller\Controller{
-    public function __construct(){
+class AdminController extends Controller\Controller
+{
+    public function __construct()
+    {
         parent::__construct();
-        if(empty($_SESSION['username'])) header('location:'.SITE);
+        if (empty($_SESSION['username'])) {
+            header('location:'.SITE);
+        }
         $username = $_SESSION["username"];
         $exshop = M()->query('select count(*) as sum from m_shop s left join m_customer c on s.uid=c.uid where c.uname='."'$username'");
         $sum = current($exshop)['sum'];
-        if($sum == 0) header('location:'.SITE);
+        if ($sum == 0) {
+            header('location:'.SITE);
+        }
     }
 }
-

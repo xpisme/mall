@@ -41,8 +41,10 @@
             <div class="c-part1-inner">
                 <div class="c-part1-left">
                     <ul class="c-part1-list"  id="c-part1-list">
-                    <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'cate');if (count($_from)):
-    foreach ($_from AS $this->_var['cate']):
+                    <?php $_from = $this->_var['catetree']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'cate'); if (count($_from)):
+    foreach ($_from as $this->_var['cate']):
 ?>
                         <?php if ($this->_var['cate']['level'] == 1): ?>
                             <a href="index.php?m=home&c=index&a=gory&z=<?php echo $this->_var['cate']['url']; ?>"><li><?php echo $this->_var['cate']['cname']; ?></li></a>
@@ -51,8 +53,10 @@
                     </ul>
                 </div>
                 <div class="c-part1-right">
-                    <?php $_from = $this->_var['images']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'img');if (count($_from)):
-    foreach ($_from AS $this->_var['img']):
+                    <?php $_from = $this->_var['images']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'img'); if (count($_from)):
+    foreach ($_from as $this->_var['img']):
 ?>
                         <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['img']['goods_sn']; ?>"><img src="<?php echo $this->_var['img']['thumb_img']['0']; ?>" alt="<?php echo $this->_var['img']['goods_name']; ?>" /></a>
                     <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
@@ -61,14 +65,20 @@
                     <div id="slider">
                         <ul class="list">
                         <?php  $i=1; ?>
-                        <?php $_from = $this->_var['goodsimg']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'tem');if (count($_from)):
-    foreach ($_from AS $this->_var['tem']):
+                        <?php $_from = $this->_var['goodsimg']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'tem'); if (count($_from)):
+    foreach ($_from as $this->_var['tem']):
 ?>
-                            <?php  if($i) {?>
+                            <?php  if ($i) {
+    ?>
                             <li class="current"><img src="<?php echo $this->_var['tem']['thumb_img']['0']; ?>" alt="<?php echo $this->_var['tem']['goods_name']; ?>" /></li>
-                            <?php  }else{ ?>
+                            <?php 
+} else {
+    ?>
                             <li><img src="<?php echo $this->_var['tem']['thumb_img']['0']; ?>" alt="<?php echo $this->_var['tem']['goods_name']; ?>" /></li>
-                            <?php } $i=0; ?>
+                            <?php 
+} $i=0; ?>
                         <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
                         </ul>
                     </div>
@@ -80,8 +90,10 @@
                 <p class="part-title">新单速递<span>.&nbsp;.&nbsp;.</span></p>
                 <div class="c-part2-new">
                     <ul class="c-part2-new-ul" id="c-part2-new-ul">
-                        <?php $_from = $this->_var['goods']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'good');if (count($_from)):
-    foreach ($_from AS $this->_var['good']):
+                        <?php $_from = $this->_var['goods']; if (!is_array($_from) && !is_object($_from)) {
+    settype($_from, 'array');
+}; $this->push_vars('', 'good'); if (count($_from)):
+    foreach ($_from as $this->_var['good']):
 ?>
                          <li>
                             <a href="index.php?m=home&c=index&a=goods&sn=<?php echo $this->_var['good']['goods_sn']; ?>"><img src="<?php echo $this->_var['good']['thumb_img']['0']; ?>" class="c-part2-new-ul-img"></a>

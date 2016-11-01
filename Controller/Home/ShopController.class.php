@@ -1,11 +1,16 @@
 <?php
 
 namespace Controller\Home;
+
 use Controller\Controller;
 
-class ShopController extends Controller{
-    public function add(){
-        if(empty($_POST)) exit($this->display('shop'));
+class ShopController extends Controller
+{
+    public function add()
+    {
+        if (empty($_POST)) {
+            exit($this->display('shop'));
+        }
         $data = array();
         $shop = M('shop');
         $shop->validata = array(
@@ -25,11 +30,10 @@ class ShopController extends Controller{
         $data['email'] = $_POST['email'];
         $data['address'] = $_POST['address'];
         $data['descr'] = $_POST['describe'];
-        if(!$shop->add($data)){
+        if (!$shop->add($data)) {
             $this->showMessage($shop->getError());
-        }else{
+        } else {
             $this->showMessage('已提交，正在审核...');
         }
     }
-
 }
